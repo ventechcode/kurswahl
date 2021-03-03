@@ -11,27 +11,27 @@ public class Wahlpruefung {
 
     private boolean fuenftesPFgewaehlt; //ein Kurs wurde als 5. PF ausgewaehlt
     private boolean zweiPFHP; //zwei der Pruefungsfaecher sind Hauptfaecher
-    private boolean AFvertreterInPF; //alle drei Aufgabenfelder sind vertreten unter den PF
-    private boolean einPFCheck; //ein PF ist MU, KU, DS oder SP
+    private boolean aFvertreterInPF; //alle drei Aufgabenfelder sind vertreten unter den PF
+    private boolean einPFCheck; //hoechstens ein PF ist MU, KU, DS oder SP
 
     private boolean vierMalFS; //es sind 4 Semester lang eine FS belegt
-    private boolean vierMalNW; ///es sind 4 Semester lang eine NW belegt
-    private boolean vierMal2AF; ///es ist 4 Semester lang ein Fach des 2. AF belegt
+    private boolean vierMalNW; //es sind 4 Semester lang eine NW belegt
+    private boolean vierMal2AF; //es ist 4 Semester lang ein Fach des 2. AF belegt
     private boolean zweiRichtigeNW; //es sind min. 2 Semester PH oder CH belegt
 
-    private boolean SechsMal2AF; //es sind 6 Semester des 2. Aufgabenfeldes belegt
-    private boolean GEistPFCheck; //wenn GE ein PF ist, sind das 3. und 4. Semester PW belegt oder 4 Semester eines anderen Faches des 2. AF
-    private boolean SPals4o5PK; //sind 2 Semester SP-T belegt, wenn SP-P als 4. oder 5. PF gewaehlt wurden
+    private boolean sechsMal2AF; //es sind 6 Semester des 2. Aufgabenfeldes belegt
+    private boolean gEistPFCheck; //wenn GE ein PF ist, sind das 3. und 4. Semester PW belegt oder 4 Semester eines anderen Faches des 2. AF
+    private boolean sPals4o5PK; //sind 2 Semester SP-T belegt, wenn SP-P als 4. oder 5. PF gewaehlt wurden
     private boolean zweiSemKuenstFaecher; //sind 2 Semester eines kuenstlerischen Faches (MU,KU,DS) belegt
 
     private boolean zweiSemBelegung; //sind alle Kurse im Paket von 2 Semestern belegt
     private boolean vierzigKurseBelegt; //sind insgesamt vierzig Kurse belegt worden
-    private boolean ASchieneEinLK; //ist ein LK aus der A-Schiene gewaehlt worden (De, Eng, Fr, Ku, (Pw), Ma, Bi)
-    private boolean BSchieneEinLK; //ist ein LK aus der B-Schiene gewaehlt worden (En, Ku, Mu, Ge, Pw, (Ma), Bi, Ch, Ph, Inf)
+    private boolean aSchieneEinLK; //ist ein LK aus der A-Schiene gewaehlt worden (De, Eng, Fr, Ku, (Pw), Ma, Bi)
+    private boolean bSchieneEinLK; //ist ein LK aus der B-Schiene gewaehlt worden (En, Ku, Mu, Ge, Pw, (Ma), Bi, Ch, Ph, Inf)
 
-    private boolean SpracheAbBeginn; //sind die gewaehlten Sprachen nicht nur in der 12. Kl. gewaehlt worden
+    private boolean spracheAbBeginn; //sind die gewaehlten Sprachen nicht nur in der 12. Kl. gewaehlt worden
     private boolean kuenstWerkMitKULK; //ist der LK KU gewaehlt worden, wenn die kuenstlerischen Werkstaetten belegt wurden
-    private boolean DSmin4Sem; //ist DS 0 oder 4 Semester lang gewaehlt worden
+    private boolean dSmin4Sem; //ist DS 0 oder 4 Semester lang gewaehlt worden
 
     private Kurs[] kursListe;
 
@@ -93,17 +93,17 @@ public class Wahlpruefung {
     {
         boolean attributeTrue = true;
 
-        if(einLKHFoNW == false || zweiLKgewaehlt == false || drittesPFgewaehlt == false || viertesPFgewaehlt == false){attributeTrue = false;}
+        if(!einLKHFoNW || !zweiLKgewaehlt || !drittesPFgewaehlt || !viertesPFgewaehlt){attributeTrue = false;}
 
-        if(fuenftesPFgewaehlt == false || zweiPFHP == false || AFvertreterInPF == false || einPFCheck == false){attributeTrue = false;}
+        if(!fuenftesPFgewaehlt || !zweiPFHP || !aFvertreterInPF || !einPFCheck){attributeTrue = false;}
 
-        if(vierMalFS == false || vierMalNW == false || vierMal2AF == false || zweiRichtigeNW == false){attributeTrue = false;}
+        if(!vierMalFS || !vierMalNW || !vierMal2AF || !zweiRichtigeNW){attributeTrue = false;}
 
-        if(SechsMal2AF == false || GEistPFCheck == false || SPals4o5PK == false || zweiSemKuenstFaecher == false){attributeTrue = false;}
+        if(!sechsMal2AF || !gEistPFCheck || !sPals4o5PK || !zweiSemKuenstFaecher){attributeTrue = false;}
 
-        if(zweiSemBelegung == false || vierzigKurseBelegt == false || ASchieneEinLK == false || BSchieneEinLK == false){attributeTrue = false;}
+        if(!zweiSemBelegung || !vierzigKurseBelegt || !aSchieneEinLK || !bSchieneEinLK){attributeTrue = false;}
 
-        if(SpracheAbBeginn == false || kuenstWerkMitKULK == false || DSmin4Sem == false){attributeTrue = false;}
+        if(!spracheAbBeginn || !kuenstWerkMitKULK || !dSmin4Sem){attributeTrue = false;}
 
         return attributeTrue;
     }
@@ -116,24 +116,24 @@ public class Wahlpruefung {
         mviertesPFgewaehlt();
         mfuenftesPFgewaehlt();
         mzweiPFHP();
-        mAFvertreterInPF();
+        maFvertreterInPF();
         meinPFCheck();
         mvierMalFS();
         mvierMalNW();
         mvierMal2AF();
         mvierMal2AF();
         mzweiRichtigeNW();
-        mSechsMal2AF();
-        mGEistPFCheck();
-        mSPals4o5PK();
+        msechsMal2AF();
+        mgEistPFCheck();
+        msPals4o5PK();
         mzweiSemKuenstFaecher();
         mzweiSemBelegung();
         mvierzigKurseBelegt();
-        mASchieneEinLK();
-        mBSchieneEinLK();
-        mSpracheAbBeginn();
+        maSchieneEinLK();
+        mbSchieneEinLK();
+        mspracheAbBeginn();
         mkuenstWerkMitKULK();
-        mDSmin4Sem();
+        mdSmin4Sem();
     }
 
 
@@ -153,6 +153,9 @@ public class Wahlpruefung {
         if (getKursListeElement(22).getPruefungsfach() == 2) {einLKHFoNW = true;} //Biologie
     }
 
+    /**
+     * Das Kriterium zweiLKgewaehlt wird überprüft und entsprechend aktualisiert
+     */
     private void mzweiLKgewaehlt()
     {
         int zaehler = 0;
@@ -163,6 +166,9 @@ public class Wahlpruefung {
         zweiLKgewaehlt = zaehler == 2;
     }
 
+    /**
+     * Das Kriterium drittesPFgewaehlt wird überprüft und entsprechend aktualisiert
+     */
     private void mdrittesPFgewaehlt()
     {
         drittesPFgewaehlt = false; // so könnten auch mehrere 3. PF gewählt sein... stimmt
@@ -173,6 +179,9 @@ public class Wahlpruefung {
 
     }
 
+    /**
+     * Das Kriterium viertesPFgewaehlt wird überprüft und entsprechend aktualisiert
+     */
     private void mviertesPFgewaehlt()
     {
         int zaehler = 0;
@@ -183,6 +192,9 @@ public class Wahlpruefung {
         viertesPFgewaehlt = zaehler == 1;
     }
 
+    /**
+     * Das Kriterium fuenftesPFgewaehlt wird überprüft und entsprechend aktualisiert
+     */
     private void mfuenftesPFgewaehlt()
     {
         int zaehler = 0;
@@ -193,6 +205,9 @@ public class Wahlpruefung {
         fuenftesPFgewaehlt = zaehler == 1;
     }
 
+    /**
+     * Das Kriterium zweiPFHP wird überprüft und entsprechend aktualisiert
+     */
     private void mzweiPFHP()
     {
         int zaehler = 0;
@@ -208,96 +223,167 @@ public class Wahlpruefung {
                 }
             }
         }
-        if(deMa>0)
-        {
-            fuenftesPFgewaehlt = (deMa>0) && (zaehler >= 2);
-        }
-        )
+        fuenftesPFgewaehlt = (deMa>0) && (zaehler >= 2);
     }
 
-    private void mAFvertreterInPF()
+    /**
+     * Das Kriterium aFvertreterInPF wird überprüft und entsprechend aktualisiert
+     */
+    private void maFvertreterInPF()
     {
-
+        int af1 = 0;
+        int af2 = 0;
+        int af3 = 0;
+        for (int i = 0; i < 26; i++)
+        {
+            if  ((getKursListeElement(i).getPruefungsfach() > 1) && (getKursListeElement(i).getAufgabenfeld() == 1)) { af1++; }
+            if  ((getKursListeElement(i).getPruefungsfach() > 1) && (getKursListeElement(i).getAufgabenfeld() == 2)) { af2++; }
+            if  ((getKursListeElement(i).getPruefungsfach() > 1) && (getKursListeElement(i).getAufgabenfeld() == 3)) { af3++; }
+        }
+        aFvertreterInPF = (af1>0) && (af2>0) && (af3>0);
     }
 
+    /**
+     * Das Kriterium einPFCheck wird überprüft und entsprechend aktualisiert
+     */
     private void meinPFCheck()
     {
-
+        int zaehler = 0;
+        if (getKursListeElement(4).getPruefungsfach() > 1) { zaehler++;} //Musik
+        if (getKursListeElement(5).getPruefungsfach() > 1) { zaehler++;} //Bildende Kunst
+        if (getKursListeElement(6).getPruefungsfach() > 1) { zaehler++;} //DS
+        if (getKursListeElement(24).getPruefungsfach() > 1) { zaehler++;} //Sport
+        einPFCheck = (zaehler <= 1);
     }
 
+    /**
+     * Das Kriterium vierMalFS wird überprüft und entsprechend aktualisiert
+     */
     private void mvierMalFS()
     {
 
     }
 
+    /**
+     * Das Kriterium vierMalNW wird überprüft und entsprechend aktualisiert
+     */
     private void mvierMalNW()
     {
 
     }
 
+    /**
+     * Das Kriterium vierMal2AF wird überprüft und entsprechend aktualisiert
+     */
     private void mvierMal2AF()
     {
 
     }
 
+    /**
+     * Das Kriterium zweiRichtigeNW wird überprüft und entsprechend aktualisiert
+     */
     private void mzweiRichtigeNW()
     {
 
     }
 
-    private void mSechsMal2AF()
+    /**
+     * Das Kriterium sechsMal2AF wird überprüft und entsprechend aktualisiert
+     */
+    private void msechsMal2AF()
     {
 
     }
 
-    private void mGEistPFCheck()
+    /**
+     * Das Kriterium gEistPFCheck wird überprüft und entsprechend aktualisiert
+     */
+    private void mgEistPFCheck()
     {
 
     }
 
-    private void mSPals4o5PK()
+    /**
+     * Das Kriterium sPals4o5PK wird überprüft und entsprechend aktualisiert
+     */
+    private void msPals4o5PK()
     {
 
     }
 
+    /**
+     * Das Kriterium zweiSemKuenstFaecher wird überprüft und entsprechend aktualisiert
+     */
     private void mzweiSemKuenstFaecher()
     {
 
     }
 
+    /**
+     * Das Kriterium zweiSemBelegung wird überprüft und entsprechend aktualisiert
+     */
     private void mzweiSemBelegung()
     {
 
     }
 
+    /**
+     * Das Kriterium vierzigKurseBelegt wird überprüft und entsprechend aktualisiert
+     */
     private void mvierzigKurseBelegt()
     {
 
     }
 
-    private void mASchieneEinLK()
+    /**
+     * Das Kriterium aSchieneEinLK wird überprüft und entsprechend aktualisiert
+     */
+    private void maSchieneEinLK()
     {
 
     }
 
-    private void mBSchieneEinLK()
+    /**
+     * Das Kriterium bSchieneEinLK wird überprüft und entsprechend aktualisiert
+     */
+    private void mbSchieneEinLK()
+    {
+        
+    }
+
+    /**
+     * Das Kriterium spracheAbBeginn wird überprüft und entsprechend aktualisiert
+     */
+    private void mspracheAbBeginn()
     {
 
     }
 
-    private void mSpracheAbBeginn()
-    {
-
-    }
-
+    /**
+     * Das Kriterium kuenstWerkMitKULK wird überprüft und entsprechend aktualisiert
+     */
     private void mkuenstWerkMitKULK()
     {
-
+        kuenstWerkMitKULK = false;
+        if (getKursListeElement(9).getQ1() || getKursListeElement(9).getQ2() || getKursListeElement(9).getQ3() || getKursListeElement(9).getQ4())
+        {
+            if (getKursListeElement(5).getPruefungsfach() == 2){kuenstWerkMitKULK = true;}
+        }
+        else
+        {
+            kuenstWerkMitKULK = true;
+        }
     }
 
-    private void mDSmin4Sem()
+    /**
+     * Das Kriterium dSmin4Sem wird überprüft und entsprechend aktualisiert
+     */
+    private void mdSmin4Sem()
     {
-        if (getKursListeElement(6).getQ1() == true) {einLKHFoNW = true;}
+        dSmin4Sem = false;
+        if (getKursListeElement(6).getQ1() && getKursListeElement(6).getQ2() && getKursListeElement(6).getQ3() && getKursListeElement(6).getQ4()) {dSmin4Sem = true;}
+        if (!getKursListeElement(6).getQ1() && !getKursListeElement(6).getQ2() && !getKursListeElement(6).getQ3() && !getKursListeElement(6).getQ4()) {dSmin4Sem = true;}
     }
 
 }
