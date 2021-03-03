@@ -3,10 +3,12 @@ package kurswahl.controllers;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.scene.Node;
 import javafx.scene.control.ComboBox;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
@@ -19,6 +21,9 @@ import java.util.ResourceBundle;
 public class MainController implements Initializable {
 
     private Wahlpruefung wahlpruefung;
+
+    @FXML
+    private GridPane grid;
 
     @FXML
     private ComboBox<String> deutschPF;
@@ -85,10 +90,6 @@ public class MainController implements Initializable {
             "5PK"
     );
 
-    /*
-    *Fach ist moeglicher LK
-    * Es sind noch nicht
-    * */
     public ObservableList<String> erzeugeAuswahlPF(ObservableList<String> wahlPF){
 
         return wahlPF;
@@ -96,8 +97,8 @@ public class MainController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        wahlpruefung = new Wahlpruefung();
     }
-
 
     @FXML
     private void onPressed(ActionEvent event) {
@@ -117,7 +118,13 @@ public class MainController implements Initializable {
         } else {
             System.err.println("Error Button");
         }
-        System.out.println(kurs.toString());
+
+        Label lblSemester = (Label) grid.getChildren().filtered(node -> {
+            final Integer col = GridPane.getColumnIndex(node);
+            return col != null && 7 == GridPane.getColumnIndex(node);
+        }).get(rowIndex);
+
+        lblSemester.setText(String.valueOf(kurs.getAnzahlSemester()));
     }
 
     @FXML
@@ -126,7 +133,6 @@ public class MainController implements Initializable {
         String val = (String) comboBox.getValue();
         int rowIndex = GridPane.getRowIndex(comboBox);
         Kurs kurs = wahlpruefung.getKursListeElement(rowIndex - 1);
-        System.out.println(kurs.getName() + ": " + val);
     }
 
     @FXML
