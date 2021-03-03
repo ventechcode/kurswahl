@@ -357,7 +357,7 @@ public class Wahlpruefung {
      */
     private void mspracheAbBeginn()
     {
-
+        //test test
     }
 
     /**
