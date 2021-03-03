@@ -176,7 +176,6 @@ public class Wahlpruefung {
         {
             if  (getKursListeElement(i).getPruefungsfach() == 3) { drittesPFgewaehlt = true;}
         }
-
     }
 
     /**
@@ -259,41 +258,38 @@ public class Wahlpruefung {
     /**
      * Das Kriterium vierMalFS wird überprüft und entsprechend aktualisiert
      */
-    private void mvierMalFS()
-    {
-
-    }
+    private void mvierMalFS() { vierMalFS = getKursListeElement(1).getAnzahlSemester() == 4 || getKursListeElement(2).getAnzahlSemester() == 4 || getKursListeElement(3).getAnzahlSemester() == 4; }
 
     /**
      * Das Kriterium vierMalNW wird überprüft und entsprechend aktualisiert
      */
-    private void mvierMalNW()
-    {
-
-    }
+    private void mvierMalNW() { vierMalNW = getKursListeElement(20).getAnzahlSemester() == 4 || getKursListeElement(21).getAnzahlSemester() == 4 || getKursListeElement(22).getAnzahlSemester() == 4; }
 
     /**
      * Das Kriterium vierMal2AF wird überprüft und entsprechend aktualisiert
      */
-    private void mvierMal2AF()
-    {
-
-    }
+    private void mvierMal2AF() { vierMal2AF = getKursListeElement(13).getAnzahlSemester() == 4 || getKursListeElement(14).getAnzahlSemester() == 4 || getKursListeElement(15).getAnzahlSemester() == 4 || getKursListeElement(16).getAnzahlSemester() == 4; }
 
     /**
      * Das Kriterium zweiRichtigeNW wird überprüft und entsprechend aktualisiert
      */
-    private void mzweiRichtigeNW()
-    {
-
-    }
+    private void mzweiRichtigeNW() { zweiRichtigeNW = getKursListeElement(20).getAnzahlSemester() >= 2 || getKursListeElement(21).getAnzahlSemester() >= 2; }
 
     /**
      * Das Kriterium sechsMal2AF wird überprüft und entsprechend aktualisiert
      */
     private void msechsMal2AF()
     {
-
+        int zaehler = 0; //Speicher der belegten Semester im 2. AF
+        //durchgehen der Attribute Q1, Q2, Q3 und Q4 aller Fächer des 2. AF, wobei die belegten Semester zusammengerechnet werden:
+        for (int i = 13; i < 17; i++)
+        {
+            if  (getKursListeElement(i).getQ1()) { zaehler++; }
+            if  (getKursListeElement(i).getQ2()) { zaehler++; }
+            if  (getKursListeElement(i).getQ3()) { zaehler++; }
+            if  (getKursListeElement(i).getQ4()) { zaehler++; }
+        }
+        if (zaehler > 5) { sechsMal2AF = true; } else { sechsMal2AF = false; } //Attribut wird auf true gesetzt, wenn mindesten 6 Semester im 2. AF belegt wurden
     }
 
     /**
@@ -301,7 +297,26 @@ public class Wahlpruefung {
      */
     private void mgEistPFCheck()
     {
+        gEistPFCheck = false; //Vorannahme: Kriterium nicht erfüllt; Gegensätzliches wird im folgenden überprüft
 
+        //Fallunterscheidung: Ist GE ein Prüfungsfach?
+        if (getKursListeElement(14).getPruefungsfach() != 1)
+        {
+            //Fallunterscheidung: ist das 3. und 4. Semester PW belegt worden?
+            if (getKursListeElement(13).getQ3() && getKursListeElement(13).getQ4())
+            {
+                gEistPFCheck = true;
+            }
+            else
+            {
+                //Prüfung, ob ein anderes Fach des 2. AF belegt ist:
+                if (getKursListeElement(15).getAnzahlSemester() == 4 || getKursListeElement(16).getAnzahlSemester() == 4){ gEistPFCheck = true; }
+            }
+        }
+        else
+        {
+            gEistPFCheck = true;
+        }
     }
 
     /**
@@ -365,9 +380,11 @@ public class Wahlpruefung {
      */
     private void mkuenstWerkMitKULK()
     {
-        kuenstWerkMitKULK = false;
-        if (getKursListeElement(9).getQ1() || getKursListeElement(9).getQ2() || getKursListeElement(9).getQ3() || getKursListeElement(9).getQ4())
+        kuenstWerkMitKULK = false; //Vorannahme: Kriterium nicht erfüllt; Gegensätzliches wird im folgenden überprüft
+        //Fallunterscheidung: Ist mindestens ein Semester Künstlerische Werkstätten belegt?
+        if (getKursListeElement(9).getAnzahlSemester() > 0)
         {
+            //Fallunterscheidung: Ist der KU-LK gewählt worden?
             if (getKursListeElement(5).getPruefungsfach() == 2){kuenstWerkMitKULK = true;}
         }
         else
@@ -379,11 +396,6 @@ public class Wahlpruefung {
     /**
      * Das Kriterium dSmin4Sem wird überprüft und entsprechend aktualisiert
      */
-    private void mdSmin4Sem()
-    {
-        dSmin4Sem = false;
-        if (getKursListeElement(6).getQ1() && getKursListeElement(6).getQ2() && getKursListeElement(6).getQ3() && getKursListeElement(6).getQ4()) {dSmin4Sem = true;}
-        if (!getKursListeElement(6).getQ1() && !getKursListeElement(6).getQ2() && !getKursListeElement(6).getQ3() && !getKursListeElement(6).getQ4()) {dSmin4Sem = true;}
-    }
+    private void mdSmin4Sem() { dSmin4Sem = getKursListeElement(6).getAnzahlSemester() == 4 || getKursListeElement(6).getAnzahlSemester() == 0; }
 
 }

@@ -146,6 +146,7 @@ public class Kurs
 
     public int getAnzahlSemester()
     {
+        semesterAnzahlBerechnen();
         return anzahlSemester;
     }
 
@@ -179,6 +180,22 @@ public class Kurs
     public void setHauptfach(boolean hauptfach)
     {
         this.hauptfach = hauptfach;
+    }
+
+    public void semesterAnzahlBerechnen()
+    {
+        anzahlSemester = 0; //Vorannahme: kein Semester belegt; Gegensätzliches wird im folgenden überprüft
+
+        if (getQ1() && getQ2() && getQ3() && getQ4())
+        {
+            //es sind 4 Semester belegt
+            anzahlSemester = 4;
+        }
+        else
+        {
+            //es sind weniger als 4 Semester belegt - Prüfung, ob es 2 sind
+            if ((getQ1() && getQ2()) || (getQ3() && getQ4())){ anzahlSemester = 2; }
+        }
     }
 
     @Override
