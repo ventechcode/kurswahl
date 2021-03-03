@@ -8,7 +8,6 @@ import javafx.stage.Stage;
 
 public class Main extends Application
 {
-    private Funktionalitaet funktionalitaet;
     private Wahlpruefung wahlpruefung;
 
     @Override
@@ -21,11 +20,7 @@ public class Main extends Application
         primaryStage.setScene(new Scene(root, 1280, 920));
         primaryStage.show();
 
-        // Erstellung von Objekten der Klasse Funktionalitaet und Wahlpruefung + Übergabe Referenzen
-        funktionalitaet = new Funktionalitaet();
         wahlpruefung = new Wahlpruefung();
-        funktionalitaet.setWahlpruefung(wahlpruefung);
-        wahlpruefung.setFunktionalitaet(funktionalitaet);
     }
 
     @Override

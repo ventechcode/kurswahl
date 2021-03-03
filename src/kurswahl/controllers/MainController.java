@@ -84,7 +84,6 @@ public class MainController implements Initializable {
             "5PK"
     );
 
-
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         funktionalitaet = new Funktionalitaet();

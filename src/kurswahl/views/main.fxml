@@ -1119,7 +1119,7 @@
                   <Font name="Arial" size="14.0" />
                </font>
             </Label>
-            <ComboBox id="deutschPFId" fx:id="deutschPF" onAction="#onSelected" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <ComboBox id="deutschPFId" fx:id="deutschPF" onAction="#onSelected" onMouseClicked="#onClicked" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <ComboBox id="deutschPFId" fx:id="englischPF" onAction="#onSelected" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <ComboBox id="deutschPFId" fx:id="franzoesischPF" onAction="#onSelected" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
             <ComboBox id="deutschPFId" fx:id="lateinPF" onAction="#onSelected" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
