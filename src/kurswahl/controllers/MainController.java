@@ -4,12 +4,13 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.scene.control.ComboBox;
-import kurswahl.Funktionalitaet;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.RadioButton;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
+import kurswahl.Wahlpruefung;
 import kurswahl.models.Kurs;
 
 import java.net.URL;
@@ -17,7 +18,7 @@ import java.util.ResourceBundle;
 
 public class MainController implements Initializable {
 
-    private Funktionalitaet funktionalitaet;
+    private Wahlpruefung wahlpruefung;
 
     @FXML
     private ComboBox<String> deutschPF;
@@ -78,16 +79,23 @@ public class MainController implements Initializable {
 
     ObservableList<String> wahlPF = FXCollections.observableArrayList(
             "1LK",
-            "2LK",
+            "LK",
             "3PK",
             "4PK",
             "5PK"
     );
 
+    /*
+    *Fach ist moeglicher LK
+    * Es sind noch nicht
+    * */
+    public ObservableList<String> erzeugeAuswahlPF(ObservableList<String> wahlPF){
+
+        return wahlPF;
+    }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        funktionalitaet = new Funktionalitaet();
-        deutschPF.setItems(wahlPF);
     }
 
 
@@ -95,10 +103,9 @@ public class MainController implements Initializable {
     private void onPressed(ActionEvent event) {
         RadioButton btn = (RadioButton) event.getSource();
         boolean val = btn.isSelected();
-        System.out.println("val: " + val);
         int colIndex = GridPane.getColumnIndex(btn);
         int rowIndex = GridPane.getRowIndex(btn);
-        Kurs kurs = funktionalitaet.getKursListeElement(rowIndex - 1);
+        Kurs kurs = wahlpruefung.getKursListeElement(rowIndex - 1);
         if (colIndex == 3) {
             kurs.setQ1(val);
         } else if (colIndex == 4) {
@@ -118,8 +125,14 @@ public class MainController implements Initializable {
         ComboBox comboBox = (ComboBox) event.getSource();
         String val = (String) comboBox.getValue();
         int rowIndex = GridPane.getRowIndex(comboBox);
-        Kurs kurs = funktionalitaet.getKursListeElement(rowIndex - 1);
+        Kurs kurs = wahlpruefung.getKursListeElement(rowIndex - 1);
         System.out.println(kurs.getName() + ": " + val);
+    }
+
+    @FXML
+    void onClicked(MouseEvent event) {
+        System.out.println("Clicked!");
+        deutschPF.setItems(wahlPF);
     }
 
 }

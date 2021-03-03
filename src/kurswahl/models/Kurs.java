@@ -169,10 +169,7 @@ public class Kurs
         return anzahlPflichtsemester;
     }
 
-    public void setAnzahlPflichtsemester(int anzahlPflichtsemester)
-    {
-        this.anzahlPflichtsemester = anzahlPflichtsemester;
-    }
+    public void setAnzahlPflichtsemester(int anzahlPflichtsemester) { this.anzahlPflichtsemester = anzahlPflichtsemester; }
 
     public boolean getHauptfach()
     {
