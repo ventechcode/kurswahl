@@ -184,18 +184,13 @@ public class Kurs
 
     public void semesterAnzahlBerechnen()
     {
-        anzahlSemester = 0; //Vorannahme: kein Semester belegt; Gegensätzliches wird im folgenden überprüft
+        anzahlSemester = 0; //Startwert in der Berechnung = 0
 
-        if (getQ1() && getQ2() && getQ3() && getQ4())
-        {
-            //es sind 4 Semester belegt
-            anzahlSemester = 4;
-        }
-        else
-        {
-            //es sind weniger als 4 Semester belegt - Prüfung, ob es 2 sind
-            if ((getQ1() && getQ2()) || (getQ3() && getQ4())){ anzahlSemester = 2; }
-        }
+        //Addition +1 für jedes belegte Semester
+        if(getQ1()){ anzahlSemester ++;}
+        if(getQ2()){ anzahlSemester ++;}
+        if(getQ3()){ anzahlSemester ++;}
+        if(getQ4()){ anzahlSemester ++;}
     }
 
     @Override

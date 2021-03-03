@@ -25,11 +25,11 @@ public class Wahlpruefung {
     private boolean zweiSemKuenstFaecher; //sind 2 Semester eines kuenstlerischen Faches (MU,KU,DS) belegt
 
     private boolean zweiSemBelegung; //sind alle Kurse im Paket von 2 Semestern belegt
-    private boolean vierzigKurseBelegt; //sind insgesamt vierzig Kurse belegt worden
+    private boolean vierzigKurseBelegt; //es sind insgesamt vierzig Kurse belegt worden
     private boolean aSchieneEinLK; //ist ein LK aus der A-Schiene gewaehlt worden (De, Eng, Fr, Ku, (Pw), Ma, Bi)
     private boolean bSchieneEinLK; //ist ein LK aus der B-Schiene gewaehlt worden (En, Ku, Mu, Ge, Pw, (Ma), Bi, Ch, Ph, Inf)
 
-    private boolean spracheAbBeginn; //sind die gewaehlten Sprachen nicht nur in der 12. Kl. gewaehlt worden
+    private boolean spracheAbBeginn; //sind die gewaehlten Fremdsprachen nicht nur in der 12. Kl. gewaehlt worden
     private boolean kuenstWerkMitKULK; //ist der LK KU gewaehlt worden, wenn die kuenstlerischen Werkstaetten belegt wurden
     private boolean dSmin4Sem; //ist DS 0 oder 4 Semester lang gewaehlt worden
 
@@ -289,7 +289,7 @@ public class Wahlpruefung {
             if  (getKursListeElement(i).getQ3()) { zaehler++; }
             if  (getKursListeElement(i).getQ4()) { zaehler++; }
         }
-        if (zaehler > 5) { sechsMal2AF = true; } else { sechsMal2AF = false; } //Attribut wird auf true gesetzt, wenn mindesten 6 Semester im 2. AF belegt wurden
+        sechsMal2AF = zaehler > 5; //Attribut wird auf true gesetzt, wenn mindesten 6 Semester im 2. AF belegt wurden
     }
 
     /**
@@ -324,7 +324,12 @@ public class Wahlpruefung {
      */
     private void msPals4o5PK()
     {
-
+        sPals4o5PK = true;
+        //genauere Prüfung, wenn SP-P als 4. oder 5. PF gewählt wurde
+        if (getKursListeElement(24).getPruefungsfach() == 4 || getKursListeElement(24).getPruefungsfach() == 5)
+        {
+            sPals4o5PK = getKursListeElement(25).getAnzahlSemester() > 0;
+        }
     }
 
     /**
@@ -332,7 +337,8 @@ public class Wahlpruefung {
      */
     private void mzweiSemKuenstFaecher()
     {
-
+        //Prüfung der Kurse Musik, Kunst und DS, ob min. einer von ihnen für min. 2 Semester belegt ist
+        zweiSemKuenstFaecher = getKursListeElement(4).getAnzahlSemester() >= 2 || getKursListeElement(5).getAnzahlSemester() >= 2 || getKursListeElement(6).getAnzahlSemester() >= 2;
     }
 
     /**
@@ -340,7 +346,12 @@ public class Wahlpruefung {
      */
     private void mzweiSemBelegung()
     {
-
+        zweiSemBelegung = true;
+        //Prüfung, ob die Anzahl an belegten Semestern in jedem Kurs ohne Rest durch 2 teilbar ist
+        for (int i = 0; i < 26; i++)
+        {
+            if  (getKursListeElement(i).getAnzahlSemester() % 2 != 0) { zweiSemBelegung = false; }
+        }
     }
 
     /**
@@ -348,7 +359,13 @@ public class Wahlpruefung {
      */
     private void mvierzigKurseBelegt()
     {
-
+        int zaehler = 0;
+        //Berechnung der Anzahl an Kursen durch Addition aller belegten Semester, in jedem Kurs
+        for (int i = 0; i < 26; i++)
+        {
+            zaehler = zaehler + getKursListeElement(i).getAnzahlSemester();
+        }
+        vierzigKurseBelegt = zaehler == 40; //Überprüfung, ob die Summe = 40 ist
     }
 
     /**
@@ -356,7 +373,29 @@ public class Wahlpruefung {
      */
     private void maSchieneEinLK()
     {
+        //Speichervariablen für die Indizes der gewählten LKs
+        int ersterLK = 30;
+        int zweiterLK = 30;
 
+        //Durchgehen aller Kurse und Speicherung derer, die als LKs gewählt wurden
+        for (int i = 0; i < 26; i++)
+        {
+            if (getKursListeElement(i).getPruefungsfach() == 2);
+            {
+                if (ersterLK == 30)
+                {
+                    ersterLK = i;
+                }
+                else
+                {
+                    zweiterLK = i;
+                }
+            }
+        }
+        //Ermittlung, ob einer der beiden LKs ein Fach der A-Schiene ist
+        aSchieneEinLK = false;
+        if (ersterLK == 0 || ersterLK == 1 || ersterLK == 2 || ersterLK == 5 || ersterLK == 13 || ersterLK == 19 || ersterLK == 22){ aSchieneEinLK = true; }
+        if (zweiterLK == 0 || zweiterLK == 1 || zweiterLK == 2 || zweiterLK == 5 || zweiterLK == 13 || zweiterLK == 19 || zweiterLK == 22){ aSchieneEinLK = true; }
     }
 
     /**
@@ -364,7 +403,29 @@ public class Wahlpruefung {
      */
     private void mbSchieneEinLK()
     {
-        
+        //Speichervariablen für die Indizes der gewählten LKs
+        int ersterLK = 30;
+        int zweiterLK = 30;
+
+        //Durchgehen aller Kurse und Speicherung derer, die als LKs gewählt wurden
+        for (int i = 0; i < 26; i++)
+        {
+            if (getKursListeElement(i).getPruefungsfach() == 2);
+            {
+                if (ersterLK == 30)
+                {
+                    ersterLK = i;
+                }
+                else
+                {
+                    zweiterLK = i;
+                }
+            }
+        }
+        //Ermittlung, ob einer der beiden LKs ein Fach der B-Schiene ist
+        bSchieneEinLK = false;
+        if (ersterLK == 1 || ersterLK == 5 || ersterLK == 4 || ersterLK == 14 || ersterLK == 13 || ersterLK == 19 || ersterLK == 22 || ersterLK == 21 || ersterLK == 20 || ersterLK == 23){ bSchieneEinLK = true; }
+        if (zweiterLK == 1 || zweiterLK == 5 || zweiterLK == 4 || zweiterLK == 14 || zweiterLK == 13 || zweiterLK == 19 || zweiterLK == 22 || zweiterLK == 21 || zweiterLK == 20 || zweiterLK == 23){ bSchieneEinLK = true; }
     }
 
     /**
@@ -372,7 +433,41 @@ public class Wahlpruefung {
      */
     private void mspracheAbBeginn()
     {
+        boolean en = false;
+        boolean fr = false;
+        boolean la = false;
 
+        //Prüfung ob ENG nicht nur in der 12. KL gewählt wurde
+        if (getKursListeElement(1).getAnzahlSemester() > 0 )
+        {
+            if (getKursListeElement(1).getQ1() && getKursListeElement(0).getQ2()){ en = true; }
+        }
+        else
+        {
+            en = true;
+        }
+
+        //Prüfung ob FR nicht nur in der 12. KL gewählt wurde
+        if (getKursListeElement(2).getAnzahlSemester() > 0 )
+        {
+            if (getKursListeElement(2).getQ1() && getKursListeElement(0).getQ2()){ fr = true; }
+        }
+        else
+        {
+            fr = true;
+        }
+
+        //Prüfung ob LA nicht nur in der 12. KL gewählt wurde
+        if (getKursListeElement(3).getAnzahlSemester() > 0 )
+        {
+            if (getKursListeElement(3).getQ1() && getKursListeElement(0).getQ2()){ la = true; }
+        }
+        else
+        {
+            la = true;
+        }
+        //abschließende Prüfung, ob alle FS das Kriterium erfüllen
+        spracheAbBeginn = en && fr && la;
     }
 
     /**
