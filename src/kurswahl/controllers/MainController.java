@@ -90,8 +90,29 @@ public class MainController implements Initializable {
             "5PK"
     );
 
-    public ObservableList<String> erzeugeAuswahlPF(ObservableList<String> wahlPF){
+    public ObservableList<String> listeErstellen() {
+        ObservableList<String> wahlPFEdited = FXCollections.observableArrayList();
+        if (!wahlpruefung.getZweiLKgewaehlt()) {
+            wahlPFEdited.remove("LK");
+        }
 
+        return wahlPFEdited;
+    }
+
+    // Test methode
+    public ObservableList<String> getPFWahl() {
+        if (wahlpruefung.getZweiLKgewaehlt()) {
+            wahlPF.remove("LK");
+        }
+        if (wahlpruefung.getDrittesPFgewaehlt()) {
+            wahlPF.remove("3. PF");
+        }
+        if (wahlpruefung.getViertesPFgewaehlt()) {
+            wahlPF.remove("4. PF");
+        }
+        if (wahlpruefung.getFuenftesPFgewaehlt()) {
+            wahlPF.remove("5. PF");
+        }
         return wahlPF;
     }
 
@@ -119,12 +140,17 @@ public class MainController implements Initializable {
             System.err.println("Error Button");
         }
 
-        Label lblSemester = (Label) grid.getChildren().filtered(node -> {
+        grid.getChildren().forEach(node -> {
             final Integer col = GridPane.getColumnIndex(node);
-            return col != null && 7 == GridPane.getColumnIndex(node);
-        }).get(rowIndex);
+            final Integer row = GridPane.getRowIndex(node);
 
-        lblSemester.setText(String.valueOf(kurs.getAnzahlSemester()));
+            if(row != null && col != null) {
+                if(rowIndex == row && col == 7) {
+                    Label lblSemester = (Label) node;
+                    lblSemester.setText(String.valueOf(kurs.getAnzahlSemester()));
+                }
+            }
+        });
     }
 
     @FXML
@@ -133,12 +159,50 @@ public class MainController implements Initializable {
         String val = (String) comboBox.getValue();
         int rowIndex = GridPane.getRowIndex(comboBox);
         Kurs kurs = wahlpruefung.getKursListeElement(rowIndex - 1);
+        int pf = stringPFinInt(val);
+        kurs.setPruefungsfach(pf);
     }
 
     @FXML
-    void onClicked(MouseEvent event) {
-        System.out.println("Clicked!");
-        deutschPF.setItems(wahlPF);
+    private void onClicked(MouseEvent event) {
+        ComboBox comboBox = (ComboBox) event.getSource();
+        comboBox.setItems(getPFWahl());
     }
 
+    @FXML
+    private void bestaetigen(ActionEvent event) {
+        boolean result = wahlpruefung.wahlpruefung();
+        if (result) {
+            System.out.println("Erfolgreiche Kurswahl!");
+        } else {
+            System.out.println("Fail");
+        }
+    }
+
+    /**
+     * Wandelt den String der Art des Pruefungsfaches in den passenden Integerwert um.
+     * @param pruefungsfach - umzuwandelnder String
+     * @return - umgewandelter Integer (1-5)
+     */
+    public int stringPFinInt(String pruefungsfach) {
+        int ret = 1;
+        switch (pruefungsfach) {
+            case "LK":
+                ret = 2;
+                break;
+            case "3. PF":
+                ret = 3;
+                break;
+            case "4. PF":
+                ret = 4;
+                break;
+            case "5. PF":
+                ret = 5;
+                break;
+            default:
+                ret = 1;
+                break;
+        }
+        return ret;
+    }
 }

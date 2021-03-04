@@ -8,7 +8,6 @@ import javafx.stage.Stage;
 
 public class Main extends Application
 {
-    private Wahlpruefung wahlpruefung;
 
     @Override
     public void start(Stage primaryStage) throws Exception
@@ -19,8 +18,6 @@ public class Main extends Application
 
         primaryStage.setScene(new Scene(root, 1280, 920));
         primaryStage.show();
-
-        wahlpruefung = new Wahlpruefung();
     }
 
     @Override

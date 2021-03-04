@@ -1119,24 +1119,24 @@
                   <Font name="Arial" size="14.0" />
                </font>
             </Label>
-            <ComboBox id="deutschPFId" fx:id="deutschPF" onAction="#onSelected" onMouseClicked="#onClicked" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <ComboBox id="deutschPFId" fx:id="englischPF" onAction="#onSelected" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <ComboBox id="deutschPFId" fx:id="franzoesischPF" onAction="#onSelected" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <ComboBox id="deutschPFId" fx:id="lateinPF" onAction="#onSelected" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-            <ComboBox id="deutschPFId" fx:id="musikPF" onAction="#onSelected" prefHeight="145.0" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-            <ComboBox id="deutschPFId" fx:id="bildendekunstPF" onAction="#onSelected" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-            <ComboBox id="deutschPFId" fx:id="darstellendesspielPF" onAction="#onSelected" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="7" />
-            <ComboBox id="deutschPFId" fx:id="politikwissenschaftenPF" onAction="#onSelected" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="14" />
-            <ComboBox id="deutschPFId" fx:id="geschichtePF" onAction="#onSelected" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="15" />
-            <ComboBox id="deutschPFId" fx:id="geographiePF" onAction="#onSelected" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="16" />
-            <ComboBox id="deutschPFId" fx:id="philosophiePF" onAction="#onSelected" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="17" />
-            <ComboBox id="deutschPFId" fx:id="mathematikPF" onAction="#onSelected" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="20" />
-            <ComboBox id="deutschPFId" fx:id="physikPF" onAction="#onSelected" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="21" />
-            <ComboBox id="deutschPFId" fx:id="chemiePF" onAction="#onSelected" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="22" />
-            <ComboBox id="deutschPFId" fx:id="biologiePF" onAction="#onSelected" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="23" />
-            <ComboBox id="deutschPFId" fx:id="informatikPF" onAction="#onSelected" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="24" />
-            <ComboBox id="deutschPFId" fx:id="sportPF" onAction="#onSelected" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="25" />
-            <ComboBox id="deutschPFId" fx:id="sporttheoriePF" onAction="#onSelected" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="26" />
+            <ComboBox id="deutschPFId" fx:id="deutschPF" focusTraversable="false" onAction="#onSelected" onMouseClicked="#onClicked" prefWidth="150.0" promptText="Keine Auswahl" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <ComboBox id="deutschPFId" fx:id="englischPF" focusTraversable="false" onAction="#onSelected" onMouseClicked="#onClicked" prefWidth="150.0" promptText="Keine Auswahl" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <ComboBox id="deutschPFId" fx:id="franzoesischPF" focusTraversable="false" onAction="#onSelected" onMouseClicked="#onClicked" prefWidth="150.0" promptText="Keine Auswahl" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <ComboBox id="deutschPFId" fx:id="lateinPF" focusTraversable="false" onAction="#onSelected" onMouseClicked="#onClicked" prefWidth="150.0" promptText="Keine Auswahl" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <ComboBox id="deutschPFId" fx:id="musikPF" focusTraversable="false" onAction="#onSelected" onMouseClicked="#onClicked" prefHeight="145.0" prefWidth="150.0" promptText="Keine Auswahl" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            <ComboBox id="deutschPFId" fx:id="bildendekunstPF" focusTraversable="false" onAction="#onSelected" onMouseClicked="#onClicked" prefWidth="150.0" promptText="Keine Auswahl" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+            <ComboBox id="deutschPFId" fx:id="darstellendesspielPF" focusTraversable="false" onAction="#onSelected" onMouseClicked="#onClicked" prefWidth="150.0" promptText="Keine Auswahl" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+            <ComboBox id="deutschPFId" fx:id="politikwissenschaftenPF" focusTraversable="false" onAction="#onSelected" onMouseClicked="#onClicked" prefWidth="150.0" promptText="Keine Auswahl" GridPane.columnIndex="1" GridPane.rowIndex="14" />
+            <ComboBox id="deutschPFId" fx:id="geschichtePF" focusTraversable="false" onAction="#onSelected" onMouseClicked="#onClicked" prefWidth="150.0" promptText="Keine Auswahl" GridPane.columnIndex="1" GridPane.rowIndex="15" />
+            <ComboBox id="deutschPFId" fx:id="geographiePF" focusTraversable="false" onAction="#onSelected" onMouseClicked="#onClicked" prefWidth="150.0" promptText="Keine Auswahl" GridPane.columnIndex="1" GridPane.rowIndex="16" />
+            <ComboBox id="deutschPFId" fx:id="philosophiePF" focusTraversable="false" onAction="#onSelected" onMouseClicked="#onClicked" prefWidth="150.0" promptText="Keine Auswahl" GridPane.columnIndex="1" GridPane.rowIndex="17" />
+            <ComboBox id="deutschPFId" fx:id="mathematikPF" focusTraversable="false" onAction="#onSelected" onMouseClicked="#onClicked" prefWidth="150.0" promptText="Keine Auswahl" GridPane.columnIndex="1" GridPane.rowIndex="20" />
+            <ComboBox id="deutschPFId" fx:id="physikPF" focusTraversable="false" onAction="#onSelected" onMouseClicked="#onClicked" prefWidth="150.0" promptText="Keine Auswahl" GridPane.columnIndex="1" GridPane.rowIndex="21" />
+            <ComboBox id="deutschPFId" fx:id="chemiePF" focusTraversable="false" onAction="#onSelected" onMouseClicked="#onClicked" prefWidth="150.0" promptText="Keine Auswahl" GridPane.columnIndex="1" GridPane.rowIndex="22" />
+            <ComboBox id="deutschPFId" fx:id="biologiePF" focusTraversable="false" onAction="#onSelected" onMouseClicked="#onClicked" prefWidth="150.0" promptText="Keine Auswahl" GridPane.columnIndex="1" GridPane.rowIndex="23" />
+            <ComboBox id="deutschPFId" fx:id="informatikPF" focusTraversable="false" onAction="#onSelected" onMouseClicked="#onClicked" prefWidth="150.0" promptText="Keine Auswahl" GridPane.columnIndex="1" GridPane.rowIndex="24" />
+            <ComboBox id="deutschPFId" fx:id="sportPF" focusTraversable="false" onAction="#onSelected" onMouseClicked="#onClicked" prefWidth="150.0" promptText="Keine Auswahl" GridPane.columnIndex="1" GridPane.rowIndex="25" />
+            <ComboBox id="deutschPFId" fx:id="sporttheoriePF" focusTraversable="false" onAction="#onSelected" onMouseClicked="#onClicked" prefWidth="150.0" promptText="Keine Auswahl" GridPane.columnIndex="1" GridPane.rowIndex="26" />
          </children>
       </GridPane>
       <MenuBar prefHeight="25.0" prefWidth="1280.0">
@@ -1158,6 +1158,6 @@
           </Menu>
         </menus>
       </MenuBar>
-      <Button fx:id="bestaetigt" focusTraversable="false" layoutX="1150.0" layoutY="881.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="116.0" text="Bestätigen" />
+      <Button fx:id="bestaetigt" focusTraversable="false" layoutX="1150.0" layoutY="881.0" mnemonicParsing="false" onAction="#bestaetigen" prefHeight="33.0" prefWidth="116.0" text="Bestätigen" />
    </children>
 </AnchorPane>
