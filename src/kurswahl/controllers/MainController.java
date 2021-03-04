@@ -82,12 +82,12 @@ public class MainController implements Initializable {
     @FXML
     private Button bestaetigt;
 
-    ObservableList<String> wahlPF = FXCollections.observableArrayList(
-            "1LK",
+    private ObservableList<String> wahlPF = FXCollections.observableArrayList(
+            "Keine Auswahl",
             "LK",
-            "3PK",
-            "4PK",
-            "5PK"
+            "3. PF",
+            "4. PF",
+            "5. PF"
     );
 
     public ObservableList<String> listeErstellen() {

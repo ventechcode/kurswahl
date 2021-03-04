@@ -20,7 +20,8 @@ public class Wahlpruefung {
     private boolean zweiRichtigeNW; //es sind min. 2 Semester PH oder CH belegt
 
     private boolean sechsMal2AF; //es sind 6 Semester des 2. Aufgabenfeldes belegt
-    private boolean gEistPFCheck; //wenn GE ein PF ist, sind das 3. und 4. Semester PW belegt oder 4 Semester eines anderen Faches des 2. AF
+    private boolean gEistPFCheck; //wenn GE ein PF ist, sind das 3. und 4. Semester PW belegt oder 4 Semester
+    // eines anderen Faches des 2. AF
     private boolean sPals4o5PK; //sind 2 Semester SP-T belegt, wenn SP-P als 4. oder 5. PF gewaehlt wurden
     private boolean zweiSemKuenstFaecher; //sind 2 Semester eines kuenstlerischen Faches (MU,KU,DS) belegt
 
@@ -78,20 +79,16 @@ public class Wahlpruefung {
 
     }
 
-    public Kurs[] getKursListe()
-    {
-        return kursListe;
-    }
-
-    public Kurs getKursListeElement(int index){ return kursListe[index]; }
 
     /**
      * Es werden alle Kriterien (Attribute) überprüft, ob sie als erfüllt gespeichert sind (=true).
      * @return sind alle Kriterien als erfüllt gespeichert
      */
-    public boolean alleAttributeTrue()
+    public boolean wahlpruefung()
     {
         boolean attributeTrue = true;
+
+        attributeAktualisieren();
 
         if(!einLKHFoNW || !zweiLKgewaehlt || !drittesPFgewaehlt || !viertesPFgewaehlt){attributeTrue = false;}
 
@@ -108,7 +105,7 @@ public class Wahlpruefung {
         return attributeTrue;
     }
 
-    public void kriterienUeberpruefen()
+    public void attributeAktualisieren()
     {
         meinLKHFoNW();
         mzweiLKgewaehlt();
@@ -222,7 +219,7 @@ public class Wahlpruefung {
                 }
             }
         }
-        fuenftesPFgewaehlt = (deMa>0) && (zaehler >= 2);
+        zweiPFHP = (deMa>0) && (zaehler >= 2);
     }
 
     /**
@@ -289,7 +286,7 @@ public class Wahlpruefung {
             if  (getKursListeElement(i).getQ3()) { zaehler++; }
             if  (getKursListeElement(i).getQ4()) { zaehler++; }
         }
-        sechsMal2AF = zaehler > 5; //Attribut wird auf true gesetzt, wenn mindesten 6 Semester im 2. AF belegt wurden
+        sechsMal2AF = zaehler > 5; //Attribut wird auf true gesetzt, wenn mindestens 6 Semester im 2. AF belegt wurden
     }
 
     /**
@@ -493,4 +490,37 @@ public class Wahlpruefung {
      */
     private void mdSmin4Sem() { dSmin4Sem = getKursListeElement(6).getAnzahlSemester() == 4 || getKursListeElement(6).getAnzahlSemester() == 0; }
 
+    //Get-Methode für die Liste aller Kurse
+    public Kurs[] getKursListe()
+    {
+        return kursListe;
+    }
+
+    //Get-Methode für ein bestimmtes Element (mit bestimmtem Index) der Kursliste
+    public Kurs getKursListeElement(int index){ return kursListe[index]; }
+
+    //Get-Methoden aller Kriterienattribute
+    public boolean getEinLKHFoNW() { return einLKHFoNW; }
+    public boolean getZweiLKgewaehlt() { return zweiLKgewaehlt; }
+    public boolean getDrittesPFgewaehlt() { return drittesPFgewaehlt; }
+    public boolean getViertesPFgewaehlt() { return viertesPFgewaehlt; }
+    public boolean getFuenftesPFgewaehlt() { return fuenftesPFgewaehlt; }
+    public boolean getZweiPFHP() { return zweiPFHP; }
+    public boolean getAFvertreterInPF() { return aFvertreterInPF; }
+    public boolean getEinPFCheck() { return einPFCheck; }
+    public boolean getVierMalFS() { return vierMalFS; }
+    public boolean getVierMalNW() { return vierMalNW; }
+    public boolean getVierMal2AF() { return vierMal2AF; }
+    public boolean getZweiRichtigeNW() { return zweiRichtigeNW; }
+    public boolean getSechsMal2AF() { return sechsMal2AF; }
+    public boolean getGEistPFCheck() { return gEistPFCheck; }
+    public boolean getSPals4o5PK() { return sPals4o5PK; }
+    public boolean getZweiSemKuenstFaecher() { return zweiSemKuenstFaecher; }
+    public boolean getZweiSemBelegung() { return zweiSemBelegung; }
+    public boolean getVierzigKurseBelegt() { return vierzigKurseBelegt; }
+    public boolean getASchieneEinLK() { return aSchieneEinLK; }
+    public boolean getBSchieneEinLK() { return bSchieneEinLK; }
+    public boolean getSpracheAbBeginn() { return spracheAbBeginn; }
+    public boolean getKuenstWerkMitKULK() { return kuenstWerkMitKULK; }
+    public boolean getDSmin4Sem() { return dSmin4Sem; }
 }

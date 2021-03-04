@@ -27,7 +27,6 @@ public class Kurs
     // 4 => Zusatzkurs
 
     // Verschiedene Varianten von pruefungsfach
-    // 0 => Sport(theorie)
     // 1 => Kein PF
     // 2 => LK
     // 3 => 3. PF
