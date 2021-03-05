@@ -80,8 +80,26 @@ public class MainController implements Initializable {
     private ComboBox<String> sporttheoriePF;
 
     @FXML
-    private Button bestaetigt;
+    private Label gesamtPS;
 
+    @FXML
+    private Label gesamtQ1;
+
+    @FXML
+    private Label gesamtQ2;
+
+    @FXML
+    private Label gesamtQ3;
+
+    @FXML
+    private Label gesamtQ4;
+
+    @FXML
+    private Label gesamtAnzahl;
+
+    /**
+    * Erstellt Liste mit Anfaenglichen Werten, die in den Comboboxen auswaehlbar sind
+    * */
     private ObservableList<String> wahlPF = FXCollections.observableArrayList(
             "Keine Auswahl",
             "LK",
@@ -151,6 +169,12 @@ public class MainController implements Initializable {
                 }
             }
         });
+
+        gesamtQ1.setText("" + wahlpruefung.semesterGesamtanzahlBerechnen()[0]);
+        gesamtQ2.setText("" + wahlpruefung.semesterGesamtanzahlBerechnen()[1]);
+        gesamtQ3.setText("" + wahlpruefung.semesterGesamtanzahlBerechnen()[2]);
+        gesamtQ4.setText("" + wahlpruefung.semesterGesamtanzahlBerechnen()[3]);
+        gesamtAnzahl.setText("" + wahlpruefung.gesamtAnzahlKurseBerechnen());
     }
 
     @FXML
@@ -174,8 +198,7 @@ public class MainController implements Initializable {
         boolean result = wahlpruefung.wahlpruefung();
         if (result) {
             System.out.println("Erfolgreiche Kurswahl!");
-        } else {
-            System.out.println("Fail");
+        } else { System.out.println("Fail");
         }
     }
 

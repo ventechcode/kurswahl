@@ -659,7 +659,7 @@
                   <Insets left="3.0" />
                </padding>
             </RadioButton>
-            <RadioButton focusTraversable="false" mnemonicParsing="false" onAction="#onPressed" prefHeight="17.0" prefWidth="0.0" GridPane.columnIndex="5" GridPane.rowIndex="19">
+            <RadioButton disable="true" focusTraversable="false" mnemonicParsing="false" onAction="#onPressed" prefHeight="17.0" prefWidth="0.0" GridPane.columnIndex="5" GridPane.rowIndex="19">
                <padding>
                   <Insets left="3.0" />
                </padding>
@@ -789,7 +789,7 @@
                   <Insets left="3.0" />
                </padding>
             </RadioButton>
-            <RadioButton focusTraversable="false" mnemonicParsing="false" onAction="#onPressed" prefHeight="17.0" prefWidth="0.0" GridPane.columnIndex="6" GridPane.rowIndex="19">
+            <RadioButton disable="true" focusTraversable="false" mnemonicParsing="false" onAction="#onPressed" prefHeight="17.0" prefWidth="0.0" GridPane.columnIndex="6" GridPane.rowIndex="19">
                <padding>
                   <Insets left="3.0" />
                </padding>
@@ -959,32 +959,32 @@
                   <Font name="Arial" size="14.0" />
                </font>
             </Label>
-            <Label text="0" GridPane.columnIndex="2" GridPane.rowIndex="27">
+            <Label fx:id="gesamtPS" text="0" GridPane.columnIndex="2" GridPane.rowIndex="27">
                <font>
                   <Font name="Arial" size="14.0" />
                </font>
             </Label>
-            <Label text="0" GridPane.columnIndex="3" GridPane.rowIndex="27">
+            <Label fx:id="gesamtQ1" text="0" GridPane.columnIndex="3" GridPane.rowIndex="27">
                <font>
                   <Font name="Arial" size="14.0" />
                </font>
             </Label>
-            <Label text="0" GridPane.columnIndex="4" GridPane.rowIndex="27">
+            <Label fx:id="gesamtQ2" text="0" GridPane.columnIndex="4" GridPane.rowIndex="27">
                <font>
                   <Font name="Arial" size="14.0" />
                </font>
             </Label>
-            <Label text="0" GridPane.columnIndex="5" GridPane.rowIndex="27">
+            <Label fx:id="gesamtQ3" text="0" GridPane.columnIndex="5" GridPane.rowIndex="27">
                <font>
                   <Font name="Arial" size="14.0" />
                </font>
             </Label>
-            <Label text="0" GridPane.columnIndex="6" GridPane.rowIndex="27">
+            <Label fx:id="gesamtQ4" text="0" GridPane.columnIndex="6" GridPane.rowIndex="27">
                <font>
                   <Font name="Arial" size="14.0" />
                </font>
             </Label>
-            <Label text="0" GridPane.columnIndex="7" GridPane.rowIndex="27">
+            <Label fx:id="gesamtAnzahl" text="0" GridPane.columnIndex="7" GridPane.rowIndex="27">
                <font>
                   <Font name="Arial" size="14.0" />
                </font>

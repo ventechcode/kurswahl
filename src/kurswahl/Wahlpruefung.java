@@ -102,6 +102,37 @@ public class Wahlpruefung {
 
         if(!spracheAbBeginn || !kuenstWerkMitKULK || !dSmin4Sem){attributeTrue = false;}
 
+
+        System.out.println();
+        System.out.println("einLKHFoNW " + einLKHFoNW);
+        System.out.println("zweiLKgewaehlt " + zweiLKgewaehlt);
+        System.out.println("drittesPFgewaehlt " + drittesPFgewaehlt);
+        System.out.println("viertesPFgewaehlt " + viertesPFgewaehlt);
+
+        System.out.println("fuenftesPFgewaehlt " + fuenftesPFgewaehlt);
+        System.out.println("zweiPFHP " + zweiPFHP);
+        System.out.println("aFvertreterInPF " + aFvertreterInPF);
+        System.out.println("einPFCheck " + einPFCheck);
+
+        System.out.println("vierMalFS " + vierMalFS);
+        System.out.println("vierMalNW " + vierMalNW);
+        System.out.println("vierMal2AF " + vierMal2AF);
+        System.out.println("zweiRichtigeNW " + zweiRichtigeNW);
+
+        System.out.println("sechsMal2AF " + sechsMal2AF);
+        System.out.println("gEistPFCheck " + gEistPFCheck);
+        System.out.println("sPals4o5PK " + sPals4o5PK);
+        System.out.println("zweiSemKuenstFaecher " + zweiSemKuenstFaecher);
+
+        System.out.println("zweiSemBelegung " + zweiSemBelegung);
+        System.out.println("vierzigKurseBelegt " + vierzigKurseBelegt);
+        System.out.println("aSchieneEinLK " + aSchieneEinLK);
+        System.out.println("bSchieneEinLK " + bSchieneEinLK);
+
+        System.out.println("spracheAbBeginn" + spracheAbBeginn);
+        System.out.println("kuenstWerkMitKULK " + kuenstWerkMitKULK);
+        System.out.println("dSmin4Sem " + dSmin4Sem);
+
         return attributeTrue;
     }
 
@@ -377,7 +408,7 @@ public class Wahlpruefung {
         //Durchgehen aller Kurse und Speicherung derer, die als LKs gewählt wurden
         for (int i = 0; i < 26; i++)
         {
-            if (getKursListeElement(i).getPruefungsfach() == 2);
+            if (getKursListeElement(i).getPruefungsfach() == 2)
             {
                 if (ersterLK == 30)
                 {
@@ -407,7 +438,7 @@ public class Wahlpruefung {
         //Durchgehen aller Kurse und Speicherung derer, die als LKs gewählt wurden
         for (int i = 0; i < 26; i++)
         {
-            if (getKursListeElement(i).getPruefungsfach() == 2);
+            if (getKursListeElement(i).getPruefungsfach() == 2)
             {
                 if (ersterLK == 30)
                 {
@@ -523,4 +554,44 @@ public class Wahlpruefung {
     public boolean getSpracheAbBeginn() { return spracheAbBeginn; }
     public boolean getKuenstWerkMitKULK() { return kuenstWerkMitKULK; }
     public boolean getDSmin4Sem() { return dSmin4Sem; }
+
+    /**
+     * Errechnet die Summe aller jeweils in q1, q2, q3 und q4 belegten Kurse und gibt diese für die jweeiligen Semester
+     * als Array zurück
+     * @return Array mit {Summe für q1, Summe für q2 Summe, für q3, Summe für q4}
+     */
+    public int[] semesterGesamtanzahlBerechnen()
+    {
+        int q1 = 0;
+        int q2 = 0;
+        int q3 = 0;
+        int q4 = 0;
+
+        for (int i = 0; i < 26; i++)
+        {
+            if (getKursListeElement(i).getQ1()) q1++;
+            if (getKursListeElement(i).getQ2()) q2++;
+            if (getKursListeElement(i).getQ3()) q3++;
+            if (getKursListeElement(i).getQ4()) q4++;
+        }
+        int[] array = {q1, q2, q3, q4};
+        return array;
+    }
+
+    /**
+     * Errechnet die Summe aller belegter Kurse.
+     * @return Gesamtanzahl belegter Kurse
+     */
+    public int gesamtAnzahlKurseBerechnen()
+    {
+        int[] array = semesterGesamtanzahlBerechnen();
+        return array[0]+ array[1] + array[2] + array[3];
+    }
+
+//    public int gesamtAnzahlPSberechnen()
+//    {
+//
+//    }
+
 }
+
