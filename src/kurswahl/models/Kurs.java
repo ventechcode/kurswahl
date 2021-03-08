@@ -181,6 +181,9 @@ public class Kurs
         this.hauptfach = hauptfach;
     }
 
+    /**
+     * Berechnung der Anzahl an belegten Semestern im Kurs.
+     */
     public void semesterAnzahlBerechnen()
     {
         anzahlSemester = 0; //Startwert in der Berechnung = 0

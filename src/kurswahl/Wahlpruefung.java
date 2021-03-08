@@ -136,6 +136,9 @@ public class Wahlpruefung {
         return attributeTrue;
     }
 
+    /**
+     * Ausführen aller Methoden zur Überprüfung der Kriterien und damit einhergehende Aktualisierung der Attributwerte.
+     */
     public void attributeAktualisieren()
     {
         meinLKHFoNW();
@@ -588,10 +591,21 @@ public class Wahlpruefung {
         return array[0]+ array[1] + array[2] + array[3];
     }
 
-//    public int gesamtAnzahlPSberechnen()
-//    {
-//
-//    }
+    /**
+     * Errechnet die Summe aller Pflichtsemester.
+     * @return Gesamtanzahl Pflichtsemester
+     */
+    public int gesamtAnzahlPSberechnen()
+    {
+        int gesPS = 0;
+
+        for (int i = 0; i < 26; i++)
+        {
+            gesPS += (getKursListeElement(i).getAnzahlPflichtsemester());
+        }
+        return gesPS;
+    }
+
 
 }
 

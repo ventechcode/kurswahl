@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Menu?>
@@ -434,7 +433,7 @@
                   <Insets left="3.0" />
                </padding>
             </RadioButton>
-            <RadioButton fx:id="onPressed" focusTraversable="false" mnemonicParsing="false" prefHeight="17.0" prefWidth="0.0" GridPane.columnIndex="3" GridPane.rowIndex="26">
+            <RadioButton fx:id="onPressed" disable="true" focusTraversable="false" mnemonicParsing="false" prefHeight="17.0" prefWidth="0.0" GridPane.columnIndex="3" GridPane.rowIndex="26">
                <padding>
                   <Insets left="3.0" />
                </padding>
@@ -824,7 +823,7 @@
                   <Insets left="3.0" />
                </padding>
             </RadioButton>
-            <RadioButton focusTraversable="false" mnemonicParsing="false" onAction="#onPressed" prefHeight="17.0" prefWidth="0.0" GridPane.columnIndex="6" GridPane.rowIndex="26">
+            <RadioButton disable="true" focusTraversable="false" mnemonicParsing="false" onAction="#onPressed" prefHeight="17.0" prefWidth="0.0" GridPane.columnIndex="6" GridPane.rowIndex="26">
                <padding>
                   <Insets left="3.0" />
                </padding>
@@ -1158,6 +1157,5 @@
           </Menu>
         </menus>
       </MenuBar>
-      <Button fx:id="bestaetigt" focusTraversable="false" layoutX="1150.0" layoutY="881.0" mnemonicParsing="false" onAction="#bestaetigen" prefHeight="33.0" prefWidth="116.0" text="Bestätigen" />
    </children>
 </AnchorPane>

@@ -7,7 +7,6 @@ import javafx.scene.Node;
 import javafx.scene.control.ComboBox;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.input.MouseEvent;
@@ -24,60 +23,6 @@ public class MainController implements Initializable {
 
     @FXML
     private GridPane grid;
-
-    @FXML
-    private ComboBox<String> deutschPF;
-
-    @FXML
-    private ComboBox<String> englischPF;
-
-    @FXML
-    private ComboBox<String> franzoesischPF;
-
-    @FXML
-    private ComboBox<String> lateinPF;
-
-    @FXML
-    private ComboBox<String> musikPF;
-
-    @FXML
-    private ComboBox<String> bildendekunstPF;
-
-    @FXML
-    private ComboBox<String> darstellendesspielPF;
-
-    @FXML
-    private ComboBox<String> politikwissenschaftenPF;
-
-    @FXML
-    private ComboBox<String> geschichtePF;
-
-    @FXML
-    private ComboBox<String> geographiePF;
-
-    @FXML
-    private ComboBox<String> philosophiePF;
-
-    @FXML
-    private ComboBox<String> mathematikPF;
-
-    @FXML
-    private ComboBox<String> physikPF;
-
-    @FXML
-    private ComboBox<String> chemiePF;
-
-    @FXML
-    private ComboBox<String> biologiePF;
-
-    @FXML
-    private ComboBox<String> informatikPF;
-
-    @FXML
-    private ComboBox<String> sportPF;
-
-    @FXML
-    private ComboBox<String> sporttheoriePF;
 
     @FXML
     private Label gesamtPS;
@@ -98,47 +43,50 @@ public class MainController implements Initializable {
     private Label gesamtAnzahl;
 
     /**
-    * Erstellt Liste mit Anfaenglichen Werten, die in den Comboboxen auswaehlbar sind
-    * */
-    private ObservableList<String> wahlPF = FXCollections.observableArrayList(
-            "Keine Auswahl",
-            "LK",
-            "3. PF",
-            "4. PF",
-            "5. PF"
-    );
-
-    public ObservableList<String> listeErstellen() {
-        ObservableList<String> wahlPFEdited = FXCollections.observableArrayList();
-        if (!wahlpruefung.getZweiLKgewaehlt()) {
+     * Dropdown Menü wird dynamisch für jedes Klicken auf ein PF-Auswahlfeld erstellt und zurückgegeben
+     * @return
+     */
+    public ObservableList<String> getPFWahl() {
+        ObservableList<String> wahlPFEdited = FXCollections.observableArrayList("Keine Auswahl",
+                "LK",
+                "3. PF",
+                "4. PF",
+                "5. PF");
+        if (wahlpruefung.getZweiLKgewaehlt()) {
             wahlPFEdited.remove("LK");
         }
-
+        if (wahlpruefung.getDrittesPFgewaehlt()) {
+            wahlPFEdited.remove("3. PF");
+        }
+        if (wahlpruefung.getViertesPFgewaehlt()) {
+            wahlPFEdited.remove("4. PF");
+        }
+        if (wahlpruefung.getFuenftesPFgewaehlt()) {
+            wahlPFEdited.remove("5. PF");
+        }
         return wahlPFEdited;
     }
 
-    // Test methode
-    public ObservableList<String> getPFWahl() {
-        if (wahlpruefung.getZweiLKgewaehlt()) {
-            wahlPF.remove("LK");
-        }
-        if (wahlpruefung.getDrittesPFgewaehlt()) {
-            wahlPF.remove("3. PF");
-        }
-        if (wahlpruefung.getViertesPFgewaehlt()) {
-            wahlPF.remove("4. PF");
-        }
-        if (wahlpruefung.getFuenftesPFgewaehlt()) {
-            wahlPF.remove("5. PF");
-        }
-        return wahlPF;
-    }
-
+    /**
+     * Initialisierung
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         wahlpruefung = new Wahlpruefung();
+        // Anzeigen der bereits vorhandenen Gesamtanzahl belegter Kurse (durch obligatorisch zu wählenden Kurse)
+        gesamtQ1.setText("" + wahlpruefung.semesterGesamtanzahlBerechnen()[0]);
+        gesamtQ2.setText("" + wahlpruefung.semesterGesamtanzahlBerechnen()[1]);
+        gesamtQ3.setText("" + wahlpruefung.semesterGesamtanzahlBerechnen()[2]);
+        gesamtQ4.setText("" + wahlpruefung.semesterGesamtanzahlBerechnen()[3]);
+        gesamtAnzahl.setText("" + wahlpruefung.gesamtAnzahlKurseBerechnen());
     }
 
+    /**
+     * Reagiert auf Auswahl eines Radio Buttons
+     * Es werden weitere Buttons ausgewaehlt die mit der Wahl des urspruenglichen Buttons nun Pflicht sind oder nicht
+     * mehr Pflicht sind
+     * @param event
+     */
     @FXML
     private void onPressed(ActionEvent event) {
         RadioButton btn = (RadioButton) event.getSource();
@@ -146,18 +94,44 @@ public class MainController implements Initializable {
         int colIndex = GridPane.getColumnIndex(btn);
         int rowIndex = GridPane.getRowIndex(btn);
         Kurs kurs = wahlpruefung.getKursListeElement(rowIndex - 1);
-        if (colIndex == 3) {
-            kurs.setQ1(val);
-        } else if (colIndex == 4) {
+
+        // Wenn ein Semester eines Kurses ausgewählt wird, wird das dazugehörige zweite ebenfalls ausgewählt:
+        if (kurs.getName().equals("Sporttheorie")) // 1. Sonderfall: Wenn das 2. oder 3. Semester Sporttheorie
+            // ausgewählt wird, wird das jeweils andere ebenfalls gewählt
+        {
             kurs.setQ2(val);
-        } else if (colIndex == 5) {
             kurs.setQ3(val);
-        } else if (colIndex == 6) {
+        }
+        else if (kurs.getName().equals("Darstellendes Spiel")) // 2. Sonderfall: Wenn ein Semester DS ausgewählt wird,
+            // werden auch alle anderen Semester ausgewählt
+        {
+            kurs.setQ1(val);
+            kurs.setQ2(val);
+            kurs.setQ3(val);
             kurs.setQ4(val);
-        } else {
-            System.err.println("Error Button");
+        }
+        else
+        {
+            // Normalfall: alle anderen Kurse (wenn Q1 belegt wird, auch Q2; wenn Q3 belegt wird, auch Q4
+            // (und andersherum))
+            if (colIndex == 3) {
+                kurs.setQ1(val);
+                kurs.setQ2(val);
+            } else if (colIndex == 4) {
+                kurs.setQ2(val);
+                kurs.setQ1(val);
+            } else if (colIndex == 5) {
+                kurs.setQ3(val);
+                kurs.setQ4(val);
+            } else if (colIndex == 6) {
+                kurs.setQ4(val);
+                kurs.setQ3(val);
+            } else {
+                System.err.println("Error Button");
+            }
         }
 
+        // Anzeigen der Gesamtanzahl an belegten Semetern pro Kurs:
         grid.getChildren().forEach(node -> {
             final Integer col = GridPane.getColumnIndex(node);
             final Integer row = GridPane.getRowIndex(node);
@@ -169,14 +143,19 @@ public class MainController implements Initializable {
                 }
             }
         });
-
+        // Aktualisierung der Anzeige der Gesamtanzahl an Semestern in Q1, Q2, Q3, Q4 und der Gesamtanzahl belegter
+        // Kurse:
         gesamtQ1.setText("" + wahlpruefung.semesterGesamtanzahlBerechnen()[0]);
         gesamtQ2.setText("" + wahlpruefung.semesterGesamtanzahlBerechnen()[1]);
         gesamtQ3.setText("" + wahlpruefung.semesterGesamtanzahlBerechnen()[2]);
         gesamtQ4.setText("" + wahlpruefung.semesterGesamtanzahlBerechnen()[3]);
         gesamtAnzahl.setText("" + wahlpruefung.gesamtAnzahlKurseBerechnen());
+        ueberpruefen();
     }
 
+    /**
+     * Methode zur Regelung des Ablaufs und automatischer Eingaben bei Wahl eines Kurses als PF.
+     */
     @FXML
     private void onSelected(ActionEvent event) {
         ComboBox comboBox = (ComboBox) event.getSource();
@@ -185,21 +164,124 @@ public class MainController implements Initializable {
         Kurs kurs = wahlpruefung.getKursListeElement(rowIndex - 1);
         int pf = stringPFinInt(val);
         kurs.setPruefungsfach(pf);
+
+        // Anzeigen der Pflichtsemester & belegten Semester, wenn ein Kurs als PF ausgewählt wird:
+        if(pf == 1) {
+            kurs.setAnzahlPflichtsemester(0);
+        } else {
+            kurs.setAnzahlPflichtsemester(4);
+        }
+
+        gesamtPS.setText("" + wahlpruefung.gesamtAnzahlPSberechnen());
+
+        grid.getChildren().forEach(node -> {
+            final Integer col = GridPane.getColumnIndex(node);
+            final Integer row = GridPane.getRowIndex(node);
+            // Anzeigen der Pflichtsemester in der Tabelle:
+            if(row != null && col != null) {
+                if(rowIndex == row && col == 2) {
+                    Label lblPflichtsemester = (Label) node;
+                    lblPflichtsemester.setText(String.valueOf(kurs.getAnzahlPflichtsemester()));
+                }
+                // Anzeigen der 4 ausgewählten Semester:
+                if(pf != 1) {
+                    // Q1 RadioButton
+                    if(rowIndex == row && col == 3) {
+                        RadioButton q1 = (RadioButton) node;
+                        q1.setSelected(true);
+                        kurs.setQ1(true);
+                    }
+                    // Q2 RadioButton
+                    if(rowIndex == row && col == 4) {
+                        RadioButton q2 = (RadioButton) node;
+                        q2.setSelected(true);
+                        kurs.setQ2(true);
+                    }
+                    // Q3 RadioButton
+                    if(rowIndex == row && col == 5) {
+                        RadioButton q3 = (RadioButton) node;
+                        q3.setSelected(true);
+                        kurs.setQ3(true);
+                    }
+                    // Q4 RadioButton
+                    if(rowIndex == row && col == 6) {
+                        RadioButton q4 = (RadioButton) node;
+                        q4.setSelected(true);
+                        kurs.setQ4(true);
+                    }
+                    if(rowIndex == row && col == 7) {
+                        Label lblSemester = (Label) node;
+                        lblSemester.setText(String.valueOf(kurs.getAnzahlSemester()));
+                    }
+                } else {
+                    // Q1 RadioButton
+                    if(rowIndex == row && col == 3) {
+                        RadioButton q1 = (RadioButton) node;
+                        q1.setSelected(false);
+                        kurs.setQ1(false);
+                    }
+                    // Q2 RadioButton
+                    if(rowIndex == row && col == 4) {
+                        RadioButton q2 = (RadioButton) node;
+                        q2.setSelected(false);
+                        kurs.setQ2(false);
+                    }
+                    // Q3 RadioButton
+                    if(rowIndex == row && col == 5) {
+                        RadioButton q3 = (RadioButton) node;
+                        q3.setSelected(false);
+                        kurs.setQ3(false);
+                    }
+                    // Q4 RadioButton
+                    if(rowIndex == row && col == 6) {
+                        RadioButton q4 = (RadioButton) node;
+                        q4.setSelected(false);
+                        kurs.setQ4(false);
+                    }
+                    if(rowIndex == row && col == 7) {
+                        Label lblSemester = (Label) node;
+                        lblSemester.setText(String.valueOf(kurs.getAnzahlSemester()));
+                    }
+                }
+            }
+        });
+        ueberpruefen();
     }
 
+    /**
+     * Methode zum Anzeigen des Drop-Down-Menüs, in dem die PF ausgewählt werden können.
+     */
     @FXML
     private void onClicked(MouseEvent event) {
         ComboBox comboBox = (ComboBox) event.getSource();
         comboBox.setItems(getPFWahl());
     }
 
-    @FXML
-    private void bestaetigen(ActionEvent event) {
+    /**
+     * Ausführung der Wahlprüfung
+     */
+    private void ueberpruefen() {
         boolean result = wahlpruefung.wahlpruefung();
         if (result) {
             System.out.println("Erfolgreiche Kurswahl!");
         } else { System.out.println("Fail");
         }
+    }
+
+    /**
+     * @return Node, bei der angegebenen Reihe und Spalte
+     */
+    public Node getNodeByCoordinate(Integer row, Integer column) {
+        if(row != null && column != null) {
+            for (Node node : grid.getChildren()) {
+                if(GridPane.getRowIndex(node) != null && GridPane.getColumnIndex(node) != null){
+                    if(GridPane.getRowIndex(node) == row && GridPane.getColumnIndex(node) == column){
+                        return node;
+                    }
+                }
+                }
+            }
+        return null;
     }
 
     /**
