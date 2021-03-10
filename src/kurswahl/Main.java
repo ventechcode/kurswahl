@@ -6,9 +6,19 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+/**
+ * <Klassenkommentar> TODO Klassenkommentar schreiben
+ *
+ * @author TODO Autor eintragen
+ */
+
 public class Main extends Application
 {
 
+    /**
+     * Starten der Anwendung
+     * @author TODO Autor eintragen
+     */
     @Override
     public void start(Stage primaryStage) throws Exception
     {
@@ -20,18 +30,30 @@ public class Main extends Application
         primaryStage.show();
     }
 
+    /**
+     * TODO Methodenkommentar schreiben
+     * @author TODO Autor eintragen
+     */
     @Override
     public void init() throws Exception {
         super.init();
         System.out.println("Application started");
     }
 
+    /**
+     * Stoppen der Anwendung
+     * @author TODO Autor eintragen
+     */
     @Override
     public void stop() throws Exception {
         super.stop();
         System.out.println("Application stopped");
     }
 
+    /**
+     * TODO Methodenkommentar schreiben
+     * @author TODO Autor eintragen
+     */
     public static void main(String[] args) {
         launch(args);
     }

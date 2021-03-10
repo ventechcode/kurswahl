@@ -1,5 +1,11 @@
 package kurswahl.models;
 
+/**
+ * <Klassenkommentar> TODO Klassenkommentar schreiben
+ *
+ * @author Romy Karbstein, Glenn Grubert
+ */
+
 public class Kurs
 {
     private String name; // z.B. Englisch
@@ -46,6 +52,7 @@ public class Kurs
      * @param pruefungsfach - Art des Prüfungsfaches
      * @param anzahlPflichtsemester - Anzahl der pflichtmäßig zu belegenden Semester
      * @param hauptfach - ist das Fach ein Hauptfach?
+     * @author TODO Autor eintragen
      */
     public Kurs(String name, int aufgabenfeld, int speziell, boolean q1, boolean q2, boolean q3, boolean q4, int anzahlSemester, int pruefungsfach, int anzahlPflichtsemester, boolean hauptfach)
     {
@@ -183,6 +190,7 @@ public class Kurs
 
     /**
      * Berechnung der Anzahl an belegten Semestern im Kurs.
+     * @author Tomás Wagner
      */
     public void semesterAnzahlBerechnen()
     {
@@ -196,6 +204,10 @@ public class Kurs
     }
 
     @Override
+    /**
+     * Konvertierung und Rückgabe der Attribute eines Kurs-Objektes als String.
+     * @author TODO Autor eintragen
+     */
     public String toString() {
         return getName() + ": " + getPruefungsfach() + ", " + getAnzahlPflichtsemester() + ", " + getQ1() + ", " + getQ2() + ", " + getQ3() + ", " + getQ4() + ", " + getAnzahlSemester();
     }

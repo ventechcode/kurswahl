@@ -2,8 +2,19 @@ package kurswahl;
 
 import kurswahl.models.Kurs;
 
+/**
+ * Die Klasse Wahlpruefung repräsentiert die Funktionalität hinter der Kurswahl-Anwendung.
+ * Sie ist zum einen für die Datenspeicherung, durch die Erstellung und Initialisierung der Kurs-Objekte,
+ * sowie die Prüfung der Eingaben zuständig.
+ * Um letztere Aufgabe wahrnehmen zu können, speichert sie ebenfalls die Kriterien,
+ * ob sie erfüllt sind oder nicht und stellt Methoden zur Überprüdung dieser bereit.
+ *
+ * @author Romy Karbstein, Glenn Grubert, Tomás Wagner
+ */
+
 public class Wahlpruefung {
 
+    // Attribute für die Kriterien:
     private boolean einLKHFoNW; //ein LK ist ein Hauptfach oder eine Naturwissenschaft;
     private boolean zweiLKgewaehlt; //es wurden zwei LKs gewaehlt
     private boolean drittesPFgewaehlt; //ein Kurs wurde als 3. PF ausgewaehlt
@@ -38,6 +49,7 @@ public class Wahlpruefung {
 
     /**
      * Konstruktor der Klasse Wahlpruefung
+     * @author TODO Autor eintragen
      */
     public Wahlpruefung()
     {
@@ -47,6 +59,7 @@ public class Wahlpruefung {
 
     /**
      * Instanziiert die Kurse und fügt sie in die Liste der Kurse in korrekter Reihenfolge ein.
+     * @author Glenn Grubert, Romy Karbstein
      */
     private void kurseInstanziieren()
     {
@@ -83,6 +96,7 @@ public class Wahlpruefung {
     /**
      * Es werden alle Kriterien (Attribute) überprüft, ob sie als erfüllt gespeichert sind (=true).
      * @return sind alle Kriterien als erfüllt gespeichert
+     * @author Tomás Wagner
      */
     public boolean wahlpruefung()
     {
@@ -138,6 +152,7 @@ public class Wahlpruefung {
 
     /**
      * Ausführen aller Methoden zur Überprüfung der Kriterien und damit einhergehende Aktualisierung der Attributwerte.
+     * @author Tomás Wagner
      */
     public void attributeAktualisieren()
     {
@@ -170,6 +185,7 @@ public class Wahlpruefung {
 
     /**
      * Das Kriterium einLKHFoNW wird überprüft und entsprechend aktualisiert
+     * @author TODO Autor eintragen
      */
     private void meinLKHFoNW()
     {
@@ -186,6 +202,7 @@ public class Wahlpruefung {
 
     /**
      * Das Kriterium zweiLKgewaehlt wird überprüft und entsprechend aktualisiert
+     * @author TODO Autor eintragen
      */
     private void mzweiLKgewaehlt()
     {
@@ -199,6 +216,7 @@ public class Wahlpruefung {
 
     /**
      * Das Kriterium drittesPFgewaehlt wird überprüft und entsprechend aktualisiert
+     * @author TODO Autor eintragen
      */
     private void mdrittesPFgewaehlt()
     {
@@ -211,6 +229,7 @@ public class Wahlpruefung {
 
     /**
      * Das Kriterium viertesPFgewaehlt wird überprüft und entsprechend aktualisiert
+     * @author TODO Autor eintragen
      */
     private void mviertesPFgewaehlt()
     {
@@ -224,6 +243,7 @@ public class Wahlpruefung {
 
     /**
      * Das Kriterium fuenftesPFgewaehlt wird überprüft und entsprechend aktualisiert
+     * @author TODO Autor eintragen
      */
     private void mfuenftesPFgewaehlt()
     {
@@ -237,6 +257,7 @@ public class Wahlpruefung {
 
     /**
      * Das Kriterium zweiPFHP wird überprüft und entsprechend aktualisiert
+     * @author TODO Autor eintragen
      */
     private void mzweiPFHP()
     {
@@ -258,6 +279,7 @@ public class Wahlpruefung {
 
     /**
      * Das Kriterium aFvertreterInPF wird überprüft und entsprechend aktualisiert
+     * @author TODO Autor eintragen
      */
     private void maFvertreterInPF()
     {
@@ -275,6 +297,7 @@ public class Wahlpruefung {
 
     /**
      * Das Kriterium einPFCheck wird überprüft und entsprechend aktualisiert
+     * @author TODO Autor eintragen
      */
     private void meinPFCheck()
     {
@@ -288,26 +311,31 @@ public class Wahlpruefung {
 
     /**
      * Das Kriterium vierMalFS wird überprüft und entsprechend aktualisiert
+     * @author Tomás Wagner
      */
     private void mvierMalFS() { vierMalFS = getKursListeElement(1).getAnzahlSemester() == 4 || getKursListeElement(2).getAnzahlSemester() == 4 || getKursListeElement(3).getAnzahlSemester() == 4; }
 
     /**
      * Das Kriterium vierMalNW wird überprüft und entsprechend aktualisiert
+     * @author Tomás Wagner
      */
     private void mvierMalNW() { vierMalNW = getKursListeElement(20).getAnzahlSemester() == 4 || getKursListeElement(21).getAnzahlSemester() == 4 || getKursListeElement(22).getAnzahlSemester() == 4; }
 
     /**
      * Das Kriterium vierMal2AF wird überprüft und entsprechend aktualisiert
+     * @author Tomás Wagner
      */
     private void mvierMal2AF() { vierMal2AF = getKursListeElement(13).getAnzahlSemester() == 4 || getKursListeElement(14).getAnzahlSemester() == 4 || getKursListeElement(15).getAnzahlSemester() == 4 || getKursListeElement(16).getAnzahlSemester() == 4; }
 
     /**
      * Das Kriterium zweiRichtigeNW wird überprüft und entsprechend aktualisiert
+     * @author Tomás Wagner
      */
     private void mzweiRichtigeNW() { zweiRichtigeNW = getKursListeElement(20).getAnzahlSemester() >= 2 || getKursListeElement(21).getAnzahlSemester() >= 2; }
 
     /**
      * Das Kriterium sechsMal2AF wird überprüft und entsprechend aktualisiert
+     * @author Tomás Wagner
      */
     private void msechsMal2AF()
     {
@@ -325,6 +353,7 @@ public class Wahlpruefung {
 
     /**
      * Das Kriterium gEistPFCheck wird überprüft und entsprechend aktualisiert
+     * @author Tomás Wagner
      */
     private void mgEistPFCheck()
     {
@@ -352,6 +381,7 @@ public class Wahlpruefung {
 
     /**
      * Das Kriterium sPals4o5PK wird überprüft und entsprechend aktualisiert
+     * @author Tomás Wagner
      */
     private void msPals4o5PK()
     {
@@ -365,6 +395,7 @@ public class Wahlpruefung {
 
     /**
      * Das Kriterium zweiSemKuenstFaecher wird überprüft und entsprechend aktualisiert
+     * @author Tomás Wagner
      */
     private void mzweiSemKuenstFaecher()
     {
@@ -374,6 +405,7 @@ public class Wahlpruefung {
 
     /**
      * Das Kriterium zweiSemBelegung wird überprüft und entsprechend aktualisiert
+     * @author Tomás Wagner
      */
     private void mzweiSemBelegung()
     {
@@ -387,6 +419,7 @@ public class Wahlpruefung {
 
     /**
      * Das Kriterium vierzigKurseBelegt wird überprüft und entsprechend aktualisiert
+     * @author Tomás Wagner
      */
     private void mvierzigKurseBelegt()
     {
@@ -401,6 +434,7 @@ public class Wahlpruefung {
 
     /**
      * Das Kriterium aSchieneEinLK wird überprüft und entsprechend aktualisiert
+     * @author Tomás Wagner
      */
     private void maSchieneEinLK()
     {
@@ -431,6 +465,7 @@ public class Wahlpruefung {
 
     /**
      * Das Kriterium bSchieneEinLK wird überprüft und entsprechend aktualisiert
+     * @author Tomás Wagner
      */
     private void mbSchieneEinLK()
     {
@@ -461,6 +496,7 @@ public class Wahlpruefung {
 
     /**
      * Das Kriterium spracheAbBeginn wird überprüft und entsprechend aktualisiert
+     * @author Tomás Wagner
      */
     private void mspracheAbBeginn()
     {
@@ -503,6 +539,7 @@ public class Wahlpruefung {
 
     /**
      * Das Kriterium kuenstWerkMitKULK wird überprüft und entsprechend aktualisiert
+     * @author Tomás Wagner
      */
     private void mkuenstWerkMitKULK()
     {
@@ -521,6 +558,7 @@ public class Wahlpruefung {
 
     /**
      * Das Kriterium dSmin4Sem wird überprüft und entsprechend aktualisiert
+     * @author Tomás Wagner
      */
     private void mdSmin4Sem() { dSmin4Sem = getKursListeElement(6).getAnzahlSemester() == 4 || getKursListeElement(6).getAnzahlSemester() == 0; }
 
@@ -562,6 +600,7 @@ public class Wahlpruefung {
      * Errechnet die Summe aller jeweils in q1, q2, q3 und q4 belegten Kurse und gibt diese für die jweeiligen Semester
      * als Array zurück
      * @return Array mit {Summe für q1, Summe für q2 Summe, für q3, Summe für q4}
+     * @author Tomás Wagner TODO weitere Autor eintragen
      */
     public int[] semesterGesamtanzahlBerechnen()
     {
@@ -584,6 +623,7 @@ public class Wahlpruefung {
     /**
      * Errechnet die Summe aller belegter Kurse.
      * @return Gesamtanzahl belegter Kurse
+     * @author Tomás Wagner
      */
     public int gesamtAnzahlKurseBerechnen()
     {
@@ -594,6 +634,7 @@ public class Wahlpruefung {
     /**
      * Errechnet die Summe aller Pflichtsemester.
      * @return Gesamtanzahl Pflichtsemester
+     * @author Tomás Wagner
      */
     public int gesamtAnzahlPSberechnen()
     {
@@ -605,7 +646,5 @@ public class Wahlpruefung {
         }
         return gesPS;
     }
-
-
 }
 

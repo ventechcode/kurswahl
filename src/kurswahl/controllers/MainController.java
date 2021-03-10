@@ -17,6 +17,12 @@ import kurswahl.models.Kurs;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/**
+ * <Klassenkommentar> TODO Klassenkommentar schreiben
+ *
+ * @author Lukas Schenkel, Yannick Kandulski
+ */
+
 public class MainController implements Initializable {
 
     private Wahlpruefung wahlpruefung;
@@ -44,7 +50,8 @@ public class MainController implements Initializable {
 
     /**
      * Dropdown Menü wird dynamisch für jedes Klicken auf ein PF-Auswahlfeld erstellt und zurückgegeben
-     * @return
+     * @return Drop-Down-Menü-Liste
+     * @author TODO Autor eintragen
      */
     public ObservableList<String> getPFWahl() {
         ObservableList<String> wahlPFEdited = FXCollections.observableArrayList("Keine Auswahl",
@@ -69,6 +76,7 @@ public class MainController implements Initializable {
 
     /**
      * Initialisierung
+     * @author TODO Autor eintragen
      */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -86,6 +94,7 @@ public class MainController implements Initializable {
      * Es werden weitere Buttons ausgewaehlt die mit der Wahl des urspruenglichen Buttons nun Pflicht sind oder nicht
      * mehr Pflicht sind
      * @param event
+     * @author TODO Autor eintragen
      */
     @FXML
     private void onPressed(ActionEvent event) {
@@ -155,6 +164,7 @@ public class MainController implements Initializable {
 
     /**
      * Methode zur Regelung des Ablaufs und automatischer Eingaben bei Wahl eines Kurses als PF.
+     * @author TODO Autor eintragen
      */
     @FXML
     private void onSelected(ActionEvent event) {
@@ -250,6 +260,7 @@ public class MainController implements Initializable {
 
     /**
      * Methode zum Anzeigen des Drop-Down-Menüs, in dem die PF ausgewählt werden können.
+     * @author TODO Autor eintragen
      */
     @FXML
     private void onClicked(MouseEvent event) {
@@ -259,6 +270,7 @@ public class MainController implements Initializable {
 
     /**
      * Ausführung der Wahlprüfung
+     * @author TODO Autor eintragen
      */
     private void ueberpruefen() {
         boolean result = wahlpruefung.wahlpruefung();
@@ -270,6 +282,7 @@ public class MainController implements Initializable {
 
     /**
      * @return Node, bei der angegebenen Reihe und Spalte
+     * @author TODO Autor eintragen
      */
     public Node getNodeByCoordinate(Integer row, Integer column) {
         if(row != null && column != null) {
@@ -288,6 +301,7 @@ public class MainController implements Initializable {
      * Wandelt den String der Art des Pruefungsfaches in den passenden Integerwert um.
      * @param pruefungsfach - umzuwandelnder String
      * @return - umgewandelter Integer (1-5)
+     * @author TODO Autor eintragen
      */
     public int stringPFinInt(String pruefungsfach) {
         int ret = 1;
