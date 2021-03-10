@@ -20,7 +20,7 @@ import java.util.ResourceBundle;
 /**
  * <Klassenkommentar> TODO Klassenkommentar schreiben
  *
- * @author Lukas Schenkel, Yannick Kandulski
+ * @main-author Lukas Schenkel, Yannick Kandulski
  */
 
 public class MainController implements Initializable {

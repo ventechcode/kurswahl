@@ -9,7 +9,7 @@ import kurswahl.models.Kurs;
  * Um letztere Aufgabe wahrnehmen zu können, speichert sie ebenfalls die Kriterien,
  * ob sie erfüllt sind oder nicht und stellt Methoden zur Überprüdung dieser bereit.
  *
- * @author Romy Karbstein, Glenn Grubert, Tomás Wagner
+ * @main-author Romy Karbstein, Glenn Grubert, Tomás Wagner
  */
 
 public class Wahlpruefung {

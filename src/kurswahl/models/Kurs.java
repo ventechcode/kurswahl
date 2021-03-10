@@ -1,9 +1,12 @@
 package kurswahl.models;
 
 /**
- * <Klassenkommentar> TODO Klassenkommentar schreiben
+ * Die Klasse Kurs stellt einen "Bauplan" für Objekte dar, die jeweils einen belegbaren Kurs, wie Deutsch oder Musik, repräsentieren.
+ * Das Objekt ist dabei dafür zuständig, Eigenschaften des Kurses (wie dessen Aufgabenfeld),
+ * sowie die eingegebenen Werte in Bezug auf diesen Kurs zu speichern (wie bspw. in welchen Semestern dieser Kurs belegt wurde).
+ * Die Objekte der Klasse Kurs fungieren als Speicher der vom Benutzer eingegebenen Daten.
  *
- * @author Romy Karbstein, Glenn Grubert
+ * @main-author Romy Karbstein, Glenn Grubert
  */
 
 public class Kurs

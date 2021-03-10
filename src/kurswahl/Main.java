@@ -9,7 +9,7 @@ import javafx.stage.Stage;
 /**
  * <Klassenkommentar> TODO Klassenkommentar schreiben
  *
- * @author TODO Autor eintragen
+ * @main-author TODO Autor eintragen
  */
 
 public class Main extends Application
