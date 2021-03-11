@@ -55,7 +55,7 @@ public class Kurs
      * @param pruefungsfach - Art des Prüfungsfaches
      * @param anzahlPflichtsemester - Anzahl der pflichtmäßig zu belegenden Semester
      * @param hauptfach - ist das Fach ein Hauptfach?
-     * @author TODO Autor eintragen
+     * @author Glenn Grubert, Romy Karbstein
      */
     public Kurs(String name, int aufgabenfeld, int speziell, boolean q1, boolean q2, boolean q3, boolean q4, int anzahlSemester, int pruefungsfach, int anzahlPflichtsemester, boolean hauptfach)
     {

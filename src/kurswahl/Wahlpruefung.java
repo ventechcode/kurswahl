@@ -49,7 +49,7 @@ public class Wahlpruefung {
 
     /**
      * Konstruktor der Klasse Wahlpruefung
-     * @author TODO Autor eintragen
+     * @author Glenn Grubert
      */
     public Wahlpruefung()
     {
@@ -185,7 +185,7 @@ public class Wahlpruefung {
 
     /**
      * Das Kriterium einLKHFoNW wird überprüft und entsprechend aktualisiert
-     * @author TODO Autor eintragen
+     * @author Glenn Grubert, Romy Karbstein
      */
     private void meinLKHFoNW()
     {
@@ -202,7 +202,7 @@ public class Wahlpruefung {
 
     /**
      * Das Kriterium zweiLKgewaehlt wird überprüft und entsprechend aktualisiert
-     * @author TODO Autor eintragen
+     * @author Glenn Grubert, Romy Karbstein
      */
     private void mzweiLKgewaehlt()
     {
@@ -216,7 +216,7 @@ public class Wahlpruefung {
 
     /**
      * Das Kriterium drittesPFgewaehlt wird überprüft und entsprechend aktualisiert
-     * @author TODO Autor eintragen
+     * @author Glenn Grubert, Romy Karbstein
      */
     private void mdrittesPFgewaehlt()
     {
@@ -229,7 +229,7 @@ public class Wahlpruefung {
 
     /**
      * Das Kriterium viertesPFgewaehlt wird überprüft und entsprechend aktualisiert
-     * @author TODO Autor eintragen
+     * @author Glenn Grubert, Romy Karbstein
      */
     private void mviertesPFgewaehlt()
     {
@@ -243,7 +243,7 @@ public class Wahlpruefung {
 
     /**
      * Das Kriterium fuenftesPFgewaehlt wird überprüft und entsprechend aktualisiert
-     * @author TODO Autor eintragen
+     * @author Glenn Grubert, Romy Karbstein
      */
     private void mfuenftesPFgewaehlt()
     {
@@ -257,7 +257,7 @@ public class Wahlpruefung {
 
     /**
      * Das Kriterium zweiPFHP wird überprüft und entsprechend aktualisiert
-     * @author TODO Autor eintragen
+     * @author Glenn Grubert, Romy Karbstein
      */
     private void mzweiPFHP()
     {
@@ -279,7 +279,7 @@ public class Wahlpruefung {
 
     /**
      * Das Kriterium aFvertreterInPF wird überprüft und entsprechend aktualisiert
-     * @author TODO Autor eintragen
+     * @author Glenn Grubert, Romy Karbstein
      */
     private void maFvertreterInPF()
     {
@@ -297,7 +297,7 @@ public class Wahlpruefung {
 
     /**
      * Das Kriterium einPFCheck wird überprüft und entsprechend aktualisiert
-     * @author TODO Autor eintragen
+     * @author Glenn Grubert, Romy Karbstein
      */
     private void meinPFCheck()
     {
@@ -600,7 +600,7 @@ public class Wahlpruefung {
      * Errechnet die Summe aller jeweils in q1, q2, q3 und q4 belegten Kurse und gibt diese für die jweeiligen Semester
      * als Array zurück
      * @return Array mit {Summe für q1, Summe für q2 Summe, für q3, Summe für q4}
-     * @author Tomás Wagner TODO weitere Autor eintragen
+     * @author Tomás Wagner, Glenn Grubert, Romy Karbstein TODO weitere Autor eintragen
      */
     public int[] semesterGesamtanzahlBerechnen()
     {

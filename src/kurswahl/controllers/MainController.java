@@ -270,7 +270,7 @@ public class MainController implements Initializable {
 
     /**
      * Ausführung der Wahlprüfung
-     * @author TODO Autor eintragen
+     * @author Romy Karbstein, TODO Autor eintragen
      */
     private void ueberpruefen() {
         boolean result = wahlpruefung.wahlpruefung();
@@ -301,7 +301,7 @@ public class MainController implements Initializable {
      * Wandelt den String der Art des Pruefungsfaches in den passenden Integerwert um.
      * @param pruefungsfach - umzuwandelnder String
      * @return - umgewandelter Integer (1-5)
-     * @author TODO Autor eintragen
+     * @author Romy Karbstein, Glenn Grubert, TODO Autor eintragen
      */
     public int stringPFinInt(String pruefungsfach) {
         int ret = 1;
