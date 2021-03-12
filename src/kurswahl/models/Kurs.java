@@ -209,7 +209,7 @@ public class Kurs
     @Override
     /**
      * Konvertierung und Rückgabe der Attribute eines Kurs-Objektes als String.
-     * @author TODO Autor eintragen
+     * @author   Lukas Schenkel
      */
     public String toString() {
         return getName() + ": " + getPruefungsfach() + ", " + getAnzahlPflichtsemester() + ", " + getQ1() + ", " + getQ2() + ", " + getQ3() + ", " + getQ4() + ", " + getAnzahlSemester();

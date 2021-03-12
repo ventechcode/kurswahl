@@ -600,7 +600,7 @@ public class Wahlpruefung {
      * Errechnet die Summe aller jeweils in q1, q2, q3 und q4 belegten Kurse und gibt diese für die jweeiligen Semester
      * als Array zurück
      * @return Array mit {Summe für q1, Summe für q2 Summe, für q3, Summe für q4}
-     * @author Tomás Wagner, Glenn Grubert, Romy Karbstein TODO weitere Autor eintragen
+     * @author Tomás Wagner, Glenn Grubert, Romy Karbstein
      */
     public int[] semesterGesamtanzahlBerechnen()
     {
