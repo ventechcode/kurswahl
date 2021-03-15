@@ -606,6 +606,26 @@ public class Wahlpruefung {
         return gesPS;
     }
 
+    public Kurs sucheKurs(String kursName)
+    {
+        for (int i = 0; i < 25; i++)
+        {
+            if ((getKursListeElement(i)).getName().equals(kursName)))
+            {
+                return getKursListeElement(i);
+            }
+        }
+        return null;
+    }
+
+
+    public void pfWahl(String LK1, String LK2)
+    {o
+        String lkI = sucheKurs(LK1);
+        String lkII = sucheKurs(LK2);
+
+        lkI.get()
+    }
 
 }
 
