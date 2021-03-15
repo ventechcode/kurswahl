@@ -206,11 +206,12 @@ public class Kurs
         if(getQ4()){ anzahlSemester ++;}
     }
 
-    @Override
+    
     /**
-     * Konvertierung und Rückgabe der Attribute eines Kurs-Objektes als String.
-     * @author   Lukas Schenkel
+     * Repräsentation eines Kurs-Objektes als String.
+     * @author Lukas Schenkel
      */
+    @Override
     public String toString() {
         return getName() + ": " + getPruefungsfach() + ", " + getAnzahlPflichtsemester() + ", " + getQ1() + ", " + getQ2() + ", " + getQ3() + ", " + getQ4() + ", " + getAnzahlSemester();
     }
