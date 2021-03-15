@@ -110,6 +110,8 @@ public class MainController implements Initializable {
         {
             kurs.setQ2(val);
             kurs.setQ3(val);
+            RadioButton q3 = (RadioButton) getNodeByCoordinate(rowIndex, colIndex + 1);
+            q3.setSelected(true);
         }
         else if (kurs.getName().equals("Darstellendes Spiel")) // 2. Sonderfall: Wenn ein Semester DS ausgewählt wird,
             // werden auch alle anderen Semester ausgewählt
@@ -118,6 +120,10 @@ public class MainController implements Initializable {
             kurs.setQ2(val);
             kurs.setQ3(val);
             kurs.setQ4(val);
+            ((RadioButton) getNodeByCoordinate(rowIndex, 3)).setSelected(true);
+            ((RadioButton) getNodeByCoordinate(rowIndex, 4)).setSelected(true);
+            ((RadioButton) getNodeByCoordinate(rowIndex, 5)).setSelected(true);
+            ((RadioButton) getNodeByCoordinate(rowIndex, 6)).setSelected(true);
         }
         else
         {
@@ -126,17 +132,23 @@ public class MainController implements Initializable {
             if (colIndex == 3) {
                 kurs.setQ1(val);
                 kurs.setQ2(val);
+                RadioButton q2 = (RadioButton) getNodeByCoordinate(rowIndex, colIndex + 1);
+                q2.setSelected(true);
             } else if (colIndex == 4) {
                 kurs.setQ2(val);
                 kurs.setQ1(val);
+                RadioButton q1 = (RadioButton) getNodeByCoordinate(rowIndex, colIndex - 1);
+                q1.setSelected(true);
             } else if (colIndex == 5) {
                 kurs.setQ3(val);
                 kurs.setQ4(val);
+                RadioButton q4 = (RadioButton) getNodeByCoordinate(rowIndex, colIndex + 1);
+                q4.setSelected(true);
             } else if (colIndex == 6) {
                 kurs.setQ4(val);
                 kurs.setQ3(val);
-            } else {
-                System.err.println("Error Button");
+                RadioButton q3 = (RadioButton) getNodeByCoordinate(rowIndex, colIndex - 1);
+                q3.setSelected(true);
             }
         }
 
