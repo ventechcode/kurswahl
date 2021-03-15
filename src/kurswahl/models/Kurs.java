@@ -199,4 +199,16 @@ public class Kurs
     public String toString() {
         return getName() + ": " + getPruefungsfach() + ", " + getAnzahlPflichtsemester() + ", " + getQ1() + ", " + getQ2() + ", " + getQ3() + ", " + getQ4() + ", " + getAnzahlSemester();
     }
+
+    public void setQs(Boolean q1, Boolean q2, Boolean q3, Boolean q4)
+    {
+        int z = 0
+        this.q1 = q1;
+        if (q1)z++;
+        this.q2 = q2;
+        if(q2) z++;
+        this.q3 = q3;
+        if(q3) z++;
+        this.q4 = q4;
+    }
 }

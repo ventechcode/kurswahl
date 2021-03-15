@@ -610,7 +610,7 @@ public class Wahlpruefung {
     {
         for (int i = 0; i < 25; i++)
         {
-            if ((getKursListeElement(i)).getName().equals(kursName)))
+            if ((getKursListeElement(i)).getName().equals(kursName))
             {
                 return getKursListeElement(i);
             }
@@ -620,11 +620,12 @@ public class Wahlpruefung {
 
 
     public void pfWahl(String LK1, String LK2)
-    {o
-        String lkI = sucheKurs(LK1);
-        String lkII = sucheKurs(LK2);
+    {
+        Kurs lkI = sucheKurs(LK1);
+        Kurs lkII = sucheKurs(LK2);
 
-        lkI.get()
+        lkI.setAnzahlSemester(4);
+        lkII.setAnzahlSemester(4);
     }
 
 }
