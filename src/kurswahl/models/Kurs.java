@@ -42,24 +42,19 @@ public class Kurs
      * @param q2 - Im 2. Semester belegt?
      * @param q3 - Im 3. Semester belegt?
      * @param q4 - Im 4. Semester belegt?
-     * @param anzahlSemester - Anzahl insgesamt belegter Semester
      * @param pruefungsfach - Art des Prüfungsfaches
      * @param anzahlPflichtsemester - Anzahl der pflichtmäßig zu belegenden Semester
-     * @param hauptfach - ist das Fach ein Hauptfach?
      */
-    public Kurs(String name, int aufgabenfeld, int speziell, boolean q1, boolean q2, boolean q3, boolean q4, int anzahlSemester, int pruefungsfach, int anzahlPflichtsemester, boolean hauptfach)
+    public Kurs(String name, int aufgabenfeld, int speziell, boolean q1, boolean q2, boolean q3, boolean q4, int pruefungsfach, int anzahlPflichtsemester)
     {
         this.name = name;
         this.aufgabenfeld = aufgabenfeld;
         this.speziell = speziell;
-        this.q1 = q1;
-        this.q2 = q2;
-        this.q3 = q3;
-        this.q4 = q4;
-        this.anzahlSemester = anzahlSemester;
+        setQs(q1, q2, q3, q4);
         this.pruefungsfach = pruefungsfach;
         this.anzahlPflichtsemester = anzahlPflichtsemester;
-        this.hauptfach = hauptfach;
+        if(name=="Deutsch" || name=="Mathematik" || name=="Englisch" || name=="Französisch") { this.hauptfach = true; }
+        else { this.hauptfach = false; }
     }
 
 //    /**
@@ -145,15 +140,8 @@ public class Kurs
 
     public int getAnzahlSemester()
     {
-        semesterAnzahlBerechnen();
         return anzahlSemester;
     }
-
-    public void setAnzahlSemester(int anzahlSemester)
-    {
-        this.anzahlSemester = anzahlSemester;
-    }
-
     public int getPruefungsfach()
     {
         return pruefungsfach;
@@ -176,23 +164,20 @@ public class Kurs
         return hauptfach;
     }
 
-    public void setHauptfach(boolean hauptfach)
-    {
-        this.hauptfach = hauptfach;
-    }
-
     /**
      * Berechnung der Anzahl an belegten Semestern im Kurs.
      */
-    public void semesterAnzahlBerechnen()
+    public int semesterAnzahlBerechnen()
     {
-        anzahlSemester = 0; //Startwert in der Berechnung = 0
+        int aS = 0; //Startwert in der Berechnung = 0
 
         //Addition +1 für jedes belegte Semester
-        if(getQ1()){ anzahlSemester ++;}
-        if(getQ2()){ anzahlSemester ++;}
-        if(getQ3()){ anzahlSemester ++;}
-        if(getQ4()){ anzahlSemester ++;}
+        if(getQ1()){ aS ++;}
+        if(getQ2()){ aS ++;}
+        if(getQ3()){ aS ++;}
+        if(getQ4()){ aS ++;}
+
+        return aS;
     }
 
     @Override
@@ -202,13 +187,10 @@ public class Kurs
 
     public void setQs(Boolean q1, Boolean q2, Boolean q3, Boolean q4)
     {
-        int z = 0
         this.q1 = q1;
-        if (q1)z++;
         this.q2 = q2;
-        if(q2) z++;
         this.q3 = q3;
-        if(q3) z++;
         this.q4 = q4;
+        anzahlSemester = semesterAnzahlBerechnen();
     }
 }

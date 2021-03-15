@@ -1,9 +1,21 @@
 package kurswahl;
 
 import kurswahl.models.Kurs;
+import kurswahl.models.Schiene;
+
+/**
+ * Die Klasse Wahlpruefung repräsentiert die Funktionalität hinter der Kurswahl-Anwendung.
+ * Sie ist zum einen für die Datenspeicherung, durch die Erstellung und Initialisierung der Kurs-Objekte,
+ * sowie die Prüfung der Eingaben zuständig.
+ * Um letztere Aufgabe wahrnehmen zu können, speichert sie ebenfalls die Kriterien,
+ * ob sie erfüllt sind oder nicht und stellt Methoden zur Überprüdung dieser bereit.
+ *
+ * @main-author Romy Karbstein, Glenn Grubert, Tomás Wagner
+ */
 
 public class Wahlpruefung {
 
+    // Attribute für die Kriterien:
     private boolean einLKHFoNW; //ein LK ist ein Hauptfach oder eine Naturwissenschaft;
     private boolean zweiLKgewaehlt; //es wurden zwei LKs gewaehlt
     private boolean drittesPFgewaehlt; //ein Kurs wurde als 3. PF ausgewaehlt
@@ -35,47 +47,51 @@ public class Wahlpruefung {
     private boolean dSmin4Sem; //ist DS 0 oder 4 Semester lang gewaehlt worden
 
     private Kurs[] kursListe;
+    private Schiene[] schienen; // gehört eigentlich in die Klasse Wahlpruefung
 
     /**
      * Konstruktor der Klasse Wahlpruefung
+     * @author Glenn Grubert
      */
     public Wahlpruefung()
     {
         kursListe = new Kurs[26];
+        schienen = new Schiene[666];// 666 ist ein Platzhalter für die max. Anzahl an Schienen
         kurseInstanziieren();
     }
 
     /**
      * Instanziiert die Kurse und fügt sie in die Liste der Kurse in korrekter Reihenfolge ein.
+     * @author Glenn Grubert, Romy Karbstein
      */
     private void kurseInstanziieren()
     {
-        kursListe[0] = new Kurs("Deutsch", 1, 0, true, true, true, true, 4, 0, 4, true);
-        kursListe[1] = new Kurs("Englisch", 1, 2, false, false, false, false, 0, 0, 0, true);
-        kursListe[2] = new Kurs("Französisch", 1, 2, false, false, false, false, 0, 0, 0, true);
-        kursListe[3] = new Kurs("Latein", 1, 2, false, false, false, false, 0, 0, 0, false);
-        kursListe[4] = new Kurs("Musik", 1, 3, false, false, false, false, 0, 0, 0, false);
-        kursListe[5] = new Kurs("Bildende Kunst", 1, 3, false, false, false, false, 0, 0, 0, false);
-        kursListe[6] = new Kurs("Darstellendes Spiel", 1, 3, false, false, false, false, 0, 0, 0, false);
-        kursListe[7] = new Kurs("Seminarkurs Debating", 1, 4, false, false, false, false, 0, 0, 0, false);
-        kursListe[8] = new Kurs("ZK Cambridge-Prüfungen", 1, 4, false, false, false, false, 0, 0, 0, false);
-        kursListe[9] = new Kurs("ZK Künstlerische Werkstätte", 1, 4, false, false, false, false, 0, 0, 0, false);
-        kursListe[10] = new Kurs("Ensemblekurs Bläser", 1, 4, false, false, false, false, 0, 0, 0, false);
-        kursListe[11] = new Kurs("Ensemblekurs Chor", 1, 4, false, false, false, false, 0, 0, 0, false);
-        kursListe[12] = new Kurs("Ensemblekurs Orchester", 1, 4, false, false, false, false, 0, 0, 0, false);
-        kursListe[13] = new Kurs("Politikwissenschaften", 2, 0, false, false, false, false, 0, 0, 0, false);
-        kursListe[14] = new Kurs("Geschichte", 2, 0, false, false, true, true, 2, 0, 2, false);
-        kursListe[15] = new Kurs("Geographie", 2, 0, false, false, false, false, 0, 0, 0, false);
-        kursListe[16] = new Kurs("Philosophie", 2, 0, false, false, false, false, 0, 0, 0, false);
-        kursListe[17] = new Kurs("ZK Political Science", 2, 4, false, false, false, false, 0, 0, 0, false);
-        kursListe[18] = new Kurs("ZK Studium und Beruf", 2, 4, false, false, false, false, 0, 0, 0, false);
-        kursListe[19] = new Kurs("Mathematik", 3, 0, true, true, true, true, 4, 0, 4, true);
-        kursListe[20] = new Kurs("Physik", 3, 1, false, false, false, false, 0, 0, 0, false);
-        kursListe[21] = new Kurs("Chemie", 3, 1, false, false, false, false, 0, 0, 0, false);
-        kursListe[22] = new Kurs("Biologie", 3, 1, false, false, false, false, 0, 0, 0, false);
-        kursListe[23] = new Kurs("Informatik", 3, 0, false, false, false, false, 0, 0, 0, false);
-        kursListe[24] = new Kurs("Sport Praxiskurs", 0, 0, true, true, true, true, 4, 0, 4, false);
-        kursListe[25] = new Kurs("Sporttheorie", 0, 0, false, false, false, false, 0, 0, 0, false);
+        kursListe[0] = new Kurs("Deutsch", 1, 0, true, true, true, true, 4, 0);
+        kursListe[1] = new Kurs("Englisch", 1, 2, false, false, false, false, 0, 0);
+        kursListe[2] = new Kurs("Französisch", 1, 2, false, false, false, false, 0, 0);
+        kursListe[3] = new Kurs("Latein", 1, 2, false, false, false, false, 0, 0);
+        kursListe[4] = new Kurs("Musik", 1, 3, false, false, false, false, 0, 0);
+        kursListe[5] = new Kurs("Bildende Kunst", 1, 3, false, false, false, false, 0, 0);
+        kursListe[6] = new Kurs("Darstellendes Spiel", 1, 3, false, false, false, false, 0, 0);
+        kursListe[7] = new Kurs("Seminarkurs Debating", 1, 4, false, false, false, false, 0, 0);
+        kursListe[8] = new Kurs("ZK Cambridge-Prüfungen", 1, 4, false, false, false, false, 0, 0);
+        kursListe[9] = new Kurs("ZK Künstlerische Werkstätte", 1, 4, false, false, false, false, 0, 0);
+        kursListe[10] = new Kurs("Ensemblekurs Bläser", 1, 4, false, false, false, false, 0, 0);
+        kursListe[11] = new Kurs("Ensemblekurs Chor", 1, 4, false, false, false, false, 0, 0);
+        kursListe[12] = new Kurs("Ensemblekurs Orchester", 1, 4, false, false, false, false, 0, 0);
+        kursListe[13] = new Kurs("Politikwissenschaften", 2, 0, false, false, false, false, 0, 0);
+        kursListe[14] = new Kurs("Geschichte", 2, 0, false, false, true, true, 2, 0);
+        kursListe[15] = new Kurs("Geographie", 2, 0, false, false, false, false, 0, 0);
+        kursListe[16] = new Kurs("Philosophie", 2, 0, false, false, false, false, 0, 0);
+        kursListe[17] = new Kurs("ZK Political Science", 2, 4, false, false, false, false, 0, 0);
+        kursListe[18] = new Kurs("ZK Studium und Beruf", 2, 4, false, false, false, false, 0, 0);
+        kursListe[19] = new Kurs("Mathematik", 3, 0, true, true, true, true, 4, 0);
+        kursListe[20] = new Kurs("Physik", 3, 1, false, false, false, false, 0, 0);
+        kursListe[21] = new Kurs("Chemie", 3, 1, false, false, false, false, 0, 0);
+        kursListe[22] = new Kurs("Biologie", 3, 1, false, false, false, false, 0, 0);
+        kursListe[23] = new Kurs("Informatik", 3, 0, false, false, false, false, 0, 0);
+        kursListe[24] = new Kurs("Sport Praxiskurs", 0, 0, true, true, true, true, 4, 0);
+        kursListe[25] = new Kurs("Sporttheorie", 0, 0, false, false, false, false, 0, 0);
 
     }
 
@@ -83,6 +99,7 @@ public class Wahlpruefung {
     /**
      * Es werden alle Kriterien (Attribute) überprüft, ob sie als erfüllt gespeichert sind (=true).
      * @return sind alle Kriterien als erfüllt gespeichert
+     * @author Tomás Wagner
      */
     public boolean wahlpruefung()
     {
@@ -138,6 +155,7 @@ public class Wahlpruefung {
 
     /**
      * Ausführen aller Methoden zur Überprüfung der Kriterien und damit einhergehende Aktualisierung der Attributwerte.
+     * @author Tomás Wagner
      */
     public void attributeAktualisieren()
     {
@@ -170,6 +188,7 @@ public class Wahlpruefung {
 
     /**
      * Das Kriterium einLKHFoNW wird überprüft und entsprechend aktualisiert
+     * @author Glenn Grubert, Romy Karbstein
      */
     private void meinLKHFoNW()
     {
@@ -186,6 +205,7 @@ public class Wahlpruefung {
 
     /**
      * Das Kriterium zweiLKgewaehlt wird überprüft und entsprechend aktualisiert
+     * @author Glenn Grubert, Romy Karbstein
      */
     private void mzweiLKgewaehlt()
     {
@@ -199,6 +219,7 @@ public class Wahlpruefung {
 
     /**
      * Das Kriterium drittesPFgewaehlt wird überprüft und entsprechend aktualisiert
+     * @author Glenn Grubert, Romy Karbstein
      */
     private void mdrittesPFgewaehlt()
     {
@@ -211,6 +232,7 @@ public class Wahlpruefung {
 
     /**
      * Das Kriterium viertesPFgewaehlt wird überprüft und entsprechend aktualisiert
+     * @author Glenn Grubert, Romy Karbstein
      */
     private void mviertesPFgewaehlt()
     {
@@ -224,6 +246,7 @@ public class Wahlpruefung {
 
     /**
      * Das Kriterium fuenftesPFgewaehlt wird überprüft und entsprechend aktualisiert
+     * @author Glenn Grubert, Romy Karbstein
      */
     private void mfuenftesPFgewaehlt()
     {
@@ -237,6 +260,7 @@ public class Wahlpruefung {
 
     /**
      * Das Kriterium zweiPFHP wird überprüft und entsprechend aktualisiert
+     * @author Glenn Grubert, Romy Karbstein
      */
     private void mzweiPFHP()
     {
@@ -258,6 +282,7 @@ public class Wahlpruefung {
 
     /**
      * Das Kriterium aFvertreterInPF wird überprüft und entsprechend aktualisiert
+     * @author Glenn Grubert, Romy Karbstein
      */
     private void maFvertreterInPF()
     {
@@ -275,6 +300,7 @@ public class Wahlpruefung {
 
     /**
      * Das Kriterium einPFCheck wird überprüft und entsprechend aktualisiert
+     * @author Glenn Grubert, Romy Karbstein
      */
     private void meinPFCheck()
     {
@@ -288,26 +314,31 @@ public class Wahlpruefung {
 
     /**
      * Das Kriterium vierMalFS wird überprüft und entsprechend aktualisiert
+     * @author Tomás Wagner
      */
     private void mvierMalFS() { vierMalFS = getKursListeElement(1).getAnzahlSemester() == 4 || getKursListeElement(2).getAnzahlSemester() == 4 || getKursListeElement(3).getAnzahlSemester() == 4; }
 
     /**
      * Das Kriterium vierMalNW wird überprüft und entsprechend aktualisiert
+     * @author Tomás Wagner
      */
     private void mvierMalNW() { vierMalNW = getKursListeElement(20).getAnzahlSemester() == 4 || getKursListeElement(21).getAnzahlSemester() == 4 || getKursListeElement(22).getAnzahlSemester() == 4; }
 
     /**
      * Das Kriterium vierMal2AF wird überprüft und entsprechend aktualisiert
+     * @author Tomás Wagner
      */
     private void mvierMal2AF() { vierMal2AF = getKursListeElement(13).getAnzahlSemester() == 4 || getKursListeElement(14).getAnzahlSemester() == 4 || getKursListeElement(15).getAnzahlSemester() == 4 || getKursListeElement(16).getAnzahlSemester() == 4; }
 
     /**
      * Das Kriterium zweiRichtigeNW wird überprüft und entsprechend aktualisiert
+     * @author Tomás Wagner
      */
     private void mzweiRichtigeNW() { zweiRichtigeNW = getKursListeElement(20).getAnzahlSemester() >= 2 || getKursListeElement(21).getAnzahlSemester() >= 2; }
 
     /**
      * Das Kriterium sechsMal2AF wird überprüft und entsprechend aktualisiert
+     * @author Tomás Wagner
      */
     private void msechsMal2AF()
     {
@@ -325,6 +356,7 @@ public class Wahlpruefung {
 
     /**
      * Das Kriterium gEistPFCheck wird überprüft und entsprechend aktualisiert
+     * @author Tomás Wagner
      */
     private void mgEistPFCheck()
     {
@@ -352,6 +384,7 @@ public class Wahlpruefung {
 
     /**
      * Das Kriterium sPals4o5PK wird überprüft und entsprechend aktualisiert
+     * @author Tomás Wagner
      */
     private void msPals4o5PK()
     {
@@ -365,6 +398,7 @@ public class Wahlpruefung {
 
     /**
      * Das Kriterium zweiSemKuenstFaecher wird überprüft und entsprechend aktualisiert
+     * @author Tomás Wagner
      */
     private void mzweiSemKuenstFaecher()
     {
@@ -374,6 +408,7 @@ public class Wahlpruefung {
 
     /**
      * Das Kriterium zweiSemBelegung wird überprüft und entsprechend aktualisiert
+     * @author Tomás Wagner
      */
     private void mzweiSemBelegung()
     {
@@ -387,6 +422,7 @@ public class Wahlpruefung {
 
     /**
      * Das Kriterium vierzigKurseBelegt wird überprüft und entsprechend aktualisiert
+     * @author Tomás Wagner
      */
     private void mvierzigKurseBelegt()
     {
@@ -396,11 +432,28 @@ public class Wahlpruefung {
         {
             zaehler = zaehler + getKursListeElement(i).getAnzahlSemester();
         }
-        vierzigKurseBelegt = zaehler == 40; //Überprüfung, ob die Summe = 40 ist
+        vierzigKurseBelegt = false;
+
+        if (zaehler == 40)
+        {
+            vierzigKurseBelegt = true;
+        }
+        else
+        {
+            if (zaehler == 42)
+            {
+                int anzahlVollBelegterEnsemblekurse = 0;
+                if (getKursListeElement(10).getAnzahlSemester() == 4){ anzahlVollBelegterEnsemblekurse ++; }
+                if (getKursListeElement(11).getAnzahlSemester() == 4){ anzahlVollBelegterEnsemblekurse ++; }
+                if (getKursListeElement(12).getAnzahlSemester() == 4){ anzahlVollBelegterEnsemblekurse ++; }
+                if (anzahlVollBelegterEnsemblekurse >= 2){ vierzigKurseBelegt = true; }
+            }
+        }
     }
 
     /**
      * Das Kriterium aSchieneEinLK wird überprüft und entsprechend aktualisiert
+     * @author Tomás Wagner
      */
     private void maSchieneEinLK()
     {
@@ -431,6 +484,7 @@ public class Wahlpruefung {
 
     /**
      * Das Kriterium bSchieneEinLK wird überprüft und entsprechend aktualisiert
+     * @author Tomás Wagner
      */
     private void mbSchieneEinLK()
     {
@@ -461,6 +515,7 @@ public class Wahlpruefung {
 
     /**
      * Das Kriterium spracheAbBeginn wird überprüft und entsprechend aktualisiert
+     * @author Tomás Wagner
      */
     private void mspracheAbBeginn()
     {
@@ -503,6 +558,7 @@ public class Wahlpruefung {
 
     /**
      * Das Kriterium kuenstWerkMitKULK wird überprüft und entsprechend aktualisiert
+     * @author Tomás Wagner
      */
     private void mkuenstWerkMitKULK()
     {
@@ -521,6 +577,7 @@ public class Wahlpruefung {
 
     /**
      * Das Kriterium dSmin4Sem wird überprüft und entsprechend aktualisiert
+     * @author Tomás Wagner
      */
     private void mdSmin4Sem() { dSmin4Sem = getKursListeElement(6).getAnzahlSemester() == 4 || getKursListeElement(6).getAnzahlSemester() == 0; }
 
@@ -562,6 +619,7 @@ public class Wahlpruefung {
      * Errechnet die Summe aller jeweils in q1, q2, q3 und q4 belegten Kurse und gibt diese für die jweeiligen Semester
      * als Array zurück
      * @return Array mit {Summe für q1, Summe für q2 Summe, für q3, Summe für q4}
+     * @author Tomás Wagner, Glenn Grubert, Romy Karbstein
      */
     public int[] semesterGesamtanzahlBerechnen()
     {
@@ -584,6 +642,7 @@ public class Wahlpruefung {
     /**
      * Errechnet die Summe aller belegter Kurse.
      * @return Gesamtanzahl belegter Kurse
+     * @author Tomás Wagner
      */
     public int gesamtAnzahlKurseBerechnen()
     {
@@ -594,6 +653,7 @@ public class Wahlpruefung {
     /**
      * Errechnet die Summe aller Pflichtsemester.
      * @return Gesamtanzahl Pflichtsemester
+     * @author Tomás Wagner
      */
     public int gesamtAnzahlPSberechnen()
     {
@@ -606,6 +666,12 @@ public class Wahlpruefung {
         return gesPS;
     }
 
+    /**
+     * Sucht nach einem Kurs-Objekt, basierend auf dessen Name.
+     * @param kursName: Name des zu suchenden Kurses
+     * @return Kursobjekt mit angegebenen Namen (Null falls die Angabe falsch ist)
+     * @author Lukas Schenkel, Glenn Grubert
+     */
     public Kurs sucheKurs(String kursName)
     {
         for (int i = 0; i < 25; i++)
@@ -618,15 +684,128 @@ public class Wahlpruefung {
         return null;
     }
 
-
-    public void pfWahl(String LK1, String LK2)
+    /**
+     * Trägt die Kurse mit den angegebenen Namen als LKs ein (inklusive Belegung und Pflichtsemestern).
+     * @param LK1 Name des erster LKs
+     * @param LK2 Name des zweiten LKs
+     * @author Glenn Grubert
+     */
+    public void lkWahl(String LK1, String LK2)
     {
         Kurs lkI = sucheKurs(LK1);
         Kurs lkII = sucheKurs(LK2);
 
-        lkI.setAnzahlSemester(4);
-        lkII.setAnzahlSemester(4);
+        lkI.setQs(true, true, true, true);
+        lkI.setAnzahlPflichtsemester(4);
+        lkI.setPruefungsfach(1);
+        lkII.setQs(true, true, true, true);
+        lkII.setAnzahlPflichtsemester(4);
+        lkII.setPruefungsfach(1);
     }
+
+    /**
+     * Erzeugung aller möglichen Schienen gemäß der Tabelle der Schule.
+     * @author Tomás Wagner, Romy Karbstein, Glenn Grubert
+     */
+    public void schienenErzeugen()
+    {
+        // 1. Schiene (6 Kombinationsmöglichkeiten pro Fremdsprache):
+        schienen[0] = new Schiene(1,"EN","DE","2. AF","MA","bel.",0,2,0,2,0,4,2);
+        schienen[1] = new Schiene(2,"EN","DE","2. AF","bel.","MA",0,2,0,2,0,4,2);
+
+        schienen[2] = new Schiene(3,"EN","DE","bel.","2. AF","MA",0,2,0,2,0,4,2);
+        schienen[3] = new Schiene(4,"EN","DE","bel.","MA","2. AF",0,2,0,2,0,4,2);
+
+        schienen[4] = new Schiene(5,"EN","DE","MA","bel.","2. AF",0,2,0,2,0,4,2);
+        schienen[5] = new Schiene(6,"EN","DE","MA","2. AF","bel.",0,2,0,2,0,4,2);
+
+        schienen[6] = new Schiene(7,"FR","DE","2. AF","MA","bel.",0,2,0,2,0,4,2);
+        schienen[7] = new Schiene(8,"FR","DE","2. AF","bel.","MA",0,2,0,2,0,4,2);
+
+        schienen[8] = new Schiene(9,"FR","DE","bel.","2. AF","MA",0,2,0,2,0,4,2);
+        schienen[9] = new Schiene(10,"FR","DE","bel.","MA","2. AF",0,2,0,2,0,4,2);
+
+        schienen[10] = new Schiene(11,"FR","DE","MA","bel.","2. AF",0,2,0,2,0,4,2);
+        schienen[11] = new Schiene(12,"FR","DE","MA","2. AF","bel.",0,2,0,2,0,4,2);
+
+        // 2. Schiene (6 Kombinationsmöglichkeiten pro Fremdsprache):
+        schienen[12] = new Schiene(13,"EN","DE","2. AF","NW","bel.",0,2,0,2,4,0,2);
+        schienen[13] = new Schiene(14,"EN","DE","2. AF","bel.","NW",0,2,0,2,4,0,2);
+        schienen[14] = new Schiene(15,"EN","DE","NW","2. AF","bel.",0,2,0,2,4,0,2);
+        schienen[15] = new Schiene(16,"EN","DE","NW","bel.","2. AF",0,2,0,2,4,0,2);
+        schienen[16] = new Schiene(17,"EN","DE","bel.","2. AF","NW",0,2,0,2,4,0,2);
+        schienen[17] = new Schiene(18,"EN","DE","bel.","NW","2. AF",0,2,0,2,4,0,2);
+
+        schienen[18] = new Schiene(19,"FR","DE","2. AF","NW","bel.",0,2,0,2,4,0,2);
+        schienen[19] = new Schiene(20,"FR","DE","2. AF","bel.","NW",0,2,0,2,4,0,2);
+        schienen[20] = new Schiene(21,"FR","DE","NW","2. AF","bel.",0,2,0,2,4,0,2);
+        schienen[21] = new Schiene(22,"FR","DE","NW","bel.","2. AF",0,2,0,2,4,0,2);
+        schienen[22] = new Schiene(23,"FR","DE","bel.","2. AF","NW",0,2,0,2,4,0,2);
+        schienen[23] = new Schiene(24,"FR","DE","bel.","NW","2. AF",0,2,0,2,4,0,2);
+
+        //3. Schiene (6 Kombinationsmöglichkeiten pro Fremdsprache):
+        schienen[24] = new Schiene(25,"EN","DE","2. AF","IN","bel.",0,2,0,2,4,4,2);
+        schienen[25] = new Schiene(26,"EN","DE","2. AF","bel.","IN",0,2,0,2,4,4,2);
+        schienen[26] = new Schiene(27,"EN","DE","IN","2. AF","bel.",0,2,0,2,4,4,2);
+        schienen[27] = new Schiene(28,"EN","DE","IN","bel.","2. AF",0,2,0,2,4,4,2);
+        schienen[28] = new Schiene(29,"EN","DE","bel.","2. AF","IN",0,2,0,2,4,4,2);
+        schienen[29] = new Schiene(30,"EN","DE","bel.","IN","2. AF",0,2,0,2,4,4,2);
+
+        schienen[30] = new Schiene(31,"FR","DE","2. AF","IN","bel.",0,2,0,2,4,4,2);
+        schienen[31] = new Schiene(32,"FR","DE","2. AF","bel.","IN",0,2,0,2,4,4,2);
+        schienen[32] = new Schiene(33,"FR","DE","IN","2. AF","bel.",0,2,0,2,4,4,2);
+        schienen[33] = new Schiene(34,"FR","DE","IN","bel.","2. AF",0,2,0,2,4,4,2);
+        schienen[34] = new Schiene(35,"FR","DE","bel.","2. AF","IN",0,2,0,2,4,4,2);
+        schienen[35] = new Schiene(36,"FR","DE","bel.","IN","2. AF",0,2,0,2,4,4,2);
+
+        //4. Schiene
+        schienen[36] = new Schiene(37,"EN","FR","DE","2. AF","NW",0,2,0,2,4,0,2);
+        schienen[37] = new Schiene(38,"EN","FR","DE","NW","2. AF",0,2,0,2,4,0,2);
+        schienen[38] = new Schiene(39,"EN","FR","2. AF","DE","NW",0,2,0,2,4,0,2);
+        schienen[39] = new Schiene(40,"EN","FR","NW","DE","2. AF",0,2,0,2,4,0,2);
+
+        //5. Schiene
+        schienen[40] = new Schiene(41,"EN","FR","DE","2. AF","IN",0,2,0,2,4,4,2);
+        schienen[41] = new Schiene(42,"EN","FR","DE","IN","2.AF",0,2,0,2,4,4,2);
+        schienen[42] = new Schiene(43,"EN","FR","2. AF","DE","IN.",0,2,0,2,4,4,2);
+        schienen[43] = new Schiene(44,"EN","FR","IN","DE","2. AF",0,2,0,2,4,4,2);
+
+        //6. Schiene
+        schienen[44] = new Schiene(45,"EN","FR","MA","2. AF","bel.",4,2,0,2,0,4,2);
+        schienen[45] = new Schiene(46,"EN","FR","MA","bel.","2. AF",4,2,0,2,0,4,2);
+        schienen[46] = new Schiene(47,"EN","FR","2. AF","MA","bel.",4,2,0,2,0,4,2);
+        schienen[47] = new Schiene(48,"EN","FR","bel.","MA","2. AF",4,2,0,2,0,4,2);
+        schienen[48] = new Schiene(49,"EN","FR","2. AF","bel.","MA",4,2,0,2,0,4,2);
+        schienen[49] = new Schiene(50,"EN","FR","bel.","2. AF","MA",4,2,0,2,0,4,2);
+    }
+
+    public Schiene getSchienenListeElement(int index){ return schienen[index]; }
+
+    /**
+     * Filterung aller Schienen anhand eingegebener LKs.
+     * @param ersterLK erster der beiden im vorhinein zu wählenden LKs
+     * @param zweiterLK zweiter der beiden im vorhinein zu wählenden LKs
+     * @return Array mit Schienen, die zu den beiden gewählten LKs passen
+     * @author Tomás Wagner
+     */
+    public Schiene[] schienenFiltern(String ersterLK, String zweiterLK)
+    {
+        Schiene[] passendeSchienen = schienen;
+        // die bei zwei LK  passen können
+        int zaehler = 0;
+        for (int i = 0; i < 500; i++) //500 ist ein Platzhalter für die Anzahl aller Schienen
+        {
+            if ((getSchienenListeElement(i).getErsterLK().equals(ersterLK) && getSchienenListeElement(i).getZweiterLK().equals(zweiterLK)) || (getSchienenListeElement(i).getErsterLK() == zweiterLK && getSchienenListeElement(i).getZweiterLK() == ersterLK))
+            {
+                passendeSchienen[zaehler] = getSchienenListeElement(i);
+                zaehler ++;
+            }
+        }
+        return passendeSchienen;
+    }
+
+
+
 
 }
 

@@ -17,6 +17,12 @@ import kurswahl.models.Kurs;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/**
+ * Der MainController ist im Kontext des Model-View-Controller Prinzips der zuständige Controller für die main.fxml view.
+ *
+ * @main-author Lukas Schenkel, Yannick Kandulski
+ */
+
 public class MainController implements Initializable {
 
     private Wahlpruefung wahlpruefung;
@@ -44,7 +50,8 @@ public class MainController implements Initializable {
 
     /**
      * Dropdown Menü wird dynamisch für jedes Klicken auf ein PF-Auswahlfeld erstellt und zurückgegeben
-     * @return
+     * @return Drop-Down-Menü-Liste
+     * @author Lukas & Yannick
      */
     public ObservableList<String> getPFWahl() {
         ObservableList<String> wahlPFEdited = FXCollections.observableArrayList("Keine Auswahl",
@@ -69,6 +76,7 @@ public class MainController implements Initializable {
 
     /**
      * Initialisierung
+     * @author Lukas Schenkel, Yannick Kandulski
      */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -84,8 +92,9 @@ public class MainController implements Initializable {
     /**
      * Reagiert auf Auswahl eines Radio Buttons
      * Es werden weitere Buttons ausgewaehlt die mit der Wahl des urspruenglichen Buttons nun Pflicht sind oder nicht
-     * mehr Pflicht sind
+     * mehr Pflicht sind (in bearbeitung)
      * @param event
+     * @author Lukas Schenkel, Yannick Kandulski
      */
     @FXML
     private void onPressed(ActionEvent event) {
@@ -166,7 +175,8 @@ public class MainController implements Initializable {
     }
 
     /**
-     * Methode zur Regelung des Ablaufs und automatischer Eingaben bei Wahl eines Kurses als PF.
+     * Methode zur Regelung des Ablaufs bei Wahl eines Kurses als PF aus der entsprechenden ComboBox.
+     * @author Lukas Schenkel, Yannick Kandulski
      */
     @FXML
     private void onSelected(ActionEvent event) {
@@ -262,6 +272,7 @@ public class MainController implements Initializable {
 
     /**
      * Methode zum Anzeigen des Drop-Down-Menüs, in dem die PF ausgewählt werden können.
+     * @author Lukas Schenkel, Yannick Kandulski
      */
     @FXML
     private void onClicked(MouseEvent event) {
@@ -271,6 +282,7 @@ public class MainController implements Initializable {
 
     /**
      * Ausführung der Wahlprüfung
+     * @author Romy Karbstein, Lukas Schenkel
      */
     private void ueberpruefen() {
         boolean result = wahlpruefung.wahlpruefung();
@@ -282,6 +294,7 @@ public class MainController implements Initializable {
 
     /**
      * @return Node, bei der angegebenen Reihe und Spalte
+     * @author Yannick Kandulski
      */
     public Node getNodeByCoordinate(Integer row, Integer column) {
         if(row != null && column != null) {
@@ -300,6 +313,7 @@ public class MainController implements Initializable {
      * Wandelt den String der Art des Pruefungsfaches in den passenden Integerwert um.
      * @param pruefungsfach - umzuwandelnder String
      * @return - umgewandelter Integer (1-5)
+     * @author Romy Karbstein, Glenn Grubert
      */
     public int stringPFinInt(String pruefungsfach) {
         int ret = 1;
@@ -322,4 +336,41 @@ public class MainController implements Initializable {
         }
         return ret;
     }
+
+    /**
+     * Durch die Auswahl der Schiene, erfolgen automatisiert verpflichtende Eingaben in der Tabelle.
+     * @param nrDerSchiene ausgewählte Schiene
+     * @author Tomás Wagner, Yannick Kandulski
+     */
+    public void eingabenDurchSchieneVornehmen(int nrDerSchiene)
+    {
+        // Eingaben für alle PF:
+        if(wahlpruefung.getSchienenListeElement(nrDerSchiene - 1).getErsterLK().equals("MA") || wahlpruefung.getSchienenListeElement(nrDerSchiene - 1).getZweiterLK().equals("MA"))
+        {
+            // Simulierung der Eingabe in der Tabelle für
+        }
+        // weitere IF-Abfragen für alle weiteren möglichen LKS
+
+        if(wahlpruefung.getSchienenListeElement(nrDerSchiene - 1).getDrittesPF().equals("MA"))
+        {
+            // Simulierung der Eingabe in der Tabelle für MA als 3. PF
+        }
+        // weitere IF-Abfragen für alle weiteren möglichen Kurse als 3. PF
+
+        if(wahlpruefung.getSchienenListeElement(nrDerSchiene - 1).getViertesPF().equals("MA"))
+        {
+            // Simulierung der Eingabe in der Tabelle für MA als 4. PF
+        }
+        // weitere IF-Abfragen für alle weiteren möglichen Kurse als 4. PF
+
+        if(wahlpruefung.getSchienenListeElement(nrDerSchiene - 1).getFuenftesPF().equals("MA"))
+        {
+            // Simulierung der Eingabe in der Tabelle für MA als 5. PF
+        }
+        // weitere IF-Abfragen für alle weiteren möglichen Kurse als 5. PF
+
+        // Eingaben für weitere Pflichtbelegungen:
+        //
+    }
+
 }

@@ -6,32 +6,34 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+/**
+ * Die Klasse repräsentiert den Einstiegspunkt in das Programm.
+ *
+ * @main-author Lukas Schenkel
+ */
+
 public class Main extends Application
 {
 
+    /**
+     * Starten der Anwendung
+     * @author Lukas Schenkel
+     */
     @Override
     public void start(Stage primaryStage) throws Exception
     {
         primaryStage.setTitle("Kurswahl");
 
-        Parent root = FXMLLoader.load(getClass().getResource("views/main.fxml"));
+        Parent tabelle = FXMLLoader.load(getClass().getResource("views/main.fxml"));
+        //Parent vorabfrage = FXMLLoader.load(getClass().getResource("views/second.fxml"));
 
-        primaryStage.setScene(new Scene(root, 1280, 920));
+        primaryStage.setScene(new Scene(tabelle, 1280, 920));
         primaryStage.show();
     }
 
-    @Override
-    public void init() throws Exception {
-        super.init();
-        System.out.println("Application started");
-    }
-
-    @Override
-    public void stop() throws Exception {
-        super.stop();
-        System.out.println("Application stopped");
-    }
-
+    /**
+     * @author Lukas Schenkel
+     */
     public static void main(String[] args) {
         launch(args);
     }
