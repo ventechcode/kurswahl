@@ -15,8 +15,9 @@ public class Schiene
     private int ma;
     private int nw;
     private int phCh;
+    private String tauschmoeglichkeiten;
 
-    public Schiene(int nr, String ersterLK, String zweiterLK, String drittesPF, String viertesPF, String fuenftesPF, int de, int kf, int fs, int gePw, int ma, int nw, int phCh)
+    public Schiene(int nr, String ersterLK, String zweiterLK, String drittesPF, String viertesPF, String fuenftesPF, int de, int kf, int fs, int gePw, int ma, int nw, int phCh, String tauschmoeglichkeiten)
     {
         this.nr = nr;
         this.ersterLK = ersterLK;
@@ -31,6 +32,7 @@ public class Schiene
         this.ma = ma;
         this.nw = nw;
         this.phCh = phCh;
+        this.tauschmoeglichkeiten = tauschmoeglichkeiten;
     }
 
     public int getNr() {
@@ -81,8 +83,7 @@ public class Schiene
         return nw;
     }
 
-    public int getPhCh() {
-        return phCh;
-    }
+    public int getPhCh() { return phCh; }
 
+    public String getTauschmoeglichkeiten() { return tauschmoeglichkeiten; }
 }

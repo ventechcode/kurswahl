@@ -709,74 +709,12 @@ public class Wahlpruefung {
      */
     public void schienenErzeugen()
     {
-        // 1. Schiene (6 Kombinationsmöglichkeiten pro Fremdsprache):
-        schienen[0] = new Schiene(1,"EN","DE","2. AF","MA","bel.",0,2,0,2,0,4,2);
-        schienen[1] = new Schiene(2,"EN","DE","2. AF","bel.","MA",0,2,0,2,0,4,2);
+        schienen[0] = new Schiene(1,"FS","DE","2. AF","MA","bel.",0,2,0,2,0,4,2, "Kategorie 1");
+        schienen[1] = new Schiene(2,"FS","DE","2. AF","NW","bel.",0,2,0,2,4,0,2, "Kategorie 1");
+        schienen[2] = new Schiene(3,"FS","DE","2. AF","IN","bel.",0,2,0,2,4,4,2, "Kategorie 1");
 
-        schienen[2] = new Schiene(3,"EN","DE","bel.","2. AF","MA",0,2,0,2,0,4,2);
-        schienen[3] = new Schiene(4,"EN","DE","bel.","MA","2. AF",0,2,0,2,0,4,2);
+        schienen[3] = new Schiene(4,"FS","FS","DE","2. AF","NW",0,2,0,2,4,0,2, "Kategorie 2");
 
-        schienen[4] = new Schiene(5,"EN","DE","MA","bel.","2. AF",0,2,0,2,0,4,2);
-        schienen[5] = new Schiene(6,"EN","DE","MA","2. AF","bel.",0,2,0,2,0,4,2);
-
-        schienen[6] = new Schiene(7,"FR","DE","2. AF","MA","bel.",0,2,0,2,0,4,2);
-        schienen[7] = new Schiene(8,"FR","DE","2. AF","bel.","MA",0,2,0,2,0,4,2);
-
-        schienen[8] = new Schiene(9,"FR","DE","bel.","2. AF","MA",0,2,0,2,0,4,2);
-        schienen[9] = new Schiene(10,"FR","DE","bel.","MA","2. AF",0,2,0,2,0,4,2);
-
-        schienen[10] = new Schiene(11,"FR","DE","MA","bel.","2. AF",0,2,0,2,0,4,2);
-        schienen[11] = new Schiene(12,"FR","DE","MA","2. AF","bel.",0,2,0,2,0,4,2);
-
-        // 2. Schiene (6 Kombinationsmöglichkeiten pro Fremdsprache):
-        schienen[12] = new Schiene(13,"EN","DE","2. AF","NW","bel.",0,2,0,2,4,0,2);
-        schienen[13] = new Schiene(14,"EN","DE","2. AF","bel.","NW",0,2,0,2,4,0,2);
-        schienen[14] = new Schiene(15,"EN","DE","NW","2. AF","bel.",0,2,0,2,4,0,2);
-        schienen[15] = new Schiene(16,"EN","DE","NW","bel.","2. AF",0,2,0,2,4,0,2);
-        schienen[16] = new Schiene(17,"EN","DE","bel.","2. AF","NW",0,2,0,2,4,0,2);
-        schienen[17] = new Schiene(18,"EN","DE","bel.","NW","2. AF",0,2,0,2,4,0,2);
-
-        schienen[18] = new Schiene(19,"FR","DE","2. AF","NW","bel.",0,2,0,2,4,0,2);
-        schienen[19] = new Schiene(20,"FR","DE","2. AF","bel.","NW",0,2,0,2,4,0,2);
-        schienen[20] = new Schiene(21,"FR","DE","NW","2. AF","bel.",0,2,0,2,4,0,2);
-        schienen[21] = new Schiene(22,"FR","DE","NW","bel.","2. AF",0,2,0,2,4,0,2);
-        schienen[22] = new Schiene(23,"FR","DE","bel.","2. AF","NW",0,2,0,2,4,0,2);
-        schienen[23] = new Schiene(24,"FR","DE","bel.","NW","2. AF",0,2,0,2,4,0,2);
-
-        //3. Schiene (6 Kombinationsmöglichkeiten pro Fremdsprache):
-        schienen[24] = new Schiene(25,"EN","DE","2. AF","IN","bel.",0,2,0,2,4,4,2);
-        schienen[25] = new Schiene(26,"EN","DE","2. AF","bel.","IN",0,2,0,2,4,4,2);
-        schienen[26] = new Schiene(27,"EN","DE","IN","2. AF","bel.",0,2,0,2,4,4,2);
-        schienen[27] = new Schiene(28,"EN","DE","IN","bel.","2. AF",0,2,0,2,4,4,2);
-        schienen[28] = new Schiene(29,"EN","DE","bel.","2. AF","IN",0,2,0,2,4,4,2);
-        schienen[29] = new Schiene(30,"EN","DE","bel.","IN","2. AF",0,2,0,2,4,4,2);
-
-        schienen[30] = new Schiene(31,"FR","DE","2. AF","IN","bel.",0,2,0,2,4,4,2);
-        schienen[31] = new Schiene(32,"FR","DE","2. AF","bel.","IN",0,2,0,2,4,4,2);
-        schienen[32] = new Schiene(33,"FR","DE","IN","2. AF","bel.",0,2,0,2,4,4,2);
-        schienen[33] = new Schiene(34,"FR","DE","IN","bel.","2. AF",0,2,0,2,4,4,2);
-        schienen[34] = new Schiene(35,"FR","DE","bel.","2. AF","IN",0,2,0,2,4,4,2);
-        schienen[35] = new Schiene(36,"FR","DE","bel.","IN","2. AF",0,2,0,2,4,4,2);
-
-        //4. Schiene
-        schienen[36] = new Schiene(37,"EN","FR","DE","2. AF","NW",0,2,0,2,4,0,2);
-        schienen[37] = new Schiene(38,"EN","FR","DE","NW","2. AF",0,2,0,2,4,0,2);
-        schienen[38] = new Schiene(39,"EN","FR","2. AF","DE","NW",0,2,0,2,4,0,2);
-        schienen[39] = new Schiene(40,"EN","FR","NW","DE","2. AF",0,2,0,2,4,0,2);
-
-        //5. Schiene
-        schienen[40] = new Schiene(41,"EN","FR","DE","2. AF","IN",0,2,0,2,4,4,2);
-        schienen[41] = new Schiene(42,"EN","FR","DE","IN","2.AF",0,2,0,2,4,4,2);
-        schienen[42] = new Schiene(43,"EN","FR","2. AF","DE","IN.",0,2,0,2,4,4,2);
-        schienen[43] = new Schiene(44,"EN","FR","IN","DE","2. AF",0,2,0,2,4,4,2);
-
-        //6. Schiene
-        schienen[44] = new Schiene(45,"EN","FR","MA","2. AF","bel.",4,2,0,2,0,4,2);
-        schienen[45] = new Schiene(46,"EN","FR","MA","bel.","2. AF",4,2,0,2,0,4,2);
-        schienen[46] = new Schiene(47,"EN","FR","2. AF","MA","bel.",4,2,0,2,0,4,2);
-        schienen[47] = new Schiene(48,"EN","FR","bel.","MA","2. AF",4,2,0,2,0,4,2);
-        schienen[48] = new Schiene(49,"EN","FR","2. AF","bel.","MA",4,2,0,2,0,4,2);
-        schienen[49] = new Schiene(50,"EN","FR","bel.","2. AF","MA",4,2,0,2,0,4,2);
     }
 
     public Schiene getSchienenListeElement(int index){ return schienen[index]; }
