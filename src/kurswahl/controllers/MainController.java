@@ -400,54 +400,23 @@ public class MainController implements Initializable {
      * @param nrDerSchiene ausgewählte Schiene
      * @author Tomás Wagner, Yannick Kandulski
      */
-    public void eingabenDurchSchieneVornehmen(int nrDerSchiene)
+    public void eingabenDurchSchieneVornehmen(int indexDerSchiene)
     {
-        Schiene schiene = wahlpruefung.getSchienenListeElement(nrDerSchiene - 1);
+        Schiene schiene = wahlpruefung.getSchienenListeElement(indexDerSchiene);
         switch(schiene.getErsterLK()){
-            case "MA":
+            case "Ma":
                 break;
-            case "DE":
+            case "De":
                 break;
             case "FS":
                 break;
-            case "Mathe":
+            case "NW":
                 break;
-            case "Mathe":
+            case "Mu/Ku":
                 break;
-            case "Mathe":
+            case "2. AF":
                 break;
-            case "Mathe":
-                break;
-            case "Mathe":
-                break;
-            case "Mathe":
-                break;
-            case "Mathe":
-                break;
-            case "Mathe":
-                break;
-            case "Mathe":
-                break;
-            case "Mathe":
-                break;
-            case "Mathe":
-                break;
-
-        }
-        switch(schiene.getErsterLK()){
-            case "Mathe":
-                break;
-            case "Deutsch":
-                break;
-            case "Mathe":
-                break;
-            case "Mathe":
-                break;
-            case "Mathe":
-                break;
-            case "Mathe":
-                break;
-            case "Mathe":
+            case "In":
                 break;
             case "Mathe":
                 break;
@@ -558,25 +527,56 @@ public class MainController implements Initializable {
                 break;
 
         }
-        if(wahlpruefung.getSchienenListeElement(nrDerSchiene - 1).getErsterLK().equals("MA") || wahlpruefung.getSchienenListeElement(nrDerSchiene - 1).getZweiterLK().equals("MA"))
+        switch(schiene.getErsterLK()){
+            case "Mathe":
+                break;
+            case "Deutsch":
+                break;
+            case "Mathe":
+                break;
+            case "Mathe":
+                break;
+            case "Mathe":
+                break;
+            case "Mathe":
+                break;
+            case "Mathe":
+                break;
+            case "Mathe":
+                break;
+            case "Mathe":
+                break;
+            case "Mathe":
+                break;
+            case "Mathe":
+                break;
+            case "Mathe":
+                break;
+            case "Mathe":
+                break;
+            case "Mathe":
+                break;
+
+        }
+        if(wahlpruefung.getSchienenListeElement(indexDerSchiene).getErsterLK().equals("MA") || wahlpruefung.getSchienenListeElement(indexDerSchiene).getZweiterLK().equals("MA"))
         {
            mathematikPF.setValue("LK");
         }
         // weitere IF-Abfragen für alle weiteren möglichen LKS
 
-        if(wahlpruefung.getSchienenListeElement(nrDerSchiene - 1).getDrittesPF().equals("MA"))
+        if(wahlpruefung.getSchienenListeElement(indexDerSchiene).getDrittesPF().equals("MA"))
         {
             // Simulierung der Eingabe in der Tabelle für MA als 3. PF
         }
         // weitere IF-Abfragen für alle weiteren möglichen Kurse als 3. PF
 
-        if(wahlpruefung.getSchienenListeElement(nrDerSchiene - 1).getViertesPF().equals("MA"))
+        if(wahlpruefung.getSchienenListeElement(indexDerSchiene).getViertesPF().equals("MA"))
         {
             // Simulierung der Eingabe in der Tabelle für MA als 4. PF
         }
         // weitere IF-Abfragen für alle weiteren möglichen Kurse als 4. PF
 
-        if(wahlpruefung.getSchienenListeElement(nrDerSchiene - 1).getFuenftesPF().equals("MA"))
+        if(wahlpruefung.getSchienenListeElement(indexDerSchiene).getFuenftesPF().equals("MA"))
         {
             // Simulierung der Eingabe in der Tabelle für MA als 5. PF
         }
