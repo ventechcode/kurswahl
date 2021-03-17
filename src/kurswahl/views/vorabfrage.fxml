@@ -407,7 +407,7 @@
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="54.0" prefWidth="200.0">
                      <children>
-                        <Label alignment="TOP_LEFT" layoutX="7.0" layoutY="6.0" prefHeight="50.0" prefWidth="470.0" text="Das 3. und 4. Prüfungsfach sind vertauschbar, das Referenzfach der 5. PK nicht.">
+                        <Label alignment="TOP_LEFT" layoutX="7.0" layoutY="6.0" prefHeight="50.0" prefWidth="662.0" text="Die Fächer des 3. und 4. Prüfungsfachs sind vertauschbar, das Referenzfach der 5. PK nicht.">
                            <font>
                               <Font name="Arial" size="12.0" />
                            </font>
