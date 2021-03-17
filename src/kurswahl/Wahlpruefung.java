@@ -705,16 +705,77 @@ public class Wahlpruefung {
 
     /**
      * Erzeugung aller möglichen Schienen gemäß der Tabelle der Schule.
-     * @author Tomás Wagner, Romy Karbstein, Glenn Grubert
+     * @author Romy Karbstein, Glenn Grubert
      */
     public void schienenErzeugen()
     {
-        schienen[0] = new Schiene(1,"FS","DE","2. AF","MA","bel.",0,2,0,2,0,4,2, "Kategorie 1");
-        schienen[1] = new Schiene(2,"FS","DE","2. AF","NW","bel.",0,2,0,2,4,0,2, "Kategorie 1");
-        schienen[2] = new Schiene(3,"FS","DE","2. AF","IN","bel.",0,2,0,2,4,4,2, "Kategorie 1");
+        schienen[1] = new Schiene(1,"FS","De","2. AF","Ma","bel.",0,2,0,2,0,4,2, 1);
+        schienen[2] = new Schiene(2,"FS","De","2. AF","NW","bel.",0,2,0,2,4,0,2, 1);
+        schienen[3] = new Schiene(3,"FS","De","2. AF","In","bel.",0,2,0,2,4,4,2, 1);
 
-        schienen[3] = new Schiene(4,"FS","FS","DE","2. AF","NW",0,2,0,2,4,0,2, "Kategorie 2");
+        schienen[4] = new Schiene(4,"FS","FS","De","2. AF","NW",0,2,0,2,4,0,2, 2);
+        schienen[5] = new Schiene(5,"FS","FS","De","2. AF","In",0,2,0,2,4,4,2, 2);
+        schienen[6] = new Schiene(6,"FS","FS","Ma","2. AF","bel.",4,2,0,2,0,4,2, 2);
 
+        schienen[7] = new Schiene(7,"FS","Mu/Ku","De","2. AF","NW",0,0,0,2,4,0,2, 2);
+        schienen[8] = new Schiene(8,"FS","Mu/Ku","De","2. AF","In",0,0,0,2,4,4,2, 2);
+        schienen[9] = new Schiene(9,"FS","Mu/Ku","Ma","2. AF","bel.",4,0,0,2,0,4,2, 2);
+
+        schienen[10] = new Schiene(10,"FS","2. AF","De","NW","bel.",0,2,0,2,4,0,2, 2);
+        schienen[11] = new Schiene(11,"FS","2. AF","De","In","bel.",0,2,0,2,4,4,2, 2);
+        schienen[12] = new Schiene(12,"FS","2. AF","Ma","bel.","bel.",4,2,0,2,0,4,2, 2);
+
+        schienen[13] = new Schiene(13,"FS","Ma","2. AF","bel.","bel.",4,2,0,2,0,4,2, 2);
+
+        schienen[14] = new Schiene(14,"FS","NW","De","2. AF","bel.",0,2,0,2,4,0,2, 2);
+        schienen[15] = new Schiene(15,"FS","NW","Ma","2. AF","bel.",4,2,0,2,0,0,2, 2);
+
+        schienen[16] = new Schiene(16,"FS","In","De","2. AF","bel.",0,2,0,2,4,4,2, 2);
+        schienen[17] = new Schiene(17,"FS","In","Ma","2. AF","bel.",4,2,0,2,0,4,2, 2);
+        //
+        schienen[18] = new Schiene(21,"Ma","De","2. AF","bel.","bel.",0,2,4,2,0,4,2, 2);
+
+        schienen[19] = new Schiene(22,"Ma","Mu/Ku","De","2. AF","bel.",0,0,4,2,0,4,2, 2);
+        schienen[20] = new Schiene(23,"Ma","Mu/Ku","FS","2. AF","bel.",4,0,0,2,0,4,2, 2);
+
+        schienen[21] = new Schiene(24,"Ma","2. AF","De","bel.","bel.",0,2,4,2,0,4,2, 2);
+        schienen[22] = new Schiene(25,"Ma","2. AF","FS","bel.","bel.",4,2,0,2,0,4,2, 2);
+
+        schienen[23] = new Schiene(26,"Ma","NW","De","2. AF","bel.",0,2,4,2,0,0,2, 2);
+        schienen[24] = new Schiene(27,"Ma","NW","FS","2. AF","bel.",4,2,0,2,0,0,2, 2);
+
+        schienen[25] = new Schiene(28,"Ma","In","De","2. AF","bel.",0,2,4,2,0,4,2, 2);
+        schienen[26] = new Schiene(29,"Ma","In","FS","2. AF","bel.",4,2,0,2,0,4,2, 2);
+        //
+        schienen[27] = new Schiene(32,"NW","De","FS","2. AF","bel.",0,2,0,2,4,0,2, 2);
+        schienen[28] = new Schiene(33,"NW","De","Ma","2. AF","bel.",0,2,4,2,0,0,2, 2);
+
+        schienen[29] = new Schiene(34,"NW","Mu/Ku","FS","De","2. AF",0,0,0,2,4,0,2, 3);
+        schienen[30] = new Schiene(35,"NW","Mu/Ku","FS","Ma","2. AF",4,0,0,2,0,0,2, 3);
+        schienen[31] = new Schiene(36,"NW","Mu/Ku","Ma","De","2. AF",0,0,4,2,0,0,2, 3);
+
+        schienen[32] = new Schiene(37,"NW","2. AF","FS","De","bel.",0,2,0,2,4,0,2, 3);
+        schienen[33] = new Schiene(38,"NW","2. AF","FS","Ma","bel.",4,2,0,2,0,0,2, 3);
+        schienen[34] = new Schiene(39,"NW","2. AF","Ma","De","bel.",0,2,4,2,0,0,2, 3);
+
+        schienen[35] = new Schiene(40,"NW","NW","FS","De","2. AF",0,2,0,2,4,0,0, 3);
+        schienen[36] = new Schiene(41,"NW","NW","FS","Ma","2. AF",4,2,0,2,0,0,0, 3);
+        schienen[37] = new Schiene(42,"NW","NW","Ma","De","2. AF",0,2,4,2,0,0,0, 3);
+
+        schienen[38] = new Schiene(43,"NW","In","FS","De","2. AF",0,2,0,2,4,0,2, 3);
+        schienen[39] = new Schiene(44,"NW","In","FS","Ma","2. AF",4,2,0,2,0,0,2, 3);
+        schienen[40] = new Schiene(45,"NW","In","Ma","De","2. AF",0,2,4,2,0,0,2, 3);
+        //
+        schienen[41] = new Schiene(49,"De","Mu/Ku","FS","2. AF","NW",0,0,0,2,4,0,2, 2);
+        schienen[42] = new Schiene(50,"De","Mu/Ku","FS","2. AF","In",0,0,0,2,4,4,2, 2);
+        schienen[43] = new Schiene(51,"De","Mu/Ku","Ma","2. AF","bel.",0,0,4,2,0,4,2, 2);
+
+        schienen[44] = new Schiene(52,"De","2. AF","FS","NW","bel.",0,2,0,2,4,0,2, 2);
+        schienen[45] = new Schiene(53,"De","2. AF","FS","In","bel.",0,2,0,2,4,4,2, 2);
+        schienen[46] = new Schiene(54,"De","2. AF","Ma","bel.","bel.",0,2,4,2,0,4,2, 2);
+
+        schienen[47] = new Schiene(55,"De","In","FS","2. AF","bel.",0,2,0,2,4,4,2, 2);
+        schienen[48] = new Schiene(56,"De","In","Ma","2. AF","bel.",0,2,4,2,0,4,2, 2);
     }
 
     public Schiene getSchienenListeElement(int index){ return schienen[index]; }
@@ -729,7 +790,7 @@ public class Wahlpruefung {
     public Schiene[] schienenFiltern(String ersterLK, String zweiterLK)
     {
         Schiene[] passendeSchienen = schienen;
-        // die bei zwei LK  passen können
+        // die bei zwei LKs passen können
         int zaehler = 0;
         for (int i = 0; i < 500; i++) //500 ist ein Platzhalter für die Anzahl aller Schienen
         {

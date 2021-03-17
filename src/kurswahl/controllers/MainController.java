@@ -13,6 +13,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import kurswahl.Wahlpruefung;
 import kurswahl.models.Kurs;
+import kurswahl.models.Schiene;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -26,6 +27,8 @@ import java.util.ResourceBundle;
 public class MainController implements Initializable {
 
     private Wahlpruefung wahlpruefung;
+
+    private Schiene schiene;
 
     @FXML
     private GridPane grid;
@@ -47,6 +50,61 @@ public class MainController implements Initializable {
 
     @FXML
     private Label gesamtAnzahl;
+
+    @FXML
+    private ComboBox<String> deutschPF;
+
+    @FXML
+    private ComboBox<String> englischPF;
+
+    @FXML
+    private ComboBox<String> franzoesischPF;
+
+    @FXML
+    private ComboBox<String> lateinPF;
+
+    @FXML
+    private ComboBox<String> musikPF;
+
+    @FXML
+    private ComboBox<String> bildendekunstPF;
+
+    @FXML
+    private ComboBox<String> darstellendesspielPF;
+
+    @FXML
+    private ComboBox<String> politikwissenschaftenPF;
+
+    @FXML
+    private ComboBox<String> geschichtePF;
+
+    @FXML
+    private ComboBox<String> geographiePF;
+
+    @FXML
+    private ComboBox<String> philosophiePF;
+
+    @FXML
+    private ComboBox<String> mathematikPF;
+
+    @FXML
+    private ComboBox<String> physikPF;
+
+    @FXML
+    private ComboBox<String> chemiePF;
+
+    @FXML
+    private ComboBox<String> biologiePF;
+
+    @FXML
+    private ComboBox<String> informatikPF;
+
+    @FXML
+    private ComboBox<String> sportPF;
+
+    @FXML
+    private ComboBox<String> sporttheoriePF;
+
 
     /**
      * Dropdown Menü wird dynamisch für jedes Klicken auf ein PF-Auswahlfeld erstellt und zurückgegeben
@@ -344,10 +402,165 @@ public class MainController implements Initializable {
      */
     public void eingabenDurchSchieneVornehmen(int nrDerSchiene)
     {
-        // Eingaben für alle PF:
+        Schiene schiene = wahlpruefung.getSchienenListeElement(nrDerSchiene - 1);
+        switch(schiene.getErsterLK()){
+            case "MA":
+                break;
+            case "DE":
+                break;
+            case "FS":
+                break;
+            case "Mathe":
+                break;
+            case "Mathe":
+                break;
+            case "Mathe":
+                break;
+            case "Mathe":
+                break;
+            case "Mathe":
+                break;
+            case "Mathe":
+                break;
+            case "Mathe":
+                break;
+            case "Mathe":
+                break;
+            case "Mathe":
+                break;
+            case "Mathe":
+                break;
+            case "Mathe":
+                break;
+
+        }
+        switch(schiene.getErsterLK()){
+            case "Mathe":
+                break;
+            case "Deutsch":
+                break;
+            case "Mathe":
+                break;
+            case "Mathe":
+                break;
+            case "Mathe":
+                break;
+            case "Mathe":
+                break;
+            case "Mathe":
+                break;
+            case "Mathe":
+                break;
+            case "Mathe":
+                break;
+            case "Mathe":
+                break;
+            case "Mathe":
+                break;
+            case "Mathe":
+                break;
+            case "Mathe":
+                break;
+            case "Mathe":
+                break;
+
+        }
+        switch(schiene.getErsterLK()){
+            case "Mathe":
+                break;
+            case "Deutsch":
+                break;
+            case "Mathe":
+                break;
+            case "Mathe":
+                break;
+            case "Mathe":
+                break;
+            case "Mathe":
+                break;
+            case "Mathe":
+                break;
+            case "Mathe":
+                break;
+            case "Mathe":
+                break;
+            case "Mathe":
+                break;
+            case "Mathe":
+                break;
+            case "Mathe":
+                break;
+            case "Mathe":
+                break;
+            case "Mathe":
+                break;
+
+        }
+        switch(schiene.getErsterLK()){
+            case "Mathe":
+                break;
+            case "Deutsch":
+                break;
+            case "Mathe":
+                break;
+            case "Mathe":
+                break;
+            case "Mathe":
+                break;
+            case "Mathe":
+                break;
+            case "Mathe":
+                break;
+            case "Mathe":
+                break;
+            case "Mathe":
+                break;
+            case "Mathe":
+                break;
+            case "Mathe":
+                break;
+            case "Mathe":
+                break;
+            case "Mathe":
+                break;
+            case "Mathe":
+                break;
+
+        }
+        switch(schiene.getErsterLK()){
+            case "Mathe":
+                break;
+            case "Deutsch":
+                break;
+            case "Mathe":
+                break;
+            case "Mathe":
+                break;
+            case "Mathe":
+                break;
+            case "Mathe":
+                break;
+            case "Mathe":
+                break;
+            case "Mathe":
+                break;
+            case "Mathe":
+                break;
+            case "Mathe":
+                break;
+            case "Mathe":
+                break;
+            case "Mathe":
+                break;
+            case "Mathe":
+                break;
+            case "Mathe":
+                break;
+
+        }
         if(wahlpruefung.getSchienenListeElement(nrDerSchiene - 1).getErsterLK().equals("MA") || wahlpruefung.getSchienenListeElement(nrDerSchiene - 1).getZweiterLK().equals("MA"))
         {
-            // Simulierung der Eingabe in der Tabelle für
+           mathematikPF.setValue("LK");
         }
         // weitere IF-Abfragen für alle weiteren möglichen LKS
 

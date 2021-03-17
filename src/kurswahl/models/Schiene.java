@@ -15,9 +15,13 @@ public class Schiene
     private int ma;
     private int nw;
     private int phCh;
-    private String tauschmoeglichkeiten;
+    // 1: 3.-5. PF frei tauschbar
+    // 2: 3.-5. PF unter Bedingungen tauschbar (2 HF als 1.-4. & max. 1 KF)
+    // 3 : nur 3. und 4. PF frei tauschbar => 5. PF fest
+    private int tauschmoeglichkeiten;
 
-    public Schiene(int nr, String ersterLK, String zweiterLK, String drittesPF, String viertesPF, String fuenftesPF, int de, int kf, int fs, int gePw, int ma, int nw, int phCh, String tauschmoeglichkeiten)
+    public Schiene(int nr, String ersterLK, String zweiterLK, String drittesPF, String viertesPF, String fuenftesPF,
+                   int de, int kf, int fs, int gePw, int ma, int nw, int phCh, int tauschmoeglichkeiten)
     {
         this.nr = nr;
         this.ersterLK = ersterLK;
