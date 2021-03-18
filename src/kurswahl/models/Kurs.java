@@ -154,6 +154,7 @@ public class Kurs
 
     public int getAnzahlPflichtsemester()
     {
+        anzahlPflichtsemester = semesterAnzahlBerechnen();
         return anzahlPflichtsemester;
     }
 

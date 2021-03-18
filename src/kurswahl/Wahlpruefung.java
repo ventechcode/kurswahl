@@ -47,7 +47,8 @@ public class Wahlpruefung {
     private boolean dSmin4Sem; //ist DS 0 oder 4 Semester lang gewaehlt worden
 
     private Kurs[] kursListe;
-    private Schiene[] schienen; // gehört eigentlich in die Klasse Wahlpruefung
+    private Schiene[] schienen;
+    private Schiene[] passendeSchienen;
 
     /**
      * Konstruktor der Klasse Wahlpruefung
@@ -56,7 +57,8 @@ public class Wahlpruefung {
     public Wahlpruefung()
     {
         kursListe = new Kurs[26];
-        schienen = new Schiene[666];// 666 ist ein Platzhalter für die max. Anzahl an Schienen
+        schienen = new Schiene[49];// Attribut für alle Schienen
+        passendeSchienen = new Schiene[3];// Attribut für passende Schienen
         kurseInstanziieren();
     }
 
@@ -94,7 +96,6 @@ public class Wahlpruefung {
         kursListe[25] = new Kurs("Sporttheorie", 0, 0, false, false, false, false, 0, 0);
 
     }
-
 
     /**
      * Es werden alle Kriterien (Attribute) überprüft, ob sie als erfüllt gespeichert sind (=true).
@@ -242,6 +243,7 @@ public class Wahlpruefung {
             if  (getKursListeElement(i).getPruefungsfach() == 4) { zaehler++; }
         }
         viertesPFgewaehlt = zaehler == 1;
+        System.out.println(viertesPFgewaehlt);
     }
 
     /**
@@ -614,9 +616,12 @@ public class Wahlpruefung {
     public boolean getSpracheAbBeginn() { return spracheAbBeginn; }
     public boolean getKuenstWerkMitKULK() { return kuenstWerkMitKULK; }
     public boolean getDSmin4Sem() { return dSmin4Sem; }
+    public Schiene[] getPassendeSchienen() { return passendeSchienen; }
+
+    public void setPassendeSchienen(Schiene[] passendeSchienen) { this.passendeSchienen = passendeSchienen; }
 
     /**
-     * Errechnet die Summe aller jeweils in q1, q2, q3 und q4 belegten Kurse und gibt diese für die jweeiligen Semester
+     * Errechnet die Summe aller jeweils in q1, q2, q3 und q4 belegten Kurse und gibt diese für die jeweiligen Semester
      * als Array zurück
      * @return Array mit {Summe für q1, Summe für q2 Summe, für q3, Summe für q4}
      * @author Tomás Wagner, Glenn Grubert, Romy Karbstein
@@ -779,6 +784,7 @@ public class Wahlpruefung {
     }
 
     public Schiene getSchienenListeElement(int index){ return schienen[index]; }
+    public Schiene getPassendeSchienenListeElement(int index){ return passendeSchienen[index]; }
 
     /**
      * Filterung aller Schienen anhand eingegebener LKs.
@@ -787,12 +793,11 @@ public class Wahlpruefung {
      * @return Array mit Schienen, die zu den beiden gewählten LKs passen
      * @author Tomás Wagner
      */
-    public Schiene[] schienenFiltern(String ersterLK, String zweiterLK)
+    public void schienenFiltern(String ersterLK, String zweiterLK)
     {
-        Schiene[] passendeSchienen = schienen;
         // die bei zwei LKs passen können
         int zaehler = 0;
-        for (int i = 0; i < 500; i++) //500 ist ein Platzhalter für die Anzahl aller Schienen
+        for (int i = 0; i < 48; i++)
         {
             if ((getSchienenListeElement(i).getErsterLK().equals(ersterLK) && getSchienenListeElement(i).getZweiterLK().equals(zweiterLK)) || (getSchienenListeElement(i).getErsterLK() == zweiterLK && getSchienenListeElement(i).getZweiterLK() == ersterLK))
             {
@@ -800,7 +805,6 @@ public class Wahlpruefung {
                 zaehler ++;
             }
         }
-        return passendeSchienen;
     }
 }
 

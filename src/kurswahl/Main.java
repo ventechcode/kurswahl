@@ -15,6 +15,8 @@ import javafx.stage.Stage;
 public class Main extends Application
 {
 
+    public static Stage primaryStage;
+
     /**
      * Starten der Anwendung
      * @author Lukas Schenkel
@@ -22,13 +24,13 @@ public class Main extends Application
     @Override
     public void start(Stage primaryStage) throws Exception
     {
+        Main.primaryStage = primaryStage;
         primaryStage.setTitle("Kurswahl");
 
-        Parent tabelle = FXMLLoader.load(getClass().getResource("views/main.fxml"));
-        //Parent vorabfrage = FXMLLoader.load(getClass().getResource("views/vorabfrage.fxml"));
-
-        primaryStage.setScene(new Scene(tabelle, 1295, 600));
-        //primaryStage.setScene(new Scene(vorabfrage, 960, 670));
+        Parent vorabfrage = FXMLLoader.load(getClass().getResource("views/vorabfrage.fxml"));
+        Scene vorabfrageScene = new Scene(vorabfrage, 960, 670);
+        primaryStage.setScene(vorabfrageScene);
+        primaryStage.setResizable(false);
         primaryStage.show();
     }
 
