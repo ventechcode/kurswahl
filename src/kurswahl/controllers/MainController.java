@@ -397,7 +397,7 @@ public class MainController implements Initializable {
 
     /**
      * Durch die Auswahl der Schiene, erfolgen automatisiert verpflichtende Eingaben in der Tabelle.
-     * @param nrDerSchiene ausgewählte Schiene
+     * @param indexDerSchiene ausgewählte Schiene
      * @author Tomás Wagner, Yannick Kandulski
      */
     public void eingabenDurchSchieneVornehmen(int indexDerSchiene)
