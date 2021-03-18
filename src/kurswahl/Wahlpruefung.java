@@ -802,9 +802,5 @@ public class Wahlpruefung {
         }
         return passendeSchienen;
     }
-
-
-
-
 }
 
