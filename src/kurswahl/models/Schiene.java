@@ -89,5 +89,5 @@ public class Schiene
 
     public int getPhCh() { return phCh; }
 
-    public String getTauschmoeglichkeiten() { return tauschmoeglichkeiten; }
+    public int getTauschmoeglichkeiten() { return tauschmoeglichkeiten; }
 }

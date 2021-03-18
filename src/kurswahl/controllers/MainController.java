@@ -402,188 +402,188 @@ public class MainController implements Initializable {
      */
     public void eingabenDurchSchieneVornehmen(int indexDerSchiene)
     {
-        Schiene schiene = wahlpruefung.getSchienenListeElement(indexDerSchiene);
-        switch(schiene.getErsterLK()){
-            case "Ma":
-                break;
-            case "De":
-                break;
-            case "FS":
-                break;
-            case "NW":
-                break;
-            case "Mu/Ku":
-                break;
-            case "2. AF":
-                break;
-            case "In":
-                break;
-            case "Mathe":
-                break;
-            case "Mathe":
-                break;
-            case "Mathe":
-                break;
-            case "Mathe":
-                break;
-            case "Mathe":
-                break;
-            case "Mathe":
-                break;
-            case "Mathe":
-                break;
-
-        }
-        switch(schiene.getErsterLK()){
-            case "Mathe":
-                break;
-            case "Deutsch":
-                break;
-            case "Mathe":
-                break;
-            case "Mathe":
-                break;
-            case "Mathe":
-                break;
-            case "Mathe":
-                break;
-            case "Mathe":
-                break;
-            case "Mathe":
-                break;
-            case "Mathe":
-                break;
-            case "Mathe":
-                break;
-            case "Mathe":
-                break;
-            case "Mathe":
-                break;
-            case "Mathe":
-                break;
-            case "Mathe":
-                break;
-
-        }
-        switch(schiene.getErsterLK()){
-            case "Mathe":
-                break;
-            case "Deutsch":
-                break;
-            case "Mathe":
-                break;
-            case "Mathe":
-                break;
-            case "Mathe":
-                break;
-            case "Mathe":
-                break;
-            case "Mathe":
-                break;
-            case "Mathe":
-                break;
-            case "Mathe":
-                break;
-            case "Mathe":
-                break;
-            case "Mathe":
-                break;
-            case "Mathe":
-                break;
-            case "Mathe":
-                break;
-            case "Mathe":
-                break;
-
-        }
-        switch(schiene.getErsterLK()){
-            case "Mathe":
-                break;
-            case "Deutsch":
-                break;
-            case "Mathe":
-                break;
-            case "Mathe":
-                break;
-            case "Mathe":
-                break;
-            case "Mathe":
-                break;
-            case "Mathe":
-                break;
-            case "Mathe":
-                break;
-            case "Mathe":
-                break;
-            case "Mathe":
-                break;
-            case "Mathe":
-                break;
-            case "Mathe":
-                break;
-            case "Mathe":
-                break;
-            case "Mathe":
-                break;
-
-        }
-        switch(schiene.getErsterLK()){
-            case "Mathe":
-                break;
-            case "Deutsch":
-                break;
-            case "Mathe":
-                break;
-            case "Mathe":
-                break;
-            case "Mathe":
-                break;
-            case "Mathe":
-                break;
-            case "Mathe":
-                break;
-            case "Mathe":
-                break;
-            case "Mathe":
-                break;
-            case "Mathe":
-                break;
-            case "Mathe":
-                break;
-            case "Mathe":
-                break;
-            case "Mathe":
-                break;
-            case "Mathe":
-                break;
-
-        }
-        if(wahlpruefung.getSchienenListeElement(indexDerSchiene).getErsterLK().equals("MA") || wahlpruefung.getSchienenListeElement(indexDerSchiene).getZweiterLK().equals("MA"))
-        {
-           mathematikPF.setValue("LK");
-        }
-        // weitere IF-Abfragen für alle weiteren möglichen LKS
-
-        if(wahlpruefung.getSchienenListeElement(indexDerSchiene).getDrittesPF().equals("MA"))
-        {
-            // Simulierung der Eingabe in der Tabelle für MA als 3. PF
-        }
-        // weitere IF-Abfragen für alle weiteren möglichen Kurse als 3. PF
-
-        if(wahlpruefung.getSchienenListeElement(indexDerSchiene).getViertesPF().equals("MA"))
-        {
-            // Simulierung der Eingabe in der Tabelle für MA als 4. PF
-        }
-        // weitere IF-Abfragen für alle weiteren möglichen Kurse als 4. PF
-
-        if(wahlpruefung.getSchienenListeElement(indexDerSchiene).getFuenftesPF().equals("MA"))
-        {
-            // Simulierung der Eingabe in der Tabelle für MA als 5. PF
-        }
-        // weitere IF-Abfragen für alle weiteren möglichen Kurse als 5. PF
-
-        // Eingaben für weitere Pflichtbelegungen:
-        //
+//        Schiene schiene = wahlpruefung.getSchienenListeElement(indexDerSchiene);
+//        switch(schiene.getErsterLK()){
+//            case "Ma":
+//                break;
+//            case "De":
+//                break;
+//            case "FS":
+//                break;
+//            case "NW":
+//                break;
+//            case "Mu/Ku":
+//                break;
+//            case "2. AF":
+//                break;
+//            case "In":
+//                break;
+//            case "Mathe":
+//                break;
+//            case "Mathe":
+//                break;
+//            case "Mathe":
+//                break;
+//            case "Mathe":
+//                break;
+//            case "Mathe":
+//                break;
+//            case "Mathe":
+//                break;
+//            case "Mathe":
+//                break;
+//
+//        }
+//        switch(schiene.getErsterLK()){
+//            case "Mathe":
+//                break;
+//            case "Deutsch":
+//                break;
+//            case "Mathe":
+//                break;
+//            case "Mathe":
+//                break;
+//            case "Mathe":
+//                break;
+//            case "Mathe":
+//                break;
+//            case "Mathe":
+//                break;
+//            case "Mathe":
+//                break;
+//            case "Mathe":
+//                break;
+//            case "Mathe":
+//                break;
+//            case "Mathe":
+//                break;
+//            case "Mathe":
+//                break;
+//            case "Mathe":
+//                break;
+//            case "Mathe":
+//                break;
+//
+//        }
+//        switch(schiene.getErsterLK()){
+//            case "Mathe":
+//                break;
+//            case "Deutsch":
+//                break;
+//            case "Mathe":
+//                break;
+//            case "Mathe":
+//                break;
+//            case "Mathe":
+//                break;
+//            case "Mathe":
+//                break;
+//            case "Mathe":
+//                break;
+//            case "Mathe":
+//                break;
+//            case "Mathe":
+//                break;
+//            case "Mathe":
+//                break;
+//            case "Mathe":
+//                break;
+//            case "Mathe":
+//                break;
+//            case "Mathe":
+//                break;
+//            case "Mathe":
+//                break;
+//
+//        }
+//        switch(schiene.getErsterLK()){
+//            case "Mathe":
+//                break;
+//            case "Deutsch":
+//                break;
+//            case "Mathe":
+//                break;
+//            case "Mathe":
+//                break;
+//            case "Mathe":
+//                break;
+//            case "Mathe":
+//                break;
+//            case "Mathe":
+//                break;
+//            case "Mathe":
+//                break;
+//            case "Mathe":
+//                break;
+//            case "Mathe":
+//                break;
+//            case "Mathe":
+//                break;
+//            case "Mathe":
+//                break;
+//            case "Mathe":
+//                break;
+//            case "Mathe":
+//                break;
+//
+//        }
+//        switch(schiene.getErsterLK()){
+//            case "Mathe":
+//                break;
+//            case "Deutsch":
+//                break;
+//            case "Mathe":
+//                break;
+//            case "Mathe":
+//                break;
+//            case "Mathe":
+//                break;
+//            case "Mathe":
+//                break;
+//            case "Mathe":
+//                break;
+//            case "Mathe":
+//                break;
+//            case "Mathe":
+//                break;
+//            case "Mathe":
+//                break;
+//            case "Mathe":
+//                break;
+//            case "Mathe":
+//                break;
+//            case "Mathe":
+//                break;
+//            case "Mathe":
+//                break;
+//
+//        }
+//        if(wahlpruefung.getSchienenListeElement(indexDerSchiene).getErsterLK().equals("MA") || wahlpruefung.getSchienenListeElement(indexDerSchiene).getZweiterLK().equals("MA"))
+//        {
+//           mathematikPF.setValue("LK");
+//        }
+//        // weitere IF-Abfragen für alle weiteren möglichen LKS
+//
+//        if(wahlpruefung.getSchienenListeElement(indexDerSchiene).getDrittesPF().equals("MA"))
+//        {
+//            // Simulierung der Eingabe in der Tabelle für MA als 3. PF
+//        }
+//        // weitere IF-Abfragen für alle weiteren möglichen Kurse als 3. PF
+//
+//        if(wahlpruefung.getSchienenListeElement(indexDerSchiene).getViertesPF().equals("MA"))
+//        {
+//            // Simulierung der Eingabe in der Tabelle für MA als 4. PF
+//        }
+//        // weitere IF-Abfragen für alle weiteren möglichen Kurse als 4. PF
+//
+//        if(wahlpruefung.getSchienenListeElement(indexDerSchiene).getFuenftesPF().equals("MA"))
+//        {
+//            // Simulierung der Eingabe in der Tabelle für MA als 5. PF
+//        }
+//        // weitere IF-Abfragen für alle weiteren möglichen Kurse als 5. PF
+//
+//        // Eingaben für weitere Pflichtbelegungen:
+//        //
     }
 
 }

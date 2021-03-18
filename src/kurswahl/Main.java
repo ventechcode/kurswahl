@@ -25,9 +25,10 @@ public class Main extends Application
         primaryStage.setTitle("Kurswahl");
 
         Parent tabelle = FXMLLoader.load(getClass().getResource("views/main.fxml"));
-        //Parent vorabfrage = FXMLLoader.load(getClass().getResource("views/second.fxml"));
+        //Parent vorabfrage = FXMLLoader.load(getClass().getResource("views/vorabfrage.fxml"));
 
-        primaryStage.setScene(new Scene(tabelle, 1280, 920));
+        primaryStage.setScene(new Scene(tabelle, 1295, 600));
+        //primaryStage.setScene(new Scene(vorabfrage, 960, 670));
         primaryStage.show();
     }
 

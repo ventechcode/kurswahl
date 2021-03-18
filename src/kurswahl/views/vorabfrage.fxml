@@ -389,7 +389,6 @@
             <Label fx:id="labelFS1" text="-" GridPane.columnIndex="9" GridPane.rowIndex="1" />
             <Label fx:id="labelGEPW1" text="-" GridPane.columnIndex="10" GridPane.rowIndex="1" />
             <Label fx:id="labelNW1" text="-" GridPane.columnIndex="12" GridPane.rowIndex="1" />
-            <Label layoutX="735.0" layoutY="71.0" text="-" />
          </children>
       </GridPane>
       <Button focusTraversable="false" layoutX="812.0" layoutY="624.0" mnemonicParsing="false" onAction="#onClickedConfirm" prefHeight="35.0" prefWidth="141.0" text="BESTÄTIGEN" />
