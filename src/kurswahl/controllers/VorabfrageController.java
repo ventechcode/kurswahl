@@ -195,7 +195,7 @@ public class VorabfrageController implements Initializable {
      * @return Drop-Down-Menü-Liste
      * @author Tomás Wagner, Yannick Kandulski
      */
-    public ObservableList<String> getLKWahla() {
+    public ObservableList<String> getLKWahlA() {
         System.out.println("lk wahl");
         ObservableList<String> wahlLKEditedA = FXCollections.observableArrayList("Keine Auswahl",
                 "De",
@@ -241,7 +241,7 @@ public class VorabfrageController implements Initializable {
      * @return Drop-Down-Menü-Liste
      * @author Tomás Wagner, Yannick Kandulski
      */
-    public ObservableList<String> getLKWahlb() {
+    public ObservableList<String> getLKWahlB() {
         System.out.println("lk wahl");
         ObservableList<String> wahlLKEditedB = FXCollections.observableArrayList("Keine Auswahl",
                 "En",
@@ -392,8 +392,8 @@ public class VorabfrageController implements Initializable {
     @FXML
     private void onClicked(MouseEvent event) {
         System.out.println("on clicked");
-        ersterLK.setItems(getLKWahla());
-        zweiterLK.setItems(getLKWahlb());
+        ersterLK.setItems(getLKWahlA());
+        zweiterLK.setItems(getLKWahlB());
         System.out.println("items set");
     }
 
