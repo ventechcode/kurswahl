@@ -372,7 +372,6 @@ public class VorabfrageController implements Initializable {
         {
             wahlpruefung.schienenFiltern(eLK, zLK);
 
-
             //Schienen in Tabelle anzeigen
             if(wahlpruefung.getPassendeSchienenListeElement(0) != null) {
                 labelNr1.setText(String.valueOf(wahlpruefung.getPassendeSchienenListeElement(0).getNr()));
