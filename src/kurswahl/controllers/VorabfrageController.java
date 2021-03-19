@@ -481,7 +481,6 @@ public class VorabfrageController implements Initializable {
     @FXML
     private void onClickedA(MouseEvent event) {
         ersterLK.setItems(getLKWahlA());
-
     }
 
     /**
