@@ -1,5 +1,12 @@
 package kurswahl.models;
 
+/**
+ * Die Klasse Kurs stellt einen Bauplan für Kurs-Objekte dar, wobei ein Kurs-Objekt alle Eigenschaften eines wählbaren
+ * Kurses verwaltet und und ein Fach repräsentiert, während sich die nur auf die Betrachtung in der Wahl bezieht und k
+ * einen konkret existierenden Kurs meint.
+ * @main-author Romy Karbstein, Glenn Grubert
+ */
+
 public class Kurs
 {
     private String name; // z.B. Englisch
@@ -167,6 +174,7 @@ public class Kurs
 
     /**
      * Berechnung der Anzahl an belegten Semestern im Kurs.
+     * @author Tomás Wagner
      */
     public int semesterAnzahlBerechnen()
     {

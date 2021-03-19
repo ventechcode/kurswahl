@@ -508,8 +508,8 @@ public class MainController implements Initializable {
     }
 
     /**
-     *
-     * @param combo
+     * Verarbeitung der Schienenwahl zur Übergabe der Daten für Haupt-Tebelle
+     * @param combo ausgewählte Combo-Box
      * @author Yannick Kandulski
      */
     private void select(ComboBox combo) {
