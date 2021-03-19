@@ -12,7 +12,6 @@ import javafx.scene.control.ComboBox;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
-import javafx.scene.control.RadioButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import kurswahl.Main;
@@ -24,7 +23,6 @@ import java.util.ResourceBundle;
 
 /**
  * Der VorabfrageController ist im Kontext des Model-View-Controller Prinzips der zuständige Controller für die vorabfrage.fxml view.
- *
  * @main-author Tomás Wagner, Lukas Schenkel
  */
 
@@ -207,7 +205,7 @@ public class VorabfrageController implements Initializable {
     }
 
     /**
-     * Dropdown Menü wird dynamisch für jedes Klicken auf ein LK-Auswahlfeld erstellt und zurückgegeben
+     * Oberes Dropdown Menü wird dynamisch für jedes Klicken auf ein LK-Auswahlfeld erstellt und zurückgegeben
      * @return Drop-Down-Menü-Liste
      * @author Tomás Wagner
      */
@@ -252,7 +250,7 @@ public class VorabfrageController implements Initializable {
     }
 
     /**
-     * Dropdown Menü wird dynamisch für jedes Klicken auf ein LK-Auswahlfeld erstellt und zurückgegeben
+     * Unteres Dropdown Menü wird dynamisch für jedes Klicken auf ein LK-Auswahlfeld erstellt und zurückgegeben
      * @return Drop-Down-Menü-Liste
      * @author Tomás Wagner
      */
@@ -317,9 +315,11 @@ public class VorabfrageController implements Initializable {
      */
     @FXML
     private void onPressed(ActionEvent event) {
+        // Ermittlung der ausgewählten CheckBox
         CheckBox box = (CheckBox) event.getSource();
         int rowIndex = GridPane.getRowIndex(box);
 
+        // Aktivierung der ausgewählten und Abwahl der nicht ausgewählten CheckBoxes
         if(rowIndex == 1 && labelNr1.getText() != "-"){
             checkBoxSchiene1.setSelected(true);
             checkBoxSchiene2.setSelected(false);
@@ -347,9 +347,11 @@ public class VorabfrageController implements Initializable {
     private void onClickedSave(ActionEvent event) {
         tabelleLeeren();
 
+        // Zwischenspeicherung der ausgewählten LKs
         String eLK = ersterLK.getValue();
         String zLK = zweiterLK.getValue();
 
+        // Konvertierung der ausgewählten LKs in die Form, die für die Schienfilterung benötigt wird
         if (ersterLK.getValue() == "Englisch" || ersterLK.getValue() == "Französisch"){ eLK = "FS"; }
         if (ersterLK.getValue() == "Chemie" || ersterLK.getValue() == "Biologie" || ersterLK.getValue() == "Physik"){ eLK = "NW"; }
         if (ersterLK.getValue() == "Geschichte" || ersterLK.getValue() == "Politikwissenschaften"){ eLK = "2. AF";}
@@ -367,12 +369,13 @@ public class VorabfrageController implements Initializable {
         if (zweiterLK.getValue() == "Informatik"){ zLK = "IN"; }
 
 
-        //Schienen filtern
+        // Filterung der Schienen & Spiecherung der passenden Schienen in der Tabelle
         if (ersterLK.getValue() != "Keine Auswahl" && (zweiterLK.getValue() != "Keine Auswahl"))
         {
-            wahlpruefung.schienenFiltern(eLK, zLK);
+            wahlpruefung.schienenFiltern(eLK, zLK); // Filterung der Schienen, wenn 2 LKs ausgewählt wurden
 
             //Schienen in Tabelle anzeigen
+            // 1. Zeile:
             if(wahlpruefung.getPassendeSchienenListeElement(0) != null) {
                 labelNr1.setText(String.valueOf(wahlpruefung.getPassendeSchienenListeElement(0).getNr()));
                 labelErsterLK1.setText(wahlpruefung.getPassendeSchienenListeElement(0).getErsterLK());
@@ -390,6 +393,7 @@ public class VorabfrageController implements Initializable {
                 labelKdT1.setText(String.valueOf(wahlpruefung.getPassendeSchienenListeElement(0).getTauschmoeglichkeiten()));
             }
 
+            // 2. Zeile:
             if(wahlpruefung.getPassendeSchienenListeElement(1) != null) {
                 labelNr2.setText(String.valueOf(wahlpruefung.getPassendeSchienenListeElement(1).getNr()));
                 labelErsterLK2.setText(wahlpruefung.getPassendeSchienenListeElement(1).getErsterLK());
@@ -407,6 +411,7 @@ public class VorabfrageController implements Initializable {
                 labelKdT2.setText(String.valueOf(wahlpruefung.getPassendeSchienenListeElement(1).getTauschmoeglichkeiten()));
             }
 
+            // 3. Zeile:
             if(wahlpruefung.getPassendeSchienenListeElement(2) != null) {
                 labelNr3.setText(String.valueOf(wahlpruefung.getPassendeSchienenListeElement(2).getNr()));
                 labelErsterLK3.setText(wahlpruefung.getPassendeSchienenListeElement(2).getErsterLK());
@@ -423,11 +428,20 @@ public class VorabfrageController implements Initializable {
                 labelPHCH3.setText(String.valueOf(wahlpruefung.getPassendeSchienenListeElement(2).getPhCh()));
                 labelKdT3.setText(String.valueOf(wahlpruefung.getPassendeSchienenListeElement(2).getTauschmoeglichkeiten()));
             }
+            // Abwählen aller CheckBoxen
+            checkBoxSchiene1.setSelected(false);
+            checkBoxSchiene2.setSelected(false);
+            checkBoxSchiene3.setSelected(false);
         }
     }
 
+    /**
+     * Überschreiben aller Einträge in der Tabelle mit Bindestrichen
+     * @author Tomás Wagner
+     */
     public void tabelleLeeren()
     {
+        // 1. Zeile
         labelNr1.setText("-");
         labelErsterLK1.setText("-");
         labelZweiterLK1.setText("-");
@@ -443,6 +457,7 @@ public class VorabfrageController implements Initializable {
         labelPHCH1.setText("-");
         labelKdT1.setText("-");
 
+        // 2. Zeile:
         labelNr2.setText("-");
         labelErsterLK2.setText("-");
         labelZweiterLK2.setText("-");
@@ -458,6 +473,7 @@ public class VorabfrageController implements Initializable {
         labelPHCH2.setText("-");
         labelKdT2.setText("-");
 
+        // 3. Zeile
         labelNr3.setText("-");
         labelErsterLK3.setText("-");
         labelZweiterLK3.setText("-");
@@ -498,6 +514,7 @@ public class VorabfrageController implements Initializable {
      */
     @FXML
     private void onClickedConfirm(ActionEvent event) {
+        // Initialisierung des Hauptfensters, wobei das Wahlpruefungs-Objekt weitergegeben wird
         try {
             FXMLLoader loader = new FXMLLoader(Main.class.getResource("views/main.fxml"));
             MainController controller = new MainController(wahlpruefung);

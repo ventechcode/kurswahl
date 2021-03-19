@@ -420,7 +420,7 @@ public class MainController implements Initializable {
                 PF3SchienenWahl = "NW";
                 break;
             case "Mu/Ku":
-                PF3SchienenWahl = "Mu/Ku";
+                PF3SchienenWahl = "MU/KU";
                 break;
             case "FS":
                 PF3SchienenWahl = "FS";
@@ -451,7 +451,7 @@ public class MainController implements Initializable {
                 PF4SchienenWahl = "NW";
                 break;
             case "Mu/Ku":
-                PF4SchienenWahl = "Mu/Ku";
+                PF4SchienenWahl = "MU/KU";
                 break;
             case "FS":
                 PF4SchienenWahl = "FS";
@@ -482,7 +482,7 @@ public class MainController implements Initializable {
                 PF5SchienenWahl = "NW";
                 break;
             case "Mu/Ku":
-                PF5SchienenWahl = "Mu/Ku";
+                PF5SchienenWahl = "MU/KU";
                 break;
             case "FS":
                 PF5SchienenWahl = "FS";
@@ -512,6 +512,7 @@ public class MainController implements Initializable {
     /**
      *
      * @param combo
+     * @author Yannick Kandulski
      */
     private void select(ComboBox combo) {
         ComboBox comboBox = combo;
@@ -599,9 +600,10 @@ public class MainController implements Initializable {
     }
 
     /**
-     * gibt den Ausdruck in den Schienen für Kursfächer aus, welcher zur überprüfung der Einhaltung der Schinen dient
+     * Gibt den Ausdruck in den Schienen für Kursfächer aus, welcher zur überprüfung der Einhaltung der Schinen dient
      * @param kurs
-     * @return
+     * @return Kursname in Schienenformat
+     * @author Yannick Kandulski
      */
     public String kursZuSchienenKategorie(Kurs kurs){
         String s = kurs.getName();
@@ -612,7 +614,7 @@ public class MainController implements Initializable {
             return "NW";
         }
         if (s.equals("Musik") || s.equals("Bildende Kunst")){
-            return "Mu/Ku";
+            return "MU/KU";
         } else{
             return "2. AF";
         }
