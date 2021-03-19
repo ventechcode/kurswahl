@@ -28,8 +28,6 @@ public class MainController implements Initializable {
 
     private Wahlpruefung wahlpruefung;
 
-    private Schiene schiene;
-
     //wenn das drittePF NW als Pflicht hat wird dieses bei anderen Fächen entfernt
     String PF3SchienenWahl = "bel.";
     String PF4SchienenWahl = "bel.";
