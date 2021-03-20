@@ -7,6 +7,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.fxml.FXML;
@@ -16,6 +17,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import kurswahl.Main;
 import kurswahl.Wahlpruefung;
+import kurswahl.models.Schiene;
 
 import java.io.IOException;
 import java.net.URL;
@@ -174,6 +176,9 @@ public class VorabfrageController implements Initializable {
     @FXML
     private CheckBox checkBoxSchiene3;
 
+    @FXML
+    private Button buttonConfirm;
+
     /**
      * Initialisierung
      * @author Lukas Schenkel
@@ -202,6 +207,12 @@ public class VorabfrageController implements Initializable {
                 "Physik",
                 "Informatik"));
         zweiterLK.setValue("Keine Auswahl");
+        // Deaktivierung der CheckBoxes, solange die Zeilen in der Tabelle nicht gefüllt sind
+        checkBoxSchiene1.setDisable(true);
+        checkBoxSchiene2.setDisable(true);
+        checkBoxSchiene3.setDisable(true);
+
+        buttonConfirm.setDisable(true);
     }
 
     /**
@@ -210,6 +221,7 @@ public class VorabfrageController implements Initializable {
      * @author Tomás Wagner
      */
     public ObservableList<String> getLKWahlA() {
+        tabelleLeeren();
         ObservableList<String> wahlLKEditedA = FXCollections.observableArrayList("Keine Auswahl",
                 "Deutsch",
                 "Englisch",
@@ -255,6 +267,7 @@ public class VorabfrageController implements Initializable {
      * @author Tomás Wagner
      */
     public ObservableList<String> getLKWahlB() {
+        tabelleLeeren();
         ObservableList<String> wahlLKEditedB = FXCollections.observableArrayList("Keine Auswahl",
                 "Englisch",
                 "Kunst",
@@ -337,6 +350,7 @@ public class VorabfrageController implements Initializable {
             checkBoxSchiene2.setSelected(false);
             checkBoxSchiene3.setSelected(true);
         }
+        buttonConfirm.setDisable(false);
     }
 
     /**
@@ -345,8 +359,6 @@ public class VorabfrageController implements Initializable {
      */
     @FXML
     private void onClickedSave(ActionEvent event) {
-        tabelleLeeren();
-
         // Zwischenspeicherung der ausgewählten LKs
         String eLK = ersterLK.getValue();
         String zLK = zweiterLK.getValue();
@@ -391,6 +403,7 @@ public class VorabfrageController implements Initializable {
                 labelNW1.setText(String.valueOf(wahlpruefung.getPassendeSchienenListeElement(0).getNw()));
                 labelPHCH1.setText(String.valueOf(wahlpruefung.getPassendeSchienenListeElement(0).getPhCh()));
                 labelKdT1.setText(String.valueOf(wahlpruefung.getPassendeSchienenListeElement(0).getTauschmoeglichkeiten()));
+                checkBoxSchiene1.setDisable(false); // Aktivierung der CheckBox, wenn Zeile belegt
             }
 
             // 2. Zeile:
@@ -409,6 +422,7 @@ public class VorabfrageController implements Initializable {
                 labelNW2.setText(String.valueOf(wahlpruefung.getPassendeSchienenListeElement(1).getNw()));
                 labelPHCH2.setText(String.valueOf(wahlpruefung.getPassendeSchienenListeElement(1).getPhCh()));
                 labelKdT2.setText(String.valueOf(wahlpruefung.getPassendeSchienenListeElement(1).getTauschmoeglichkeiten()));
+                checkBoxSchiene2.setDisable(false); // Aktivierung der CheckBox, wenn Zeile belegt
             }
 
             // 3. Zeile:
@@ -427,11 +441,15 @@ public class VorabfrageController implements Initializable {
                 labelNW3.setText(String.valueOf(wahlpruefung.getPassendeSchienenListeElement(2).getNw()));
                 labelPHCH3.setText(String.valueOf(wahlpruefung.getPassendeSchienenListeElement(2).getPhCh()));
                 labelKdT3.setText(String.valueOf(wahlpruefung.getPassendeSchienenListeElement(2).getTauschmoeglichkeiten()));
+                checkBoxSchiene3.setDisable(false); // Aktivierung der CheckBox, wenn Zeile belegt
             }
-            // Abwählen aller CheckBoxen
+
+            // Abwählen aller CheckBoxes
             checkBoxSchiene1.setSelected(false);
             checkBoxSchiene2.setSelected(false);
             checkBoxSchiene3.setSelected(false);
+
+            buttonConfirm.setDisable(true);
         }
     }
 
@@ -441,6 +459,18 @@ public class VorabfrageController implements Initializable {
      */
     public void tabelleLeeren()
     {
+        // Deaktivierung der CheckBoxes, wenn Zeilen nicht gefüllt sind
+        checkBoxSchiene1.setDisable(true);
+        checkBoxSchiene2.setDisable(true);
+        checkBoxSchiene3.setDisable(true);
+
+        // Abwählen aller CheckBoxes
+        checkBoxSchiene1.setSelected(false);
+        checkBoxSchiene2.setSelected(false);
+        checkBoxSchiene3.setSelected(false);
+
+        buttonConfirm.setDisable(true);
+
         // 1. Zeile
         labelNr1.setText("-");
         labelErsterLK1.setText("-");
@@ -497,6 +527,7 @@ public class VorabfrageController implements Initializable {
     @FXML
     private void onClickedA(MouseEvent event) {
         ersterLK.setItems(getLKWahlA());
+        ersterLK.setValue("Keine Auswahl");
     }
 
     /**
@@ -506,6 +537,7 @@ public class VorabfrageController implements Initializable {
     @FXML
     private void onClickedB(MouseEvent event) {
         zweiterLK.setItems(getLKWahlB());
+        zweiterLK.setValue("Keine Auswahl");
     }
 
     /**

@@ -390,7 +390,7 @@
             <Label fx:id="labelFS3" text="-" GridPane.columnIndex="9" GridPane.rowIndex="3" />
          </children>
       </GridPane>
-      <Button focusTraversable="false" layoutX="812.0" layoutY="624.0" mnemonicParsing="false" onAction="#onClickedConfirm" prefHeight="35.0" prefWidth="141.0" text="BESTÄTIGEN" />
+      <Button fx:id="buttonConfirm" focusTraversable="false" layoutX="812.0" layoutY="624.0" mnemonicParsing="false" onAction="#onClickedConfirm" prefHeight="35.0" prefWidth="141.0" text="BESTÄTIGEN" />
       <Label layoutX="14.0" layoutY="487.0" text="Erläuterung zu den Kategorien der Tauschmöglichkeiten:">
          <font>
             <Font name="Arial Bold" size="12.0" />
@@ -469,6 +469,6 @@
             <Font name="Arial Bold" size="14.0" />
          </font>
       </Label>
-      <Button focusTraversable="false" layoutX="409.0" layoutY="176.0" mnemonicParsing="false" onAction="#onClickedSave" prefHeight="35.0" prefWidth="141.0" text="SPEICHERN" />
+      <Button fx:id="buttonSave" focusTraversable="false" layoutX="409.0" layoutY="176.0" mnemonicParsing="false" onAction="#onClickedSave" prefHeight="35.0" prefWidth="141.0" text="SPEICHERN" />
    </children>
 </AnchorPane>

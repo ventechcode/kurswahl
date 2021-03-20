@@ -426,15 +426,15 @@ public class MainController implements Initializable {
             case "2. AF":
                 PF3SchienenWahl = "2. AF";
                 break;
-            case "Ma":
+            case "Mathematik":
                 mathematikPF.setValue("3. PF");
                 select(deutschPF);
                 break;
-            case "In":
+            case "Informatik":
                 informatikPF.setValue("3. PF");
                 select(informatikPF);
                 break;
-            case "De":
+            case "Deutsch":
                 deutschPF.setValue("3. PF");
                 select(deutschPF);
                 break;
@@ -448,7 +448,7 @@ public class MainController implements Initializable {
             case "NW":
                 PF4SchienenWahl = "NW";
                 break;
-            case "Mu/Ku":
+            case "MU/KU":
                 PF4SchienenWahl = "MU/KU";
                 break;
             case "FS":
@@ -457,15 +457,15 @@ public class MainController implements Initializable {
             case "2. AF":
                 PF4SchienenWahl = "2. AF";
                 break;
-            case "Ma":
+            case "Mathematik":
                 mathematikPF.setValue("3. PF");
                 select(deutschPF);
                 break;
-            case "In":
+            case "Informatik":
                 informatikPF.setValue("3. PF");
                 select(informatikPF);
                 break;
-            case "De":
+            case "Deutsch":
                 deutschPF.setValue("3. PF");
                 select(deutschPF);
                 break;
@@ -479,7 +479,7 @@ public class MainController implements Initializable {
             case "NW":
                 PF5SchienenWahl = "NW";
                 break;
-            case "Mu/Ku":
+            case "MU/KU":
                 PF5SchienenWahl = "MU/KU";
                 break;
             case "FS":
@@ -488,15 +488,15 @@ public class MainController implements Initializable {
             case "2. AF":
                 PF5SchienenWahl = "2. AF";
                 break;
-            case "Ma":
+            case "Mathematik":
                 mathematikPF.setValue("3. PF");
                 select(deutschPF);
                 break;
-            case "In":
+            case "Informatik":
                 informatikPF.setValue("3. PF");
                 select(informatikPF);
                 break;
-            case "De":
+            case "Deutsch":
                 deutschPF.setValue("3. PF");
                 select(deutschPF);
                 break;

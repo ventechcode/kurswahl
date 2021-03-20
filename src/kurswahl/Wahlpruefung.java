@@ -796,6 +796,13 @@ public class Wahlpruefung {
      */
     public void schienenFiltern(String ersterLK, String zweiterLK)
     {
+        // Leerung des Arrays mit den passenden Schienen, damit keine Reste vom vorigen Vorgang übrig bleiben
+        Schiene[] leeresArray = new Schiene[3];
+        leeresArray[0] = null;
+        leeresArray[1] = null;
+        leeresArray[2] = null;
+        setPassendeSchienen(leeresArray);
+
         // die bei zwei LKs passen können
         int zaehler = 0;
         for (int i = 0; i < 48; i++)
