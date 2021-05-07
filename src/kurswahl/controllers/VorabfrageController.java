@@ -212,7 +212,7 @@ public class VorabfrageController implements Initializable {
         checkBoxSchiene2.setDisable(true);
         checkBoxSchiene3.setDisable(true);
 
-        buttonConfirm.setDisable(true);
+        buttonConfirm.setDisable(true); // Deaktivierung der "Bestätigen"-Buttons
     }
 
     /**
@@ -350,7 +350,7 @@ public class VorabfrageController implements Initializable {
             checkBoxSchiene2.setSelected(false);
             checkBoxSchiene3.setSelected(true);
         }
-        buttonConfirm.setDisable(false);
+        buttonConfirm.setDisable(false); // Aktivierung der "Bestätigen"-Buttons
     }
 
     /**
@@ -449,7 +449,7 @@ public class VorabfrageController implements Initializable {
             checkBoxSchiene2.setSelected(false);
             checkBoxSchiene3.setSelected(false);
 
-            buttonConfirm.setDisable(true);
+            buttonConfirm.setDisable(true);// Deaktivierung der "Bestätigen"-Buttons
         }
     }
 
@@ -469,7 +469,7 @@ public class VorabfrageController implements Initializable {
         checkBoxSchiene2.setSelected(false);
         checkBoxSchiene3.setSelected(false);
 
-        buttonConfirm.setDisable(true);
+        buttonConfirm.setDisable(true);// Deaktivierung der "Bestätigen"-Buttons
 
         // 1. Zeile
         labelNr1.setText("-");
@@ -546,6 +546,7 @@ public class VorabfrageController implements Initializable {
      */
     @FXML
     private void onClickedConfirm(ActionEvent event) {
+        wahlErgebnisseSpeichern();
         // Initialisierung des Hauptfensters, wobei das Wahlpruefungs-Objekt weitergegeben wird
         try {
             FXMLLoader loader = new FXMLLoader(Main.class.getResource("views/main.fxml"));
@@ -560,19 +561,49 @@ public class VorabfrageController implements Initializable {
     }
 
     /**
-     * @return Node, bei der angegebenen Reihe und Spalte
-     * @author Yannick Kandulski
+     * Methode zur Speicherung der Wahlergebnisse gemäß der ausgewählten Schiene im Wahlpruefungs-Objekt
+     * Aufruf beim Klicken auf den Bestätigen-Button
+     * @author Tomás Wagner
      */
-    public Node getNodeByCoordinate(Integer row, Integer column) {
-        if(row != null && column != null) {
-            for (Node node : grid.getChildren()) {
-                if(GridPane.getRowIndex(node) != null && GridPane.getColumnIndex(node) != null){
-                    if(GridPane.getRowIndex(node) == row && GridPane.getColumnIndex(node) == column){
-                        return node;
-                    }
-                }
-            }
+    private void wahlErgebnisseSpeichern()
+    {
+        // Speicherung der gewählten LKs
+        wahlpruefung.lkSetzen(ersterLK.getValue());
+        wahlpruefung.lkSetzen(zweiterLK.getValue());
+
+        // Variablen zur Speicherung der entsprechenden Prüfungsfach-Labels gemäß der ausgewählten Schiene
+        Label label3PrueFach = new Label();
+        Label label4PrueFach = new Label();
+        Label label5PrueFach = new Label();
+
+        // Verarbeitung der Schienenwahl, indem entsprechende Referenzen gesetzt werden
+        // UND Speicherung der Kategorie der Tauschmöglichkeiten der gewählten Schiene im wahlpruefungs-Objekt
+        if (checkBoxSchiene1.isSelected())
+        {
+            label3PrueFach = label3PF1;
+            label4PrueFach = label4PF1;
+            label5PrueFach = label5PF1;
+            wahlpruefung.setKdT(Integer.parseInt(labelKdT1.getText()));
         }
-        return null;
+        if (checkBoxSchiene2.isSelected())
+        {
+            label3PrueFach = label3PF2;
+            label4PrueFach = label4PF2;
+            label5PrueFach = label5PF2;
+            wahlpruefung.setKdT(Integer.parseInt(labelKdT2.getText()));
+        }
+        if (checkBoxSchiene3.isSelected())
+        {
+            label3PrueFach = label3PF3;
+            label4PrueFach = label4PF3;
+            label5PrueFach = label5PF3;
+            wahlpruefung.setKdT(Integer.parseInt(labelKdT3.getText()));
+        }
+
+        // Prüfungsfächer setzen
+        wahlpruefung.drittesUndViertesPFsetzen(label3PrueFach.getText(), label4PrueFach.getText());
+        wahlpruefung.fuenftesPFsetzen(label5PrueFach.getText());
+
+        //TODO Verarbeitung der Schienenwahl-Ergebnisse zu den Pflichtbelegungen in den versch. Fächern (Spalte 7 - 13)
     }
 }

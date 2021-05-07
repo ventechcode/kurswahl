@@ -122,7 +122,6 @@ public class MainController implements Initializable {
         int rowIndex = GridPane.getRowIndex(combobox);
         Kurs kurs = wahlpruefung.getKursListeElement(rowIndex - 1);
         ObservableList<String> wahlPFEdited = FXCollections.observableArrayList("Keine Auswahl",
-                "LK",
                 "3. PF",
                 "4. PF",
                 "5. PF");
@@ -137,6 +136,9 @@ public class MainController implements Initializable {
             wahlPFEdited.remove("4. PF");
         }
         if (wahlpruefung.getFuenftesPFgewaehlt() || ((kursZuSchienenKategorie(kurs)).equals(PF5SchienenWahl))) {
+            wahlPFEdited.remove("5. PF");
+        }
+        if (kurs.getKannNicht5PFsein()) {
             wahlPFEdited.remove("5. PF");
         }
         return wahlPFEdited;
@@ -154,6 +156,8 @@ public class MainController implements Initializable {
         gesamtQ3.setText("" + wahlpruefung.semesterGesamtanzahlBerechnen()[2]);
         gesamtQ4.setText("" + wahlpruefung.semesterGesamtanzahlBerechnen()[3]);
         gesamtAnzahl.setText("" + wahlpruefung.gesamtAnzahlKurseBerechnen());
+
+        ansichtNachVorabfrageAktualisieren();
     }
 
     /**
@@ -406,198 +410,6 @@ public class MainController implements Initializable {
     }
 
     /**
-     * Durch die Auswahl der Schiene, erfolgen automatisiert verpflichtende Eingaben in der Tabelle.
-     * @param indexDerSchiene ausgewählte Schiene
-     * @author Tomás Wagner, Yannick Kandulski
-     */
-    public void eingabenDurchSchieneVornehmen(int indexDerSchiene) {
-        Schiene schiene = wahlpruefung.getSchienenListeElement(indexDerSchiene - 1);
-
-        switch (schiene.getDrittesPF()) {
-            case "NW":
-                PF3SchienenWahl = "NW";
-                break;
-            case "Mu/Ku":
-                PF3SchienenWahl = "MU/KU";
-                break;
-            case "FS":
-                PF3SchienenWahl = "FS";
-                break;
-            case "2. AF":
-                PF3SchienenWahl = "2. AF";
-                break;
-            case "Mathematik":
-                mathematikPF.setValue("3. PF");
-                select(deutschPF);
-                break;
-            case "Informatik":
-                informatikPF.setValue("3. PF");
-                select(informatikPF);
-                break;
-            case "Deutsch":
-                deutschPF.setValue("3. PF");
-                select(deutschPF);
-                break;
-            case "bel.":
-                break;
-            default:
-                System.out.println("ERROR: eingabenDurchSchieneVornehmen fehlgeschlagen");
-        }
-
-        switch (schiene.getViertesPF()) {
-            case "NW":
-                PF4SchienenWahl = "NW";
-                break;
-            case "MU/KU":
-                PF4SchienenWahl = "MU/KU";
-                break;
-            case "FS":
-                PF4SchienenWahl = "FS";
-                break;
-            case "2. AF":
-                PF4SchienenWahl = "2. AF";
-                break;
-            case "Mathematik":
-                mathematikPF.setValue("3. PF");
-                select(deutschPF);
-                break;
-            case "Informatik":
-                informatikPF.setValue("3. PF");
-                select(informatikPF);
-                break;
-            case "Deutsch":
-                deutschPF.setValue("3. PF");
-                select(deutschPF);
-                break;
-            case "bel.":
-                break;
-            default:
-                System.out.println("ERROR: eingabenDurchSchieneVornehmen fehlgeschlagen");
-        }
-
-        switch (schiene.getFuenftesPF()) {
-            case "NW":
-                PF5SchienenWahl = "NW";
-                break;
-            case "MU/KU":
-                PF5SchienenWahl = "MU/KU";
-                break;
-            case "FS":
-                PF5SchienenWahl = "FS";
-                break;
-            case "2. AF":
-                PF5SchienenWahl = "2. AF";
-                break;
-            case "Mathematik":
-                mathematikPF.setValue("3. PF");
-                select(deutschPF);
-                break;
-            case "Informatik":
-                informatikPF.setValue("3. PF");
-                select(informatikPF);
-                break;
-            case "Deutsch":
-                deutschPF.setValue("3. PF");
-                select(deutschPF);
-                break;
-            case "bel.":
-                break;
-            default:
-                System.out.println("ERROR: eingabenDurchSchieneVornehmen fehlgeschlagen");
-        }
-    }
-
-    /**
-     * Verarbeitung der Schienenwahl zur Übergabe der Daten für Haupt-Tebelle
-     * @param combo ausgewählte Combo-Box
-     * @author Yannick Kandulski
-     */
-    private void select(ComboBox combo) {
-        ComboBox comboBox = combo;
-        String val = (String) comboBox.getValue();
-
-        int pf = stringPFinInt(val);
-
-        int rowIndex = GridPane.getRowIndex(comboBox);
-        Kurs kurs = wahlpruefung.getKursListeElement(rowIndex - 1);
-
-        //
-        grid.getChildren().forEach(node -> {
-            final Integer col = GridPane.getColumnIndex(node);
-            final Integer row = GridPane.getRowIndex(node);
-            // Anzeigen der Pflichtsemester in der Tabelle:
-            if(row != null && col != null) {
-                if(rowIndex == row && col == 2) {
-                    Label lblPflichtsemester = (Label) node;
-                    lblPflichtsemester.setText(String.valueOf(kurs.getAnzahlPflichtsemester()));
-                }
-                // Anzeigen der 4 ausgewählten Semester:
-                if(pf != 1) {
-                    // Q1 RadioButton
-                    if(rowIndex == row && col == 3) {
-                        RadioButton q1 = (RadioButton) node;
-                        q1.setSelected(true);
-                        kurs.setQ1(true);
-                    }
-                    // Q2 RadioButton
-                    if(rowIndex == row && col == 4) {
-                        RadioButton q2 = (RadioButton) node;
-                        q2.setSelected(true);
-                        kurs.setQ2(true);
-                    }
-                    // Q3 RadioButton
-                    if(rowIndex == row && col == 5) {
-                        RadioButton q3 = (RadioButton) node;
-                        q3.setSelected(true);
-                        kurs.setQ3(true);
-                    }
-                    // Q4 RadioButton
-                    if(rowIndex == row && col == 6) {
-                        RadioButton q4 = (RadioButton) node;
-                        q4.setSelected(true);
-                        kurs.setQ4(true);
-                    }
-                    if(rowIndex == row && col == 7) {
-                        Label lblSemester = (Label) node;
-                        lblSemester.setText(String.valueOf(kurs.getAnzahlSemester()));
-                    }
-                } else {
-                    // Q1 RadioButton
-                    if(rowIndex == row && col == 3) {
-                        RadioButton q1 = (RadioButton) node;
-                        q1.setSelected(false);
-                        kurs.setQ1(false);
-                    }
-                    // Q2 RadioButton
-                    if(rowIndex == row && col == 4) {
-                        RadioButton q2 = (RadioButton) node;
-                        q2.setSelected(false);
-                        kurs.setQ2(false);
-                    }
-                    // Q3 RadioButton
-                    if(rowIndex == row && col == 5) {
-                        RadioButton q3 = (RadioButton) node;
-                        q3.setSelected(false);
-                        kurs.setQ3(false);
-                    }
-                    // Q4 RadioButton
-                    if(rowIndex == row && col == 6) {
-                        RadioButton q4 = (RadioButton) node;
-                        q4.setSelected(false);
-                        kurs.setQ4(false);
-                    }
-                    if(rowIndex == row && col == 7) {
-                        Label lblSemester = (Label) node;
-                        lblSemester.setText(String.valueOf(kurs.getAnzahlSemester()));
-                    }
-                }
-            }
-        });
-        gesamtPS.setText("" + wahlpruefung.gesamtAnzahlPSberechnen());
-        ueberpruefen();
-    }
-
-    /**
      * Gibt den Ausdruck in den Schienen für Kursfächer aus, welcher zur überprüfung der Einhaltung der Schinen dient
      * @param kurs
      * @return Kursname in Schienenformat
@@ -617,4 +429,71 @@ public class MainController implements Initializable {
             return "2. AF";
         }
     }
+
+    /**
+     * Durch iterieren durch alle Kurs-Objekte, um Attribute zu überprüfen und die Tabelle anzupassen,
+     * sodass wenn z.B. Q1 durch die Schienen Wahl gewählt werden muss, der entsprechende RadioButton ausgewählt wird.
+     * @author Tomás Wagner
+     */
+    public void ansichtNachVorabfrageAktualisieren()
+    {
+        for (int z = 0; z < 26; z++)
+        {
+            // Semester-Wahl anzeigen und belegte RadioButtons sperren:
+            if (wahlpruefung.getKursListeElement(z).getQ1())
+            {
+                ((RadioButton) getNodeByCoordinate(z+1, 3)).setSelected(true);
+                ((RadioButton) getNodeByCoordinate(z+1, 3)).setDisable(true);
+            }
+            if (wahlpruefung.getKursListeElement(z).getQ2())
+            {
+                ((RadioButton) getNodeByCoordinate(z+1, 4)).setSelected(true);
+                ((RadioButton) getNodeByCoordinate(z+1, 4)).setDisable(true);
+            }
+            if (wahlpruefung.getKursListeElement(z).getQ3())
+            {
+                ((RadioButton) getNodeByCoordinate(z+1, 5)).setSelected(true);
+                ((RadioButton) getNodeByCoordinate(z+1, 5)).setDisable(true);
+            }
+            if (wahlpruefung.getKursListeElement(z).getQ4())
+            {
+                ((RadioButton) getNodeByCoordinate(z+1, 6)).setSelected(true);
+                ((RadioButton) getNodeByCoordinate(z+1, 6)).setDisable(true);
+            }
+
+            // Semester-Gesamtanzahl und Pflichtsemester anzeigen:
+            ((Label) getNodeByCoordinate(z+1, 7)).setText(String.valueOf(wahlpruefung.getKursListeElement(z).getAnzahlSemester()));
+            ((Label) getNodeByCoordinate(z+1, 2)).setText(String.valueOf(wahlpruefung.getKursListeElement(z).getAnzahlPflichtsemester()));
+
+            // eindeutige und festgelegte Prüfungsfächer anzeigen:
+            switch (wahlpruefung.getKursListeElement(z).getPruefungsfach()) {
+                case 2:
+                    ((ComboBox) getNodeByCoordinate(z+1, 1)).setValue("LK");
+                    ((ComboBox) getNodeByCoordinate(z+1, 1)).setDisable(true);
+                    break;
+                case 3:
+                    ((ComboBox) getNodeByCoordinate(z+1, 1)).setValue("5. PF");
+                    ((ComboBox) getNodeByCoordinate(z+1, 1)).setDisable(true);
+                    break;
+                default:
+                    //
+            }
+
+            // Combo-Boxen deaktivieren, wenn ein Kurs unter keinen Umständen als PF gewählt werden kann:
+            if (wahlpruefung.getKursListeElement(z).getPruefungsfach() == 0)
+            {
+                if ((z+1 < 8) || ((z+1 > 13) && (z+1 < 18)) || ((z+1 > 19) && (z+1 < 27)))
+                {
+                    ((ComboBox) getNodeByCoordinate(z+1, 1)).setDisable(true);
+                }
+            }
+            // Dropdown-Menüs anpassen, wenn ein Kurs kein 5. PF sein kann (weil kurs.pruefungsfach == 34),
+            // erfolgt in der ständigen Aktualisierung der Dropdown-Menüs über die getPFWahl-Methode, indem eine
+            // Prüfung des Zusatzattributes getKannNicht5PFsein erfolgt (ln 141)
+
+        }
+    }
+
+    //TODO Bug beheben, dass bei Abwahl eines Faches alle Qs entfernt werden, auch wenn manche Pflicht bleiben
+    //TODO Überprüfung der 2 Kriterien gemäß der 2. KdT erforderlich!
 }

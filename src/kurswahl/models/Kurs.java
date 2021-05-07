@@ -20,6 +20,7 @@ public class Kurs
     private int pruefungsfach; // z.B. 5. PK oder LK
     private int anzahlPflichtsemester; // z.B. 4 Semester
     private boolean hauptfach; // ist ein Hauptfach (MA, DE, ENG, FR)
+    private boolean kannNicht5PFsein;
 
     // Verschiedene Varianten von aufgabenfeld
     // 1 => 1. Aufgabenfeld (Sprachliche und künstlerische Fächer)
@@ -34,11 +35,15 @@ public class Kurs
     // 4 => Zusatzkurs
 
     // Verschiedene Varianten von pruefungsfach
-    // 1 => Kein PF
+    // 0 => Standardwert bei Programmstart; Kurs ist kein PF und mögliches PF
     // 2 => LK
     // 3 => 3. PF
     // 4 => 4. PF
     // 5 => 5. PK
+    // 34 => mögliches 3. oder 4. PF gemäß der Schienenwahl
+    // 345 => mögliches 3., 4. oder 5. PF gemäß der Schienenwahl
+    //        UND mögliches 3., 4. oder 5. PF gemäß der Schienenwahl unter Einhaltung der 2. Bedingungen (siehe KdT)
+    // 55 => mögliches 5. PF gemäß der Schienenwahl
 
      /**
      * Erweiterter Konstruktor der Klasse Kurs
@@ -62,6 +67,7 @@ public class Kurs
         this.anzahlPflichtsemester = anzahlPflichtsemester;
         if(name=="Deutsch" || name=="Mathematik" || name=="Englisch" || name=="Französisch") { this.hauptfach = true; }
         else { this.hauptfach = false; }
+        kannNicht5PFsein = false;
     }
 
 //    /**
@@ -147,6 +153,7 @@ public class Kurs
 
     public int getAnzahlSemester()
     {
+        anzahlSemester = semesterAnzahlBerechnen();
         return anzahlSemester;
     }
     public int getPruefungsfach()
@@ -157,13 +164,14 @@ public class Kurs
     public void setPruefungsfach(int pruefungsfach)
     {
         this.pruefungsfach = pruefungsfach;
+        if (pruefungsfach == 2 || pruefungsfach == 3  || pruefungsfach == 4 || pruefungsfach == 5 )
+        {
+            setAnzahlPflichtsemester(4);
+            setQs(true, true, true, true);
+        }
     }
 
-    public int getAnzahlPflichtsemester()
-    {
-        anzahlPflichtsemester = semesterAnzahlBerechnen();
-        return anzahlPflichtsemester;
-    }
+    public int getAnzahlPflichtsemester() { return anzahlPflichtsemester; }
 
     public void setAnzahlPflichtsemester(int anzahlPflichtsemester) { this.anzahlPflichtsemester = anzahlPflichtsemester; }
 
@@ -176,7 +184,7 @@ public class Kurs
      * Berechnung der Anzahl an belegten Semestern im Kurs.
      * @author Tomás Wagner
      */
-    public int semesterAnzahlBerechnen()
+    private int semesterAnzahlBerechnen()
     {
         int aS = 0; //Startwert in der Berechnung = 0
 
@@ -201,5 +209,11 @@ public class Kurs
         this.q3 = q3;
         this.q4 = q4;
         anzahlSemester = semesterAnzahlBerechnen();
+    }
+
+    public boolean getKannNicht5PFsein()
+    {
+        if (pruefungsfach == 34){ kannNicht5PFsein = true; }
+        return kannNicht5PFsein;
     }
 }

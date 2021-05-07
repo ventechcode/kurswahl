@@ -8,7 +8,6 @@ import javafx.stage.Stage;
 
 /**
  * Die Klasse repräsentiert den Einstiegspunkt in das Programm.
- *
  * @main-author Lukas Schenkel
  */
 
@@ -25,13 +24,14 @@ public class Main extends Application
     public void start(Stage primaryStage) throws Exception
     {
         Main.primaryStage = primaryStage;
-        primaryStage.setTitle("Kurswahl");
+        primaryStage.setTitle("Oberstufenkurswahl am Leibniz Gymnasium");
 
         Parent vorabfrage = FXMLLoader.load(getClass().getResource("views/vorabfrage.fxml"));
         Scene vorabfrageScene = new Scene(vorabfrage, 960, 670);
         primaryStage.setScene(vorabfrageScene);
         primaryStage.setResizable(false);
         primaryStage.show();
+
     }
 
     /**
