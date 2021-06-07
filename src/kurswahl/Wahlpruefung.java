@@ -45,30 +45,29 @@ public class Wahlpruefung {
     private boolean spracheAbBeginn; //sind die gewaehlten Fremdsprachen nicht nur in der 12. Kl. gewaehlt worden
     private boolean kuenstWerkMitKULK; //ist der LK KU gewaehlt worden, wenn die kuenstlerischen Werkstaetten belegt wurden
     private boolean dSmin4Sem; //ist DS 0 oder 4 Semester lang gewaehlt worden
+    private boolean kdTWirdEingehalten; //Spezifikation der Prüfungsfachwahl gemäß der KdT, die aus der gewählten Schiene folgt, wird eigehalten
 
-    private Kurs[] kursListe;
-    private Schiene[] schienen;
-    private Schiene[] passendeSchienen;
+    private Kurs[] kursListe; //Liste für alle Kurse
+    private Schiene[] schienen; //Liste für alle Schienen
+    private Schiene[] passendeSchienen; //Liste mit zur LK-Wahl passenden Schienen
 
-    private int kdT;
+    private int kdT; //Speicherung der Kategorie der Tauschmöglichkeiten
 
     /**
      * Konstruktor der Klasse Wahlpruefung
-     *
      * @author Glenn Grubert
      */
     public Wahlpruefung() {
         kursListe = new Kurs[26];
-        schienen = new Schiene[48];// Attribut für alle Schienen
-        passendeSchienen = new Schiene[3];// Attribut für passende Schienen
-        kurseInstanziieren();
-        schienenErzeugen();
-        kdT = 0;
+        schienen = new Schiene[48];
+        passendeSchienen = new Schiene[3];
+        kurseInstanziieren(); //Erzeugung aller Kurse als Objekte in der Liste kursListe
+        schienenErzeugen(); //Erzeugung aller möglichen auszuwählenden Schienen gemäß des Oberstufensystems
+        kdT = 0; //Standardwert, da bei Instanzierung noch keine Informationen der KdT vorliegen
     }
 
     /**
      * Instanziiert die Kurse und fügt sie in die Liste der Kurse in korrekter Reihenfolge ein.
-     *
      * @author Glenn Grubert, Romy Karbstein
      */
     private void kurseInstanziieren() {
@@ -103,7 +102,6 @@ public class Wahlpruefung {
 
     /**
      * Es werden alle Kriterien (Attribute) überprüft, ob sie als erfüllt gespeichert sind (=true).
-     *
      * @return sind alle Kriterien als erfüllt gespeichert
      * @author Tomás Wagner
      */
@@ -132,7 +130,7 @@ public class Wahlpruefung {
             attributeTrue = false;
         }
 
-        if (!spracheAbBeginn || !kuenstWerkMitKULK || !dSmin4Sem) {
+        if (!spracheAbBeginn || !kuenstWerkMitKULK || !dSmin4Sem || !kdTWirdEingehalten) {
             attributeTrue = false;
         }
 
@@ -165,13 +163,13 @@ public class Wahlpruefung {
         System.out.println("spracheAbBeginn" + spracheAbBeginn);
         System.out.println("kuenstWerkMitKULK " + kuenstWerkMitKULK);
         System.out.println("dSmin4Sem " + dSmin4Sem);
+        System.out.println("kdTWirdEingehalten " + kdTWirdEingehalten);
 
         return attributeTrue;
     }
 
     /**
      * Ausführen aller Methoden zur Überprüfung der Kriterien und damit einhergehende Aktualisierung der Attributwerte.
-     *
      * @author Tomás Wagner
      */
     public void attributeAktualisieren() {
@@ -199,11 +197,11 @@ public class Wahlpruefung {
         mspracheAbBeginn();
         mkuenstWerkMitKULK();
         mdSmin4Sem();
+        mkdTWirdEingehalten();
     }
 
     /**
      * Das Kriterium einLKHFoNW wird überprüft und entsprechend aktualisiert
-     *
      * @author Glenn Grubert, Romy Karbstein
      */
     private void meinLKHFoNW() {
@@ -234,7 +232,6 @@ public class Wahlpruefung {
 
     /**
      * Das Kriterium zweiLKgewaehlt wird überprüft und entsprechend aktualisiert
-     *
      * @author Glenn Grubert, Romy Karbstein
      */
     private void mzweiLKgewaehlt() {
@@ -249,7 +246,6 @@ public class Wahlpruefung {
 
     /**
      * Das Kriterium drittesPFgewaehlt wird überprüft und entsprechend aktualisiert
-     *
      * @author Glenn Grubert, Romy Karbstein
      */
     private void mdrittesPFgewaehlt() {
@@ -263,7 +259,6 @@ public class Wahlpruefung {
 
     /**
      * Das Kriterium viertesPFgewaehlt wird überprüft und entsprechend aktualisiert
-     *
      * @author Glenn Grubert, Romy Karbstein
      */
     private void mviertesPFgewaehlt() {
@@ -279,7 +274,6 @@ public class Wahlpruefung {
 
     /**
      * Das Kriterium fuenftesPFgewaehlt wird überprüft und entsprechend aktualisiert
-     *
      * @author Glenn Grubert, Romy Karbstein
      */
     private void mfuenftesPFgewaehlt() {
@@ -294,7 +288,6 @@ public class Wahlpruefung {
 
     /**
      * Das Kriterium zweiPFHP wird überprüft und entsprechend aktualisiert
-     *
      * @author Glenn Grubert, Romy Karbstein
      */
     private void mzweiPFHP() {
@@ -313,7 +306,6 @@ public class Wahlpruefung {
 
     /**
      * Das Kriterium aFvertreterInPF wird überprüft und entsprechend aktualisiert
-     *
      * @author Glenn Grubert, Romy Karbstein
      */
     private void maFvertreterInPF() {
@@ -336,7 +328,6 @@ public class Wahlpruefung {
 
     /**
      * Das Kriterium einPFCheck wird überprüft und entsprechend aktualisiert
-     *
      * @author Glenn Grubert, Romy Karbstein
      */
     private void meinPFCheck() {
@@ -358,7 +349,6 @@ public class Wahlpruefung {
 
     /**
      * Das Kriterium vierMalFS wird überprüft und entsprechend aktualisiert
-     *
      * @author Tomás Wagner
      */
     private void mvierMalFS() {
@@ -367,7 +357,6 @@ public class Wahlpruefung {
 
     /**
      * Das Kriterium vierMalNW wird überprüft und entsprechend aktualisiert
-     *
      * @author Tomás Wagner
      */
     private void mvierMalNW() {
@@ -376,7 +365,6 @@ public class Wahlpruefung {
 
     /**
      * Das Kriterium vierMal2AF wird überprüft und entsprechend aktualisiert
-     *
      * @author Tomás Wagner
      */
     private void mvierMal2AF() {
@@ -385,7 +373,6 @@ public class Wahlpruefung {
 
     /**
      * Das Kriterium zweiRichtigeNW wird überprüft und entsprechend aktualisiert
-     *
      * @author Tomás Wagner
      */
     private void mzweiRichtigeNW() {
@@ -394,7 +381,6 @@ public class Wahlpruefung {
 
     /**
      * Das Kriterium sechsMal2AF wird überprüft und entsprechend aktualisiert
-     *
      * @author Tomás Wagner
      */
     private void msechsMal2AF() {
@@ -419,7 +405,6 @@ public class Wahlpruefung {
 
     /**
      * Das Kriterium gEistPFCheck wird überprüft und entsprechend aktualisiert
-     *
      * @author Tomás Wagner
      */
     private void mgEistPFCheck() {
@@ -443,7 +428,6 @@ public class Wahlpruefung {
 
     /**
      * Das Kriterium sPals4o5PK wird überprüft und entsprechend aktualisiert
-     *
      * @author Tomás Wagner
      */
     private void msPals4o5PK() {
@@ -456,7 +440,6 @@ public class Wahlpruefung {
 
     /**
      * Das Kriterium zweiSemKuenstFaecher wird überprüft und entsprechend aktualisiert
-     *
      * @author Tomás Wagner
      */
     private void mzweiSemKuenstFaecher() {
@@ -466,7 +449,6 @@ public class Wahlpruefung {
 
     /**
      * Das Kriterium zweiSemBelegung wird überprüft und entsprechend aktualisiert
-     *
      * @author Tomás Wagner
      */
     private void mzweiSemBelegung() {
@@ -481,7 +463,6 @@ public class Wahlpruefung {
 
     /**
      * Das Kriterium vierzigKurseBelegt wird überprüft und entsprechend aktualisiert
-     *
      * @author Tomás Wagner
      */
     private void mvierzigKurseBelegt() {
@@ -515,7 +496,6 @@ public class Wahlpruefung {
 
     /**
      * Das Kriterium aSchieneEinLK wird überprüft und entsprechend aktualisiert
-     *
      * @author Tomás Wagner
      */
     private void maSchieneEinLK() {
@@ -545,7 +525,6 @@ public class Wahlpruefung {
 
     /**
      * Das Kriterium bSchieneEinLK wird überprüft und entsprechend aktualisiert
-     *
      * @author Tomás Wagner
      */
     private void mbSchieneEinLK() {
@@ -575,7 +554,6 @@ public class Wahlpruefung {
 
     /**
      * Das Kriterium spracheAbBeginn wird überprüft und entsprechend aktualisiert
-     *
      * @author Tomás Wagner
      */
     private void mspracheAbBeginn() {
@@ -615,7 +593,6 @@ public class Wahlpruefung {
 
     /**
      * Das Kriterium kuenstWerkMitKULK wird überprüft und entsprechend aktualisiert
-     *
      * @author Tomás Wagner
      */
     private void mkuenstWerkMitKULK() {
@@ -633,11 +610,42 @@ public class Wahlpruefung {
 
     /**
      * Das Kriterium dSmin4Sem wird überprüft und entsprechend aktualisiert
-     *
      * @author Tomás Wagner
      */
     private void mdSmin4Sem() {
         dSmin4Sem = getKursListeElement(6).getAnzahlSemester() == 4 || getKursListeElement(6).getAnzahlSemester() == 0;
+    }
+
+    /**
+     * Das Kriterium kdTWirdEingehalten wird überprüft und entsprechend aktualisiert
+     * @author Tomás Wagner
+     */
+    private void mkdTWirdEingehalten() {
+        if(kdT != 2) //eine Prüfung erfolgt nur, wenn kdT = 2 ist, da ansonsten keine Bedingungen vorliegen, die vom Benutzer eingehalten werden müssen (falsche Eingaben durch das Programm unmöglich gemacht bei kdT != 2)
+        {
+            kdTWirdEingehalten = true;
+        }
+        else
+        {
+            //1. Bedingung:
+            int i = 0;
+            if (getKursListeElement(0).getPruefungsfach() == 2 || getKursListeElement(0).getPruefungsfach() == 3 || getKursListeElement(0).getPruefungsfach() == 4){ i++; }//Deutsch
+            if (getKursListeElement(1).getPruefungsfach() == 2 || getKursListeElement(1).getPruefungsfach() == 3 || getKursListeElement(1).getPruefungsfach() == 4){ i++; }//Englisch
+            if (getKursListeElement(2).getPruefungsfach() == 2 || getKursListeElement(2).getPruefungsfach() == 3 || getKursListeElement(2).getPruefungsfach() == 4){ i++; }//Französisch
+            if (getKursListeElement(19).getPruefungsfach() == 2 || getKursListeElement(19).getPruefungsfach() == 3 || getKursListeElement(19).getPruefungsfach() == 4){ i++; }//Mathematik
+            if (i >= 2)
+            {
+                kdTWirdEingehalten = true;
+            }
+            else
+            {
+                kdTWirdEingehalten = false;
+            }
+
+            //2. Bedingung:
+            if (!einPFCheck){ kdTWirdEingehalten = false; }
+
+        }
     }
 
     //Get-Methode für die Liste aller Kurse
@@ -742,6 +750,8 @@ public class Wahlpruefung {
     public boolean getDSmin4Sem() {
         return dSmin4Sem;
     }
+
+    public boolean getKdTWirdEingehalten() { return kdTWirdEingehalten; }
 
     public Schiene[] getPassendeSchienen() {
         return passendeSchienen;

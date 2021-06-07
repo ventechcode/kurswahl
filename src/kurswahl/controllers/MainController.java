@@ -11,10 +11,12 @@ import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Pane;
 import kurswahl.Wahlpruefung;
 import kurswahl.models.Kurs;
 import kurswahl.models.Schiene;
 
+import java.awt.*;
 import java.net.URL;
 import java.util.ResourceBundle;
 

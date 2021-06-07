@@ -604,6 +604,7 @@ public class VorabfrageController implements Initializable {
         wahlpruefung.drittesUndViertesPFsetzen(label3PrueFach.getText(), label4PrueFach.getText());
         wahlpruefung.fuenftesPFsetzen(label5PrueFach.getText());
 
-        //TODO Verarbeitung der Schienenwahl-Ergebnisse zu den Pflichtbelegungen in den versch. Fächern (Spalte 7 - 13)
+        //Übertragung der Pflichtbelegungen gemäß Spalte 7 - 13 erfolgt automatisch bzw. wird durch das Wahlprüfungsobjekt geprüft.
+        //Hier ist keine darüberhinausgehende Prüfung/Übertrgung nötig.
     }
 }
