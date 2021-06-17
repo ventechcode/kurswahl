@@ -31,7 +31,6 @@ public class Main extends Application
         primaryStage.setScene(vorabfrageScene);
         primaryStage.setResizable(false);
         primaryStage.show();
-
     }
 
     /**

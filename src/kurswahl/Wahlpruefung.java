@@ -332,16 +332,16 @@ public class Wahlpruefung {
      */
     private void meinPFCheck() {
         int zaehler = 0;
-        if (getKursListeElement(4).getPruefungsfach() > 1) {
+        if ((getKursListeElement(4).getPruefungsfach() > 1) && (getKursListeElement(4).getPruefungsfach() < 6)) {
             zaehler++;
         } //Musik
-        if (getKursListeElement(5).getPruefungsfach() > 1) {
+        if ((getKursListeElement(5).getPruefungsfach() > 1) && (getKursListeElement(5).getPruefungsfach() < 6)) {
             zaehler++;
         } //Bildende Kunst
-        if (getKursListeElement(6).getPruefungsfach() > 1) {
+        if ((getKursListeElement(6).getPruefungsfach() > 1) && (getKursListeElement(6).getPruefungsfach() < 6)) {
             zaehler++;
         } //DS
-        if (getKursListeElement(24).getPruefungsfach() > 1) {
+        if ((getKursListeElement(24).getPruefungsfach() > 1) && (getKursListeElement(24).getPruefungsfach() < 6)) {
             zaehler++;
         } //Sport
         einPFCheck = (zaehler <= 1);
@@ -619,6 +619,7 @@ public class Wahlpruefung {
     /**
      * Das Kriterium kdTWirdEingehalten wird überprüft und entsprechend aktualisiert
      * @author Tomás Wagner
+     * TODO MERKE: DIES IST DIE METHODE, DIE ÜBERPRÜFT, OB DIE KdT EINGEHALTEN WIRD
      */
     private void mkdTWirdEingehalten() {
         if(kdT != 2) //eine Prüfung erfolgt nur, wenn kdT = 2 ist, da ansonsten keine Bedingungen vorliegen, die vom Benutzer eingehalten werden müssen (falsche Eingaben durch das Programm unmöglich gemacht bei kdT != 2)

@@ -184,7 +184,7 @@ public class MainController implements Initializable {
             kurs.setQ2(val);
             kurs.setQ3(val);
             RadioButton q3 = (RadioButton) getNodeByCoordinate(rowIndex, colIndex + 1);
-            q3.setSelected(true);
+            q3.setSelected(val);
         }
         else if (kurs.getName().equals("Darstellendes Spiel")) // 2. Sonderfall: Wenn ein Semester DS ausgewählt wird,
             // werden auch alle anderen Semester ausgewählt
@@ -193,10 +193,10 @@ public class MainController implements Initializable {
             kurs.setQ2(val);
             kurs.setQ3(val);
             kurs.setQ4(val);
-            ((RadioButton) getNodeByCoordinate(rowIndex, 3)).setSelected(true);
-            ((RadioButton) getNodeByCoordinate(rowIndex, 4)).setSelected(true);
-            ((RadioButton) getNodeByCoordinate(rowIndex, 5)).setSelected(true);
-            ((RadioButton) getNodeByCoordinate(rowIndex, 6)).setSelected(true);
+            ((RadioButton) getNodeByCoordinate(rowIndex, 3)).setSelected(val);
+            ((RadioButton) getNodeByCoordinate(rowIndex, 4)).setSelected(val);
+            ((RadioButton) getNodeByCoordinate(rowIndex, 5)).setSelected(val);
+            ((RadioButton) getNodeByCoordinate(rowIndex, 6)).setSelected(val);
         }
         else
         {
@@ -206,22 +206,22 @@ public class MainController implements Initializable {
                 kurs.setQ1(val);
                 kurs.setQ2(val);
                 RadioButton q2 = (RadioButton) getNodeByCoordinate(rowIndex, colIndex + 1);
-                q2.setSelected(true);
+                q2.setSelected(val);
             } else if (colIndex == 4) {
                 kurs.setQ2(val);
                 kurs.setQ1(val);
                 RadioButton q1 = (RadioButton) getNodeByCoordinate(rowIndex, colIndex - 1);
-                q1.setSelected(true);
+                q1.setSelected(val);
             } else if (colIndex == 5) {
                 kurs.setQ3(val);
                 kurs.setQ4(val);
                 RadioButton q4 = (RadioButton) getNodeByCoordinate(rowIndex, colIndex + 1);
-                q4.setSelected(true);
+                q4.setSelected(val);
             } else if (colIndex == 6) {
                 kurs.setQ4(val);
                 kurs.setQ3(val);
                 RadioButton q3 = (RadioButton) getNodeByCoordinate(rowIndex, colIndex - 1);
-                q3.setSelected(true);
+                q3.setSelected(val);
             }
         }
 
@@ -492,10 +492,6 @@ public class MainController implements Initializable {
             // Dropdown-Menüs anpassen, wenn ein Kurs kein 5. PF sein kann (weil kurs.pruefungsfach == 34),
             // erfolgt in der ständigen Aktualisierung der Dropdown-Menüs über die getPFWahl-Methode, indem eine
             // Prüfung des Zusatzattributes getKannNicht5PFsein erfolgt (ln 141)
-
         }
     }
-
-    //TODO Bug beheben, dass bei Abwahl eines Faches alle Qs entfernt werden, auch wenn manche Pflicht bleiben
-    //TODO Überprüfung der 2 Kriterien gemäß der 2. KdT erforderlich!
 }
