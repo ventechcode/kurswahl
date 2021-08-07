@@ -495,3 +495,11 @@ public class MainController implements Initializable {
         }
     }
 }
+
+//TODO Bug: wenn man ein Fach als PF wählt, das in manchen Semestern verpflichtend zu belegen ist
+// (und demnach in 2 Feldern, die deaktiviert sind, ausgewählt ist) und es wieder abwählt,
+// verschwinden auch die Pflichtbelegungen (z.B. Geschichte)
+
+//TODO die Kriterien-Checkliste auf der rechten Seite wird nicht gemäß der Überprüfung angepasst
+
+//TODO die Kriterien-Checkliste muss noch fertoggestellt werden und es muss geklärt werden, die die Darstellung erfolgen soll

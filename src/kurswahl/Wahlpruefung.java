@@ -1108,3 +1108,4 @@ public class Wahlpruefung {
 
 }
 
+//TODO kdT = 2 wird zwar überprüft, aber der Fehler (und die Begründung) ist nicht für den Benutzer einsehbar
